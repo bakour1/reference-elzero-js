@@ -1372,7 +1372,7 @@ ${ c } ${ d }`);
     myFriends.unshift("Osama", "Nabil");
     console.log(myFriends);        // (6) ['Osama', 'Nabil', 'Ahmed', 'Mohamed', 'Sayed', 'Alaa']
 
-    // push("", "") add element to the First
+    // push("", "") add element to the last
     myFriends.push("Sami", "Ameer");
     console.log(myFriends);        // (8) ['Osama', 'Nabil', 'Ahmed', 'Mohamed', 'Sayed', 'Alaa', 'Sami', 'Ameer']
 
@@ -1469,5 +1469,101 @@ ${ c } ${ d }`);
 
     console.log(allFriends.join(" ").toUpperCase());  // AHMED SAYED ALI OSAMA GAMAL AMEER SAMAR SAMAH HAYTHAM SHADY GAMEEL ONE TWO
   }
+  // assign
+  //[ one ]
+  {
+    let myFriends=["Ahmed", "Elham", "Osama", "Gamal"];
+    let num=3;
+    // Method 1
+    lastIndex=myFriends.length;
+    console.log(myFriends.slice(0, --lastIndex)); // ["Ahmed", "Elham", "Osama"];
 
+    // Method 2
+    myFriends.pop();                     //return new array
+    console.log(myFriends);              // ["Ahmed", "Elham", "Osama"];
+
+    // or
+    myFriends.length=num;
+    console.log(myFriends);              // ["Ahmed", "Elham", "Osama"];
+
+    //  or
+    myFriends.splice(+false, +false);              //return new array
+    console.log(myFriends);              // ["Ahmed", "Elham", "Osama"];
+  }
+  // [ two ]
+  {
+    let friends=["Ahmed", "Eman", "Osama", "Gamal"];
+
+    // Write Your Code Here
+    friends.pop();
+    friends.shift();
+    console.log(friends); // ["Eman", "Osama"]
+  }
+  // [ three ]
+  {
+    let arrOne=["C", "D", "X"];
+    let arrTwo=["A", "B", "Z"];
+    let finalArr=[];
+
+    // Write One Single Line Of Code
+    finalArr=finalArr.concat(arrOne, arrTwo).sort().reverse();
+
+    console.log(finalArr); // ["Z", "X", "D", "C", "B", "A"]
+  }
+  // [ four ]
+  {
+    let website="Go";
+    let words=[`${ website }ogle`, "Facebook", ["Elzero", "Web", "School"]];
+
+    console.log(words[website.length][0].slice(website.length, website.length*words.length).toUpperCase()); // ZERO
+  }
+  // [ five ]
+  {
+    let needle="JS";
+    let haystack=["PHP", "JS", "Python"];
+
+    // first solution
+    haystack.includes(needle)===true
+      ? console.log("Found")
+      :console.log("not Found");
+
+    //second Solutions
+    haystack.indexOf(needle)!==-1
+      ? console.log("Found")
+      :console.log("not Found");
+
+    //third Solutions
+    haystack.lastIndexOf(needle)!==-1
+      ? console.log("Found")
+      :console.log("not Found");
+  }
+  // [ six ]
+  {
+    let arr1=["A", "C", "X"];
+    let arr2=["D", "E", "F", "Y"];
+    let allArras=[];
+
+    // Your Code Here
+    arr1.splice(0, arr1.length-true);
+    arr2.splice(0, arr1.length+true);
+    allArras=arr2.concat(arr1).sort().join("").toLowerCase();
+
+    console.log(allArras); // fxy
+  }
+  // [ Challenge ]
+  {
+    let zero=0;
+    let counter=3;
+    let my=["Ahmed", "Mazero", "Elham", "Osama", "Gamal", "Ameer"];
+
+    my.splice(- --counter);
+    my.reverse();
+    console.log(my); // ["Osama", "Elham", "Mazero", "Ahmed"];
+
+    console.log(my.slice(+true, ++counter)); // ["Elham", "Mazero"]
+
+    console.log(`"${ my[++zero].slice(--zero, --counter) }${ my[counter].slice(counter++) }"`); // "Elzero"
+
+    console.log(`"${ my[--counter][++counter+true] }${ my[++zero+ +zero][5].toUpperCase() }"`); // "rO"
+  }
 }
