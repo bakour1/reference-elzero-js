@@ -4182,6 +4182,14 @@ ${ c } ${ d }` );
       .join( "" );
 
     console.log( ign );
+
+    // ===============================================================
+
+    function symmetricPoint ( p, q ) {
+      return p.map( ( a, i ) => q[ i ] * 2 - a );
+    }
+
+    console.log( symmetricPoint( [ 2, 6 ], [ -2, -6 ] ) ); // (2) [-6, -18]
   }
   /*
   #073 – Filter
@@ -8361,6 +8369,47 @@ ${ c } ${ d }` );
   }
   let myCar = new Car( "Ford" );
   console.log( Car.hello( myCar ) );
+
+  {/* Problem Solving
+Time for some OOP fun!
+Define a class Person with the following properties:
+
+= A constructor that accepts 4 arguments:
+  - firstName/FirstName (defaults to "John" if not set),
+  - lastName/LastName (defaults to "Doe" if not set),
+  - age/Age (defaults to 0 if not set) ,
+  - gender/Gender (defaults to "Male" if not set).
+= A method sayFullName/SayFullName that accepts no arguments and returns the full name (e.g. "John Doe")
+= A class/static method greetExtraTerrestrials/GreetExtraTerrestrials that accepts one parameter raceName
+    - returns "Welcome to Planet Earth raceName".
+    - For example, if the race name is "Martians", it should say "Welcome to Planet Earth Martians"
+*/
+
+    // Solution
+
+    class Person {
+      constructor ( firstName = 'John', lastName = 'Doe', age = 0, gender = 'Male' ) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+      }
+      sayFullName () { return this.firstName + " " + this.lastName; };
+      static greetExtraTerrestrials ( raceName ) { return `Welcome to Planet Earth ${ raceName }`; }
+    }
+
+    const x = new Person();
+
+    console.log( x.firstName );                                          // John
+    console.log( x.lastName );                                           // Doe
+    console.log( x.age );                                                // 0
+    console.log( x.gender );                                             // Male
+    console.log( x.sayFullName() );                                      // John Doe
+    console.log( x.greetExtraTerrestrials( 'pro' ) );                    // Error because the method is static for Person not for x
+
+    console.log( Person.greetExtraTerrestrials( 'Pro in programing' ) ); // Welcome to Planet Earth Pro in programing
+  }
+
 }
 
 //  Promise
