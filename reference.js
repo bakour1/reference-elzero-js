@@ -1,55 +1,6 @@
 { //intro
-  //======>  document.querySelector----------selectthe tag and set the style
-  {
-    document.querySelector( "h1" ).style.color = "blue";
-    document.querySelector( "h1" ).style.fontSize = '80px';
-  }
-  //======>  window.onload-------------set onload for load all the code before loaded page
-  {
-    window.onload = function () { //  set onload for load all the code before loaded page
-      document.querySelector( "h1" ).style.color = "blue";
-    };
-  }
-  // Writing into an HTML element, using innerHTML.
-  // Writing into the HTML output using document.write().testing only
-  // Writing into an alert box, using window.alert().
-  // Writing into the browser console, using console.log().
-  //======> window.alert------------ alert
-  {
-    window.alert( "hello from js file" );
-  }
-  //======> document.write---------- write p or h1 or span
-  {
-    document.write( "<h1>hello <span>Page</span></h1>" );
 
-  }
-  //======> document.write and css ..... write p or h1 or span  then selectthe tag and set the style
-  {
-    document.write( "<h1>Elzero</h1>" );
-    window.onload = function () {
-      document.write( "<h1>Elzero</h1>" );
-      document.querySelector( "h1" ).style =
-        "color: blue;font-size: 80px;font-weight: bold;text-align: center;font-family: Arial";
-    };
-    // or
-    document.write( "<h1>Elzero</h1>" );
-    document.querySelector( "h1" ).style =
-      "color: blue;font-size: 80px;font-weight: bold;text-align: center;font-family: Arial";
-    // or
-    document.write( "<h1>Elzero</h1>" );
-    document.querySelector( "h1" ).style.color = "blue";
-    document.querySelector( "h1" ).style.fontSize = "80px";
-    document.querySelector( "h1" ).style.fontWeight = "bold";
-    document.querySelector( "h1" ).style.textAlign = "center";
-    document.querySelector( "h1" ).style.fontFamily = "Arial";
-  }
-
-  //======> document.createElement------- create element
-  {
-    document.createElement( "" );
-  }
-  //======> console.log------------  print in consol
-  // console is for web api not js
+  //======> console.log------------  print in console is for web api not js
   // api => application programing interface
   {
     console.log( "hello from js file" );
@@ -58,7 +9,6 @@
     console.log( `%c${ products[ i ] }`, "color: red" );
 
   }
-
   //======> console.warn ---------- print in consol with  warn
   {
     console.warn( "More of level 3" );
@@ -71,7 +21,6 @@
     document.write( "Iam In Page" );
     console.error( "error 1" );
   }
-
   //======> console.table ----------- print in consol the taple with index
   {
     console.table( [ "osama", "sami", "ahmed" ] );
@@ -87,7 +36,6 @@
 
     console.table( me );
   }
-
   //======> console.group---------- create list group
   {
     console.group( "A" );
@@ -241,8 +189,7 @@
   }
 
 }
-
-//======>  variable
+//  variable
 {
 
   var user = "osama",
@@ -330,13 +277,8 @@ ${ c } ${ d }` );
   document.write( markup.repeat( 4 ) );
 
 }
-
-//======> Concatenation
+// Concatenation
 {
-  let a = "We Love";
-  let b = "JavaScript";
-  document.write( a + " " + b );
-  console.log( a, b );
 
   // First Example
 
@@ -352,7 +294,6 @@ ${ c } ${ d }` );
   ${ c } ${ d }
   `
   );
-
 
   /*
   we love javascript
@@ -409,55 +350,58 @@ ${ c } ${ d }` );
   console.log( `${ numberTwo }\n${ numberOne }` );
 
 }
-//======> arithmetic operators
+// Arithmetic Operators
 {
-  console.log( 10 + 20 );        //30
-  console.log( 10 + "osama" );   //10osama
+  console.log( 10 + 20 );                            // 30
+  console.log( 10 + "Sami" );                        // '10Sami'
 
-  console.log( 10 - 20 );        // -10
-  console.log( 10 - "osama" );   // nan
-  console.log( typeof ( NaN ) ); // number
+  console.log( 10 - 20 );                            // -10
+  console.log( 10 - "Sami" );                        // nan
+  console.log( typeof ( NaN ) );                     // 'number'
 
-  console.log( 10 * 20 );        // 200
-  console.log( 10 * -20 );       // -200
+  console.log( 10 * 20 );                            // 200
+  console.log( 10 * -20 );                           // -200
 
-  console.log( 20 / 5 );         // 4
-  console.log( 20 / 3 );         // 6.666666666666667
+  console.log( 20 / 5 );                             // 4
+  console.log( 20 / 3 );                             // 6.666666666666667
 
-  console.log( 2 ** 4 );         //16
-  console.log( 2 * 2 * 2 * 2 );  // 16
+  console.log( 2 ** 4 );                             // 16
+  console.log( 2 * 2 * 2 * 2 );                      // 16
 
-  console.log( 10 % 2 );         // 0
-  console.log( 11 % 2 );         // 1
+  console.log( 10 % 2 );                             // 0
+  console.log( 11 % 2 );                             // 1
+
+  console.log( 8 & 1 );                              // 0   => 'even
+  console.log( 9 & 1 );                              // 1   => 'odd
   var even_or_odd = n => n & 1 ? 'Odd' : 'Even';
 
-  console.log( +100 );           // 100
-  console.log( +"100" );         // 100  (+) => covert to number
-  console.log( +"-100" );        // -100
-  console.log( +"osama" );       // nan
-  console.log( +"15.5" );        // 15.5
+  console.log( +100 );                               // 100
+  console.log( +"100" );                             // 100  (+) or (-) => convert to number
+  console.log( +"-100" );                            // -100
+  console.log( +"Sami" );                            // nan
+  console.log( +"15.5" );                            // 15.5
 
-  console.log( +0xff );          // 255
-  console.log( +null );          // 0
-  console.log( +false );         // 0
-  console.log( +true );          // 1
+  console.log( +0xff );                              // 255
+  console.log( +null );                              // 0
+  console.log( +false );                             // 0
+  console.log( +true );                              // 1
 
-  console.log( -100 );          // -100
-  console.log( -"100" );        // -100
-  console.log( -"-100" );       // 100
-  console.log( -"osama" );      // nan
-  console.log( -"15.5" );       // -15.5
+  console.log( -100 );                               // -100
+  console.log( -"100" );                             // -100
+  console.log( -"-100" );                            // 100
+  console.log( -"Sami" );                            // nan
+  console.log( -"15.5" );                            // -15.5
 
-  console.log( -0xff );        // -255
-  console.log( -null );        // -0
-  console.log( -false );       // -0
-  console.log( -true );        // -1
+  console.log( -0xff );                              // -255
+  console.log( -null );                              // -0
+  console.log( -false );                             // -0
+  console.log( -true );                              // -1
 
-  console.log( Number( "100" ) );               //100
+  console.log( Number( "100" ) );                    //100
 
-  console.log( 200 + 15 % 3 + 190 + 10 - 400 ); // 0
+  console.log( 200 + 15 % 3 + 190 + 10 - 400 );      // 0
 }
-//======>  type coercion (type casting)
+// type coercion (type casting) تحويل بالاكراه and assignment operator
 {
 
   let a = "10";
@@ -481,7 +425,7 @@ ${ c } ${ d }` );
   console.log( +a + b + c );   // 31
 
 
-  let a = 10;
+  a = 10;
   a = a + 20; // a+=20
   console.log( a ); // 30
   // a = 30;
@@ -490,14 +434,14 @@ ${ c } ${ d }` );
   console.log( a ); //130
 
 
-  let a = 10;
+  a = 10;
   a -= 100; // a = a - 100
   console.log( a ); //-90
 
 
-  let a = 10;
-  let b = "20";
-  let c = 80;
+  a = 10;
+  b = "20";
+  c = 80;
   console.log( 10 * 20 + 15 % 3 + 190 + 10 - 400 );            // 0
 
   console.log( ++a + +b++ + +c++ - +a++ );                     //100
@@ -510,275 +454,39 @@ ${ c } ${ d }` );
   console.log( 79 + 20 + 9 * 20 - 21 * 9 + 8 - 1 );            //97
 
 }
-//======> string methods
+//  number
 {
-  var strWord = "Sami";
-
-  console.log( strWord );                                             // 'Sami'
-  console.log( strWord[ 1 ] );                                        //  'a'
-  console.log( strWord[ 5 ] );                                        // undefined
-
-  console.log( strWord.charAt( 1 ) );                                 //  'a'
-  console.log( strWord.charAt( 5 ) );                                 //   => when no index print no thing
-  console.log( strWord.charCodeAt( 0 ) );                             // 83
-
-  console.log( strWord.length );                                      // 4  =>how many char
-
-  console.log( strWord.trim() );                                      // Sami => for cut"delete" the spaces
-
-  console.log( strWord.toUpperCase() );                               // SAMI
-  console.log( strWord.toLowerCase() );                               // sami
-
-  console.log( strWord.trim().charAt( 2 ).toUpperCase() );            // M
-  console.log( strWord.trim()[ 2 ].toUpperCase() );                   // M
-
-  let strNum = "5";
-  console.log( strNum.padStart( 4, 0 ) );                             // 0005
-  console.log( strNum.padStart( 3, 0 ) );                             // 005
-  console.log( strNum.padStart( 3, 8 ) );                             // 885
-  console.log( strNum.padStart( 6, 10 ) );                            // 101015
-
-  console.log( strNum.padEnd( 4, 0 ) );                               // 5000
-  console.log( strNum.padEnd( 3, 0 ) );                               // 500
-  console.log( strNum.padEnd( 3, 8 ) );                               // 588
-  console.log( strNum.padEnd( 6, 10 ) );                              // 510101
-
-
-  let text = "The rain in SPAIN stays mainly in the plain";
-  console.log( text.indexOf( "SPAIN" ) );                             // 12
-  console.log( text.indexOf( "ain" ) );                               // 5
-  console.log( text.indexOf( "pla" ) );                               // 38
-  console.log( text.indexOf( "spain" ) );                             // -1
-  console.log( text.indexOf( "nasa" ) );                              // -1
-
-  console.log( text.lastIndexOf( "SPAIN" ) );                         // 12
-  console.log( text.lastIndexOf( "ain" ) );                           // 40
-  console.log( text.lastIndexOf( "pla" ) );                           // 38
-  console.log( text.lastIndexOf( "spain" ) );                         // -1
-  console.log( text.lastIndexOf( "nasa" ) );                          // -1
-
-  console.log( text.match( /ain/g ) );                                // (3) ['ain', 'ain', 'ain']
-  console.log( text.match( /ain/ig ) );                               // (4) ['ain', 'AIN', 'ain', 'ain']
-
-  console.log( text );                                                // The rain in SPAIN stays mainly in the plain
-  console.log( text.replace( "ain", "###" ) );                        // The r### in SPAIN stays mainly in the plain
-  console.log( text.replace( /ain/i, "###" ) );                       // The r### in SPAIN stays mainly in the plain
-  console.log( text.replace( /ain/g, "###" ) );                       // The r### in SPAIN stays m###ly in the pl###
-  console.log( text.replace( /ain/ig, "###" ) );                      // The r### in SP### stays m###ly in the pl###
-
-  console.log( text.replace( /[ain]/g, e => ( { 'a': '1', 'i': '2', 'n': '3' } )[ e ] ) ); // The r123 23 SPAIN st1ys m123ly 23 the pl123
-
-  let changDote = "one.two.three";
-  console.log( changDote.replace( /./g, '-' ) );                      // ----------------
-  console.log( changDote.replace( /\./g, '-' ) );                     // one-two-three
-
-  var a = "Elzero Web School";
-
-  console.log( a.indexOf( "Web" ) );                      // 7
-  console.log( a.indexOf( "Web", 8 ) );                   //-1
-  console.log( a.indexOf( "o" ) );                        // 5
-
-  console.log( a.lastIndexOf( "o" ) );                    // 15
-  console.log( a.lastIndexOf( "Web" ) );                  // 7
-
-  console.log( a.search( "Web" ) );                       // 7
-
-  console.log( a.slice( 0 ) );                            // Elzero Web School
-  console.log( a.slice( 7 ) );                            //        Web School
-  console.log( a.slice( 2, 6 ) );                         //    zero
-  console.log( a.slice( 7, 10 ) );                        //         Web
-
-  console.log( a.slice( -5 ) );                           //             chool
-  console.log( a.slice( -5, -3 ) );                       //             ch
-
-  console.log( a.repeat( 3 ) );                           // Elzero Web SchoolElzero Web SchoolElzero Web School
-
-  console.log( a.split() );                               // (1) ['Elzero Web School']
-  console.log( a.split( " " ) );                          // (3) ['Elzero', 'Web', 'School']
-
-  console.log( a.split( " ", 2 ) );                       // (2) ['Elzero', 'Web']
-  console.log( a.split( "", 5 ) );                        // (5) ['E', 'l', 'z', 'e', 'r']
-
-
-  console.log( a.substring() );                           // Elzero Web School
-  console.log( a.substring( 2 ) );                        //   zero Web School
-  console.log( a.substring( 2, 6 ) );                     //   zero
-  console.log( a.substring( 6, 2 ) );                     // Elzero Web School zero
-  console.log( a.substring( -10 ) );                      // Elzero                 => If we put the - value , it will be 0
-  console.log( a.substring( -10, 6 ) );                   // Elzero
-
-  console.log( a.substring( a.length - 1 ) );             //               l
-  console.log( a.substring( a.length - 2 ) );             //              ol
-
-  console.log( a.includes( "Web" ) );                     // true
-  console.log( a.includes( "Web", 8 ) );                  // false
-  console.log( a.includes( "Web", 6 ) );                  // true
-  console.log( a.includes( "sami" ) );                    // false
-
-  console.log( a.startsWith( "Web" ) );                   // false
-  console.log( a.startsWith( "sami" ) );                  // false
-  console.log( a.startsWith( "Web", 7 ) );                // true
-  console.log( a.startsWith( "E" ) );                     // true
-  console.log( a.startsWith( "E", 3 ) );                  // false
-
-  console.log( a.endsWith( "o" ) );                       // false
-  console.log( a.endsWith( "l" ) );                       // true
-  console.log( a.endsWith( "o", 6 ) );                    // true
-  console.log( a.endsWith( "ro", 6 ) );                   // true
-  console.log( a.endsWith( "E", 1 ) );                    // true
-
-  console.log( a.split( " " ) );                          //  (3) ['Elzero', 'Web', 'School']
-  console.log( a.split( " ", 2 ) );                       //  (2) ['Elzero', 'Web'] ==> 2 == limit
-
-  console.log( parseInt( "FF", 16 ) );                    // 255
-
-  // console.log( '45385593107843568'.replace( /\d/g, d => d < 5 ? 0 : 1 ) );                 // 01011110001100111
-
-
-}
-
-//======>  number
-{
-  // #018 – Arithmetic Operators
+  //  Number
   {
-    console.log( 10 + 20 );        //30
-    console.log( 10 + "osama" );   //10osama
+    console.log( 1000000 );                                // 1000000
+    console.log( 1_000_000 );                              // 1000000
 
-    console.log( 10 - 20 );        // -10
-    console.log( 10 - "osama" );   // nan
-    console.log( typeof ( NaN ) ); // number
+    console.log( 1e6 );                                    // 1000000
+    console.log( 123e5 );                                  // 12300000
+    console.log( 123e-5 );                                 // 0.00123
 
-    console.log( 10 * 20 );        // 200
-    console.log( 10 * -20 );       // -200
+    console.log( 10 ** 6 );                                //1000000
+    console.log( 1000000.00 );                             //1000000
 
-    console.log( 20 / 5 );         // 4
-    console.log( 20 / 3 );         // 6.666666666666667
+    console.log( Number.MAX_SAFE_INTEGER );                // 9007199254740991
+    console.log( Number.MIN_SAFE_INTEGER );                // -9007199254740991
+    console.log( Number.MAX_VALUE );                       // 1.7976931348623157e+308
 
-    console.log( 2 ** 4 );         //16
-    console.log( 2 * 2 * 2 * 2 );  // 16
-
-    console.log( 10 % 2 );         // 0
-    console.log( 11 % 2 );         // 1
-
-  }
-  // #019 – Unary Plus And Negation Operators
-  {
-    console.log( +100 );           // 100
-    console.log( +"100" );         // 100  (+) => covert to number
-    console.log( +"-100" );        // -100
-    console.log( +"osama" );       // nan
-    console.log( +"15.5" );        // 15.5
-
-    console.log( +0xff );          // 255
-    console.log( +null );          // 0
-    console.log( +false );         // 0
-    console.log( +true );          // 1
-
-    console.log( -100 );          // -100
-    console.log( -"100" );        // -100
-    console.log( -"-100" );       // 100
-    console.log( -"osama" );      // nan
-    console.log( -"15.5" );       // -15.5
-
-    console.log( -0xff );        // -255
-    console.log( -null );        // -0
-    console.log( -false );       // -0
-    console.log( -true );        // -1
-
-  }
-  // #020 – Type Coercion
-  {
-    let a = "10";
-    let b = 20;
-    let c = true;
-
-    console.log( a + b );        // 1020
-    console.log( +a + b );       // 30
-
-    console.log( a - b );        // -10
-    console.log( b - a );        // 10
-
-    console.log( "" + 2 );       // 2
-    console.log( "" - 2 );       // -2
-
-    console.log( false + true ); // 1
-    console.log( false - true ); // -1
-
-    console.log( b + c );        // 21
-    console.log( a + b + c );    // 1020true
-    console.log( +a + b + c );   // 31
-  }
-  // #021 – Assignment Operators
-  {
-    let a = 10;
-    a = a + 20; // a+=20
-    console.log( a ); // 30
-    // a = 30;
-
-    a += 100; // a = a + 100
-    console.log( a ); //130
-
-    let a = 10;
-    a -= 100; // a = a - 100
-    console.log( a ); //-90
-  }
-  // #022 – Operators Challenges
-  {
-    let a = 10;
-    let b = "20";
-    let c = 80;
-    console.log( 10 * 20 + 15 % 3 + 190 + 10 - 400 );            // 0
-
-    console.log( ++a + +b++ + +c++ - +a++ );                     //100
-    console.log( 11 + 20 + 80 - 11 );                            //100
-
-    console.log( ++a + -b + +c++ - -a++ + +a );                  //94
-    console.log( 11 + -20 + 80 + 11 + +12 );                     //94
-
-    console.log( --c + +b + --a * +b++ - +b * a + --a - +true ); //97
-    console.log( 79 + 20 + 9 * 20 - 21 * 9 + 8 - 1 );            //97
-
-    let d = "-100";
-    let e = "20";
-    let f = 30;
-    let g = true;
-
-    console.log( -d * +e + f % 3 * g );       //2000
-    console.log( -d * +e + f % ++g );         //2000
-    console.log( -( --d ) + +f + ++e * ++g ); //173
-    console.log( -( --d ) * ++g - --f );      //173
-  }
-  // #023 – Number
-  {
-    console.log( 1000000 );     //1000000
-    console.log( 1_000_000 );   //1000000
-
-    console.log( 1e6 );         //1000000
-    console.log( 123e5 );       // 12300000
-    console.log( 123e-5 );      // 0.00123
-
-    console.log( 10 ** 6 );     //1000000
-    console.log( 1000000.00 );  //1000000
-
-    console.log( Number.MAX_SAFE_INTEGER ); // 9007199254740991
-    console.log( Number.MIN_SAFE_INTEGER ); // -9007199254740991
-    console.log( Number.MAX_VALUE );        // 1.7976931348623157e+308
-
-    Number( true );             //  1
-    Number( false );            //  0
-    Number( "10" );             //  10
-    Number( "  10" );           //  10
-    Number( "10  " );           //  10
-    Number( " 10  " );          //  10
-    Number( "10.33" );          //  10.33
-    Number( "10,33" );          //  NaN
-    Number( "10 33" );          //  NaN
-    Number( "John" );           //  NaN
+    Number( true );                                        //  1
+    Number( false );                                       //  0
+    Number( "10" );                                        //  10
+    Number( "  10" );                                      //  10
+    Number( "10  " );                                      //  10
+    Number( " 10  " );                                     //  10
+    Number( "10.33" );                                     //  10.33
+    Number( "10,33" );                                     //  NaN
+    Number( "10 33" );                                     //  NaN
+    Number( "John" );                                      //  NaN
     console.log( Number( new Date( "1970-01-02" ) ) );     // 86400000
     console.log( Number( new Date( "2017-09-30" ) ) );     // 1506729600000
 
   }
-  //======>  number methods
+  // number methods
   {
     // Angle in radians = Angle in degrees x PI / 180.
 
@@ -792,19 +500,19 @@ ${ c } ${ d }` );
     let num = 1;
     console.log( num.toString( 2 ) ); // number to binary
     var a = parseInt( "0101", 2 );
-    console.log( a ); // 5 => binary to number
+    console.log( a );                               // 5 => binary to number
 
     var a = parseInt( "00000000000000000000000000000101", 2 );
-    console.log( a ); // 5 => binary to number
+    console.log( a );                               // 5 => binary to number
 
     var x = 4;
     var y = 3;
-    console.log( x & y ); // 7
+    console.log( x & y );                           // 7
 
     function bin2dec ( bin ) {
       return parseInt( bin, 2 ).toString( 10 );
     }
-    console.log( bin2dec( 101 ) ); // 5
+    console.log( bin2dec( 101 ) );                  // 5
 
 
     console.log( ( 100 ).toString() );              // 100
@@ -815,41 +523,42 @@ ${ c } ${ d }` );
     console.log( 100.555555.toFixed( 2 ) );         // 100.56
 
     console.log( Number( "100" ) );                 // 100
-    console.log( Number( "100 osama" ) );           // nan
+    console.log( Number( "100 Sami" ) );            // nan
 
-    console.log( +( "100" ) );                     // 100
-    console.log( +( "100 osama" ) );               // nan
+    console.log( +( "100" ) );                      // 100
+    console.log( +( "100 Sami" ) );                 // nan
 
-    console.log( parseInt( "100" ) );              // 100
-    console.log( parseInt( "100 osama" ) );        // 100
-    console.log( parseInt( "osama 100 osama" ) );  // nan
+    console.log( parseInt( "100" ) );               // 100
+    console.log( parseInt( "100 Sami" ) );          // 100
+    console.log( parseInt( "Sami 100 Sami" ) );     // nan
 
-    console.log( parseFloat( "100 osama" ) );      // 100
-    console.log( parseFloat( "100.55 osama" ) );   // 100.55
-    console.log( parseFloat( " osama 100.55" ) );  // nan
+    console.log( parseFloat( "100 Sami" ) );        // 100
+    console.log( parseFloat( "100.55 Sami" ) );     // 100.55
+    console.log( parseFloat( " Sami 100.55" ) );    // nan
 
-    console.log( Number.isInteger( "100" ) );     // => is return true or false
-    console.log( Number.isInteger( 100 ) );       // => integer => رقم صحيح
-    console.log( Number.isInteger( 100.500 ) );   // false
-    console.log( Number.isNaN( "osama" ) );       // false
-    console.log( Number.isNaN( "osama" / 100 ) ); // true
+    console.log( Number.isInteger( "100" ) );       // => is return true or false
+    console.log( Number.isInteger( 100 ) );         // => integer => رقم صحيح
+    console.log( Number.isInteger( 100.500 ) );     // false
+    console.log( Number.isNaN( "Sami" ) );          // false
+    console.log( Number.isNaN( "Sami" / 100 ) );    // true
 
     // #025 – Math Object
 
-    console.log( Math.round( 99.2 ) );            // 99
-    console.log( Math.round( 99.5 ) );            // 100
+    console.log( Math.round( 99.2 ) );              // 99
+    console.log( Math.round( 99.5 ) );              // 100
 
-    console.log( Math.ceil( 99.5 ) );             // 100
-    console.log( Math.ceil( 99.2 ) );             // 100
+    console.log( Math.ceil( 99.5 ) );               // 100
+    console.log( Math.ceil( 99.2 ) );               // 100
 
-    console.log( Math.floor( 99.5 ) );            // 99
-    console.log( Math.floor( 99.2 ) );            // 99
+    console.log( Math.floor( 99.5 ) );              // 99
+    console.log( Math.floor( 99.2 ) );              // 99
 
     console.log( Math.min( 10, 20, 40, -100, 100 ) ); // -100
     console.log( Math.max( 10, 20, 40, -100, 100 ) ); // 100
+
     let sumOfDifferences = ( arr ) => arr.length > 1 ? Math.max( ...arr ) - Math.min( ...arr ) : 0;
     const sumOfDifferences = arr => arr.sort( ( a, b ) => b - a ).shift() - arr.pop() || 0;
-    const findLongest = s => Math.max( ...s.split( " " ).map( x => x.length ) );      // findLongest word
+
 
     const points = [ 40, 100, 1, 5, 25, 10 ];
     console.log( Math.max.apply( null, points ) ); // Math.max.apply(null, [1, 2, 3]) => Math.max(1, 2, 3).
@@ -876,15 +585,15 @@ ${ c } ${ d }` );
 
     console.log( Math.trunc( 99.5 ) );           //99 => cut float
 
-    console.log( Math.abs( "10.8" ) );// 10.8
-    console.log( Math.abs( "5" ) );   // 5
-    console.log( Math.abs( "-5" ) );  // 5
-    console.log( Math.abs( 4 - 10 ) );// 6
-    console.log( Math.abs( 4 ) );     // 4
-    console.log( Math.abs( -4 ) );    // 4
+    console.log( Math.abs( "10.8" ) );           // 10.8
+    console.log( Math.abs( "5" ) );              // 5
+    console.log( Math.abs( "-5" ) );             // 5
+    console.log( Math.abs( 4 - 10 ) );           // 6
+    console.log( Math.abs( 4 ) );                // 4
+    console.log( Math.abs( -4 ) );               // 4
 
     function distanceBetweenPoints ( a, b ) {
-      return Math.hypot( a.x - b.x, a.y - b.y );//.toFixed(6)
+      return Math.hypot( a.x - b.x, a.y - b.y ); //.toFixed(6)
     }
     console.log( distanceBetweenPoints( new Point( 1, 6 ), new Point( 4, 2 ) ) ); //5
 
@@ -944,7 +653,216 @@ ${ c } ${ d }` );
     console.log( x.valueOf() );            // returns 123
     console.log( ( 123 ).valueOf() );      // returns 123
     console.log( ( 100 + 23 ).valueOf() ); // returns 123
+
+    let strNum = "5";
+    console.log( strNum.padStart( 4, 0 ) );                             // 0005
+    console.log( strNum.padStart( 3, 0 ) );                             // 005
+    console.log( strNum.padStart( 3, 8 ) );                             // 885
+    console.log( strNum.padStart( 6, 10 ) );                            // 101015
+
+    console.log( strNum.padEnd( 4, 0 ) );                               // 5000
+    console.log( strNum.padEnd( 3, 0 ) );                               // 500
+    console.log( strNum.padEnd( 3, 8 ) );                               // 588
+    console.log( strNum.padEnd( 6, 10 ) );                              // 510101
   }
+}
+// string methods
+{
+  var strWord = "Sami";
+
+  console.log( strWord );                                             // 'Sami'
+  console.log( strWord[ 1 ] );                                        //  'a'
+  console.log( strWord[ 5 ] );                                        // undefined
+
+  console.log( strWord.charAt( 1 ) );                                 //  'a'
+  console.log( strWord.charAt( 5 ) );                                 //   => when no index print no thing
+  console.log( strWord.charCodeAt( 0 ) );                             // 83
+
+  console.log( strWord.length );                                      // 4  =>how many char
+
+  console.log( strWord.trim() );                                      // Sami => for cut"delete" the spaces
+
+  console.log( strWord.toUpperCase() );                               // SAMI
+  console.log( strWord.toLowerCase() );                               // sami
+
+  console.log( strWord.trim().charAt( 2 ).toUpperCase() );            // M
+  console.log( strWord.trim()[ 2 ].toUpperCase() );                   // M
+
+  let strNum = "5";
+  console.log( strNum.padStart( 4, 0 ) );                             // 0005
+  console.log( strNum.padStart( 3, 0 ) );                             // 005
+  console.log( strNum.padStart( 3, 8 ) );                             // 885
+  console.log( strNum.padStart( 6, 10 ) );                            // 101015
+  console.log( strNum.padStart( 6, 'a' ) );                           // aaaaa5
+
+  console.log( strNum.padEnd( 4, 0 ) );                               // 5000
+  console.log( strNum.padEnd( 3, 0 ) );                               // 500
+  console.log( strNum.padEnd( 3, 8 ) );                               // 588
+  console.log( strNum.padEnd( 6, 10 ) );                              // 510101
+  console.log( strNum.padEnd( 6, 'a' ) );                             // 5aaaaa
+
+
+  let text = "The rain in SPAIN stays mainly in the plain";
+  console.log( text.indexOf( "SPAIN" ) );                             // 12
+  console.log( text.indexOf( "ain" ) );                               // 5
+  console.log( text.indexOf( "he" ) );                                // 1
+  console.log( text.indexOf( "pla" ) );                               // 38
+  console.log( text.indexOf( "spain" ) );                             // -1
+  console.log( text.indexOf( "nasa" ) );                              // -1
+
+  console.log( text.lastIndexOf( "SPAIN" ) );                         // 12
+  console.log( text.lastIndexOf( "ain" ) );                           // 40
+  console.log( text.lastIndexOf( "pla" ) );                           // 38
+  console.log( text.lastIndexOf( "spain" ) );                         // -1
+  console.log( text.lastIndexOf( "nasa" ) );                          // -1
+
+
+  console.log( text.match( /ain/g ) );                                // (3) ['ain', 'ain', 'ain']
+  console.log( text.match( /ain/ig ) );                               // (4) ['ain', 'AIN', 'ain', 'ain']
+
+  console.log( text );                                                // The rain in SPAIN stays mainly in the plain
+  console.log( text.replace( "ain", "###" ) );                        // The r### in SPAIN stays mainly in the plain
+  console.log( text.replace( /ain/i, "###" ) );                       // The r### in SPAIN stays mainly in the plain
+  console.log( text.replace( /ain/g, "###" ) );                       // The r### in SPAIN stays m###ly in the pl###
+  console.log( text.replace( /ain/ig, "###" ) );                      // The r### in SP### stays m###ly in the pl###
+
+  console.log( text.replace( /[ain]/g, e => ( { 'a': '1', 'i': '2', 'n': '3' } )[ e ] ) ); // The r123 23 SPAIN st1ys m123ly 23 the pl123
+
+  let changDote = "one.two.three";
+  console.log( changDote.replace( /./g, '-' ) );                      // ----------------
+  console.log( changDote.replace( /\./g, '-' ) );                     // one-two-three
+
+  var a = "Elzero Web School";
+
+  console.log( a.indexOf( "Web" ) );                      // 7
+  console.log( a.indexOf( "Web", 8 ) );                   //-1
+  console.log( a.indexOf( "o" ) );                        // 5
+
+  console.log( a.lastIndexOf( "o" ) );                    // 15
+  console.log( a.lastIndexOf( "Web" ) );                  // 7
+
+  console.log( a.search( "Web" ) );                       // 7
+
+  console.log( a.slice( 0 ) );                            // Elzero Web School
+  console.log( a.slice( 7 ) );                            //        Web School
+  console.log( a.slice( 2, 6 ) );                         //    zero
+  console.log( a.slice( 7, 10 ) );                        //         Web
+
+  console.log( a.slice( -5 ) );                           //             chool
+  console.log( a.slice( -5, -3 ) );                       //             ch
+
+  console.log( a.repeat( 3 ) );                           // Elzero Web SchoolElzero Web SchoolElzero Web School
+
+  console.log( a.split() );                               // (1) ['Elzero Web School']
+  console.log( a.split( " " ) );                          // (3) ['Elzero', 'Web', 'School']
+
+  console.log( a.split( " ", 2 ) );                       // (2) ['Elzero', 'Web']
+  console.log( a.split( "", 5 ) );                        // (5) ['E', 'l', 'z', 'e', 'r']
+
+
+  console.log( a.substring() );                           // Elzero Web School
+  console.log( a.substring( 2 ) );                        //   zero Web School
+  console.log( a.substring( 2, 6 ) );                     //   zero
+  console.log( a.substring( 6, 2 ) );                     //   zero
+  console.log( a.substring( -10 ) );                      // Elzero                 => If we put the - value , it will be 0
+  console.log( a.substring( -10, 6 ) );                   // Elzero
+
+  console.log( a.substring( a.length - 1 ) );             //               l
+  console.log( a.substring( a.length - 2 ) );             //              ol
+
+
+  console.log( a.substr() );                              // Elzero Web School
+  console.log( a.substr( 2 ) );                           //   zero Web School
+  console.log( a.substr( 2, 6 ) );                        //   zero w
+  console.log( a.substr( 6, 2 ) );                        //        w
+  console.log( a.substr( -10 ) );                         //        Web School
+  console.log( a.substr( -10, 6 ) );                      //        Web Sc
+
+  console.log( a.substr( a.length - 1 ) );                //               l
+  console.log( a.substr( a.length - 2 ) );                //              ol
+
+
+  console.log( a.includes( "Web" ) );                     // true
+  console.log( a.includes( "Web", 8 ) );                  // false
+  console.log( a.includes( "Web", 6 ) );                  // true
+  console.log( a.includes( "sami" ) );                    // false
+
+  console.log( a.startsWith( "Web" ) );                   // false
+  console.log( a.startsWith( "sami" ) );                  // false
+  console.log( a.startsWith( "Web", 7 ) );                // true
+  console.log( a.startsWith( "E" ) );                     // true
+  console.log( a.startsWith( "E", 3 ) );                  // false
+
+  console.log( a.endsWith( "o" ) );                       // false
+  console.log( a.endsWith( "l" ) );                       // true
+  console.log( a.endsWith( "o", 6 ) );                    // true
+  console.log( a.endsWith( "ro", 6 ) );                   // true
+  console.log( a.endsWith( "E", 1 ) );                    // true
+
+  console.log( a.split( " " ) );                          //  (3) ['Elzero', 'Web', 'School']
+  console.log( a.split( " ", 2 ) );                       //  (2) ['Elzero', 'Web'] ==> 2 == limit
+
+  console.log( parseInt( "FF", 16 ) );                    // 255
+
+  // console.log( '45385593107843568'.replace( /\d/g, d => d < 5 ? 0 : 1 ) );                 // 01011110001100111
+
+  const findLongest = s => Math.max( ...s.split( " " ).map( x => x.length ) );      // findLongest word
+  // Javascript program to search largest word from a string
+  {
+    // method ((( 1 )))
+    function longestOne ( str ) {
+
+      // Split the string using regex
+      str = str.match( /[a-zA-Z0-9]+/gi );
+
+      // Creating a empty string to store largest word
+      let largest = "";
+
+      // Creating a for...loop to iterate over the array
+      for ( let i = 0; i < str.length; i++ ) {
+        // If the i'th item is greater than largest string
+        // then overwrite the largest string with the i'th value
+        if ( str[ i ].length > largest.length ) {
+          largest = str[ i ];
+        }
+      }
+      return largest;
+    }
+
+    console.log( longestOne( "pro in programming" ) );              // programming
+
+
+    // method ((( 2 )))
+    function longestTwo ( str ) {
+
+      // Split the string into array
+      str = str.split( " " );
+
+      // Return the first sorted item of the Array
+      return str.sort( ( a, b ) => b.length - a.length )[ 0 ];
+    }
+
+    console.log( longestTwo( "pro in programming" ) );              // programming
+
+    /* ================================================================================== */
+
+    function longestThree ( str ) {
+      // Split the string into array
+      str = str.split( " " );
+
+      // Get the index of largest item of the array
+      let index = str.reduce( ( acc, curr, i ) => {
+        if ( curr.length > str[ acc ].length ) {
+          return i;
+        }
+        return acc;
+      }, 0 );
+
+      return str[ index ];
+    }
+    console.log( longestThree( "pro in programming" ) );              // programming
+  }
+
 }
 //Conditions
 {
@@ -1073,8 +991,8 @@ ${ c } ${ d }` );
     console.log( Boolean( "" ) );   // false
 
     let price = 0;
-    console.log( `the price is ${ price || 200 }` );// the price is 200
-    console.log( `the price is ${ price ?? 200 }` );//the price is 0
+    console.log( `the price is ${ price || 200 }` ); // the price is 200
+    console.log( `the price is ${ price ?? 200 }` ); //the price is 0
   }
   // #038 – Switch Statement
   {
@@ -1083,7 +1001,7 @@ ${ c } ${ d }` );
     switch ( day ) {
       default:
         console.log( "UnKnown Day" );
-        break;
+        break; // important
       case 0:
         console.log( "Saturday" );
         break;
@@ -1098,183 +1016,166 @@ ${ c } ${ d }` );
   }
   // ASSIGNMENT
   {
-    // assign one
-    // [  1  ]
-    {
-      console.log( 100 == "100" ); // true
-      console.log( 100 != 1000 ); // true
-      console.log( 110 + 100 != 10 * 20 ); // true
-      console.log( 110 > 100 > 10 < 20 ); // true
-      console.log( -10 == "-10" ); // true
-      console.log( typeof -50 === typeof +"-40" ); // true
-      console.log( typeof 10 == typeof -"-40" ); // true
-      console.log( typeof "10" !== typeof 10 ); // true
-      console.log( typeof 20 != false ); // true
+
+    console.log( 100 == "100" ); // true
+    console.log( 100 != 1000 ); // true
+    console.log( 110 + 100 != 10 * 20 ); // true
+    console.log( 110 > 100 > 10 < 20 ); // true
+    console.log( -10 == "-10" ); // true
+    console.log( typeof -50 === typeof +"-40" ); // true
+    console.log( typeof 10 == typeof -"-40" ); // true
+    console.log( typeof "10" !== typeof 10 ); // true
+    console.log( typeof 20 != false ); // true
+
+
+    let num1 = 10;
+    let num2 = 20;
+    console.log( num1 !== num2 ); // true
+    console.log( num1 != num2 ); // true
+    console.log( typeof num1 === typeof num2 ); // true
+    console.log( num2 > num1 ); // true
+    console.log( num2 >= num1 ); // true
+    console.log( num1 < num2 ); // true
+    console.log( num1 <= num2 ); // true
+    console.log( num1 != true ); // true
+
+    let a = 20;
+    let b = 30;
+    let c = 10;
+
+    console.log( a < b && a > c || a < b ); // true
+    console.log( a + b > a + c ); // true
+    console.log( !( a > b ) && !( a > b ) && !( a < c ) && !( a < c ) ); // true
+
+    let num = 120;
+    if ( num < 10 ) {
+      console.log( `00${ num }` );
+    } else if ( num > 10 && num < 100 ) {
+      console.log( `0${ num }` );
+    } else if ( num >= 100 ) {
+      console.log( num );
     }
-    // [  2  ]
-    {
-      let num1 = 10;
-      let num2 = 20;
-      console.log( num1 !== num2 ); // true
-      console.log( num1 != num2 ); // true
-      console.log( typeof num1 === typeof num2 ); // true
-      console.log( num2 > num1 ); // true
-      console.log( num2 >= num1 ); // true
-      console.log( num1 < num2 ); // true
-      console.log( num1 <= num2 ); // true
-      console.log( num1 != true ); // true
+
+    let num1 = 9;
+    let str = "9";
+    let str2 = "20";
+
+    if ( num1 == str ) {
+      console.log( "{num1} Is The Same Value As {str}" );
     }
-    // [  3  ]
-    {
-      let a = 20;
-      let b = 30;
-      let c = 10;
-
-      console.log( a < b && a > c || a < b ); // true
-      console.log( a + b > a + c ); // true
-      console.log( !( a > b ) && !( a > b ) && !( a < c ) && !( a < c ) ); // true
+    if ( num1 == str && typeof num1 !== typeof str ) {
+      console.log( "{num1} Is The Same Value As {str} But Not The Same Type" );
     }
-    //assign two
-    // [  1  ]
-    {
-      let num = 120;
-      if ( num < 10 ) {
-        console.log( `00${ num }` );
-      } else if ( num > 10 && num < 100 ) {
-        console.log( `0${ num }` );
-      } else if ( num >= 100 ) {
-        console.log( num );
-      }
+    if ( num1 !== str2 ) {
+      console.log( "{num1} Is Not The Same Value Or The Same Type As {str2}" );
     }
-    // [  2  ]
-    {
-      let num1 = 9;
-      let str = "9";
-      let str2 = "20";
-
-      if ( num1 == str ) {
-        console.log( "{num1} Is The Same Value As {str}" );
-      }
-      if ( num1 == str && typeof num1 !== typeof str ) {
-        console.log( "{num1} Is The Same Value As {str} But Not The Same Type" );
-      }
-      if ( num1 !== str2 ) {
-        console.log( "{num1} Is Not The Same Value Or The Same Type As {str2}" );
-      }
-      if ( str != str2 && typeof str === typeof str2 ) {
-        console.log( "{str} Is The Same Type As {str2} But Not The Same Value" );
-      }
+    if ( str != str2 && typeof str === typeof str2 ) {
+      console.log( "{str} Is The Same Type As {str2} But Not The Same Value" );
     }
-    // [  3  ]
-    {
-      let num1 = 10;
-      let num2 = 30;
-      let num3 = "30";
 
-      num3 > num1 && typeof num3 !== typeof num2 ? console.log( "30 Is Larger Than 10 And Type string Not The Same Type As number" ) : console.log( Error( "false" ) );
-      num3 > num1 && num3 == num2 && typeof num3 !== typeof num2 ? console.log( "30 Is Larger Than 10 And Value Is The Same As 30 And Type string Not The Same Type As number" ) : console.log( false );
-      num3 !== num1 && typeof num3 !== typeof num2 ? console.log( "{num3} Value And Type Is Not The Same As {num1} And Type Is Not The Same As {num2}" ) : console.log( false );
+    let num1 = 10;
+    let num2 = 30;
+    let num3 = "30";
+
+    num3 > num1 && typeof num3 !== typeof num2 ? console.log( "30 Is Larger Than 10 And Type string Not The Same Type As number" ) : console.log( Error( "false" ) );
+    num3 > num1 && num3 == num2 && typeof num3 !== typeof num2 ? console.log( "30 Is Larger Than 10 And Value Is The Same As 30 And Type string Not The Same Type As number" ) : console.log( false );
+    num3 !== num1 && typeof num3 !== typeof num2 ? console.log( "{num3} Value And Type Is Not The Same As {num1} And Type Is Not The Same As {num2}" ) : console.log( false );
+
+    // Edit What You Want Here
+
+    let num1 = 10;
+    let num2 = num1 - 1;
+    let num3 = 10;
+    let num4 = 32;
+
+    /*
+      Do Not Edit Below This Line
+      Needed Output
+      True 7 Times
+    */
+
+    // Condition 1
+
+    if ( num1 > num2 ) {
+      console.log( "True" );
+    } else {
+      console.log( "False" );
     }
-    // [  4  ]
-    {
-      // Edit What You Want Here
 
-      let num1 = 10;
-      let num2 = num1 - 1;
-      let num3 = 10;
-      let num4 = 32;
+    // Condition 2
 
-      /*
-        Do Not Edit Below This Line
-        Needed Output
-        True 7 Times
-      */
-
-      // Condition 1
-
-      if ( num1 > num2 ) {
-        console.log( "True" );
-      } else {
-        console.log( "False" );
-      }
-
-      // Condition 2
-
-      if ( num1 > num2 && num1 < num4 ) {
-        console.log( "True" );
-      } else {
-        console.log( "False" );
-      }
-
-      // Condition 3
-
-      if ( num1 > num2 && num1 === num3 ) {
-        console.log( "True" );
-      } else {
-        console.log( "False" );
-      }
-
-      // Condition 4
-
-      if ( ( num1 + num2 ) < num4 ) {
-        console.log( "True" );
-      } else {
-        console.log( "False" );
-      }
-
-      // Condition 5
-
-      if ( ( num1 + num3 ) < num4 ) {
-        console.log( "True" );
-      } else {
-        console.log( "False" );
-      }
-
-      // Condition 6
-
-      if ( ( num1 + num2 + num3 ) < num4 ) {
-        console.log( "True" );
-      } else {
-        console.log( "False" );
-      }
-
-      // Condition 7
-
-      if ( num4 - ( num1 + num3 ) + num2 === 21 ) {
-        console.log( "True" );
-      } else {
-        console.log( "False" );
-      }
-      console.log( 32 - ( 10 + 10 ) + 9 ); // 21
+    if ( num1 > num2 && num1 < num4 ) {
+      console.log( "True" );
+    } else {
+      console.log( "False" );
     }
-    // assign one
-    {
-      let day = "   Wednesday  ";
 
-      // You Need To Remove Spaces And Make First Letter Capital => Friday
-      day = day.trim();
-      day = day[ 0 ].toUpperCase() + day.substring( 1 );
+    // Condition 3
+
+    if ( num1 > num2 && num1 === num3 ) {
+      console.log( "True" );
+    } else {
+      console.log( "False" );
+    }
+
+    // Condition 4
+
+    if ( ( num1 + num2 ) < num4 ) {
+      console.log( "True" );
+    } else {
+      console.log( "False" );
+    }
+
+    // Condition 5
+
+    if ( ( num1 + num3 ) < num4 ) {
+      console.log( "True" );
+    } else {
+      console.log( "False" );
+    }
+
+    // Condition 6
+
+    if ( ( num1 + num2 + num3 ) < num4 ) {
+      console.log( "True" );
+    } else {
+      console.log( "False" );
+    }
+
+    // Condition 7
+
+    if ( num4 - ( num1 + num3 ) + num2 === 21 ) {
+      console.log( "True" );
+    } else {
+      console.log( "False" );
+    }
+    console.log( 32 - ( 10 + 10 ) + 9 ); // 21
+
+    let day = "   Wednesday  ";
+
+    // You Need To Remove Spaces And Make First Letter Capital => Friday
+    day = day.trim();
+    day = day[ 0 ].toUpperCase() + day.substring( 1 );
 
 
-      switch ( day ) {
-        default:
-          console.log( "Its Not A Valid Day" );
-        case "Friday":
-        case "Saturday":
-        case "Sunday":
-          console.log( "No Appointments Available" );
-          break;
-        case "Monday":
-        case "Thursday":
-          console.log( "From 10:00 AM To 5:00 PM" );
-          break;
-        case "Tuesday":
-          console.log( "From 10:00 AM To 6:00 PM" );
-          break;
-        case "Wednesday":
-          console.log( "From 10:00 AM To 7:00 PM" );
-          break;
-      }
+    switch ( day ) {
+      default:
+        console.log( "Its Not A Valid Day" );
+      case "Friday":
+      case "Saturday":
+      case "Sunday":
+        console.log( "No Appointments Available" );
+        break;
+      case "Monday":
+      case "Thursday":
+        console.log( "From 10:00 AM To 5:00 PM" );
+        break;
+      case "Tuesday":
+        console.log( "From 10:00 AM To 6:00 PM" );
+        break;
+      case "Wednesday":
+        console.log( "From 10:00 AM To 7:00 PM" );
+        break;
     }
   }
   // CHALLENGE
@@ -1468,7 +1369,7 @@ ${ c } ${ d }` );
 
 
     let myFriends = [ "Ahmed", "Mohamed", "Ali", "Osama", "Gamal", "Ameer" ];
-
+    // slice only remove item
     console.log( myFriends );                 // (6) ['Ahmed', 'Mohamed', 'Ali', 'Osama', 'Gamal', 'Ameer']
     console.log( myFriends.slice() );         // (6) ['Ahmed', 'Mohamed', 'Ali', 'Osama', 'Gamal', 'Ameer']
     console.log( myFriends.slice( 1 ) );      // (5) ['Mohamed', 'Ali', 'Osama', 'Gamal', 'Ameer']
@@ -1479,7 +1380,7 @@ ${ c } ${ d }` );
 
     console.log( myFriends );                 // return array not change
 
-    // splice return new array
+    // splice return new array  delete or add
     //  splice(start[mand], delete count[opt][0 no remove], the items to add[opt])
 
     myFriends.splice( 0, 0, "Sameer", "Samara" );
@@ -1503,6 +1404,7 @@ ${ c } ${ d }` );
 
     console.log( allFriends );                // (13) ['Ahmed', 'Sayed', 'Ali', 'Osama', 'Gamal', 'Ameer', 'Samar', 'Samah', 'Haytham', 'Shady', 'Gameel', 'one', 'two']
 
+    // join in document === to.string
     console.log( allFriends.join() );         // Ahmed,Sayed,Ali,Osama,Gamal,Ameer,Samar,Samah,Haytham,Shady,Gameel,one,two
     console.log( allFriends.join( "" ) );     // AhmedSayedAliOsamaGamalAmeerSamarSamahHaythamShadyGameelonetwo
     console.log( allFriends.join( " " ) );    // Ahmed Sayed Ali Osama Gamal Ameer Samar Samah Haytham Shady Gameel one two
@@ -1515,19 +1417,20 @@ ${ c } ${ d }` );
     console.log( allFriends.join( " " ).toUpperCase() );  // AHMED SAYED ALI OSAMA GAMAL AMEER SAMAR SAMAH HAYTHAM SHADY GAMEEL ONE TWO
 
     const points = [ 40, 100, 1, 5, 25, 10 ];
-    console.log( Math.max.apply( null, points ) );;
+    console.log( Math.max.apply( null, points ) );        // 100
 
 
 
-    [ 1, 2, 3 ].fill( 4 )                // [4, 4, 4]
-    [ 1, 2, 3 ].fill( 4, 1 )             // [1, 4, 4]
-    [ 1, 2, 3 ].fill( 4, 1, 2 )          // [1, 4, 3]
-    [ 1, 2, 3 ].fill( 4, 1, 1 )          // [1, 2, 3]
-    [ 1, 2, 3 ].fill( 4, 3, 3 )          // [1, 2, 3]
-    [ 1, 2, 3 ].fill( 4, -3, -2 )        // [4, 2, 3]
-    [ 1, 2, 3 ].fill( 4, NaN, NaN )      // [1, 2, 3]
-    [ 1, 2, 3 ].fill( 4, 3, 5 );          // [1, 2, 3]
-    Array( 3 ).fill( 4 );                 // [4, 4, 4]
+    console.log( [ 'a', 'b', 'c' ].fill( 4 ) );            // (3) [4, 4, 4]
+    console.log( [ 'a', 'b', 'c' ].fill( 4, 1 ) );         // (3) ['a', 4, 4]
+    console.log( [ 'a', 'b', 'c' ].fill( 4, 2 ) );         // (3) ['a', 'b', 4]
+    console.log( [ 'a', 'b', 'c' ].fill( 4, 1, 2 ) );      // (3) ['a', 4, 'c']
+    console.log( [ 'a', 'b', 'c' ].fill( 4, 1, 1 ) );      // (3) ['a', 'b', 'c']
+    console.log( [ 'a', 'b', 'c' ].fill( 4, 3, 3 ) );      // (3) ['a', 'b', 'c']
+    console.log( [ 'a', 'b', 'c' ].fill( 4, -3, -2 ) );    // (3) [4, 'b', 'c']
+    console.log( [ 'a', 'b', 'c' ].fill( 4, NaN, NaN ) );  // (3) ['a', 'b', 'c']
+    console.log( [ 'a', 'b', 'c' ].fill( 4, 3, 5 ) );      // (3) ['a', 'b', 'c']
+    console.log( Array( 3 ).fill( 4 ) );                   // (3) [4, 4, 4]
 
     //  --------------------------------
 
@@ -1547,7 +1450,7 @@ ${ c } ${ d }` );
   // array.find()
   {
     const numbers = [ 4, 9, 16, 25, 29 ];
-    console.log( numbers.find( ( e ) => e > 18 ) );
+    console.log( numbers.find( ( e ) => e > 18 ) );           // 25
     //
     const numbers = [ 4, 9, 16, 25, 29 ];
     console.log( numbers.findIndex( ( e ) => e > 18 ) );      // 3
@@ -1562,8 +1465,9 @@ ${ c } ${ d }` );
     console.log( myFriends.reverse() );       // (10) ['Sayed', 'Mohamed', '90', 20, 1000, 100, '10', 10, -20, -10]
     console.log( myFriends.sort().reverse() );// (10) ['Sayed', 'Mohamed', '90', 20, 1000, 100, 10, '10', -20, -10]
 
-    let ssss = array => array.filter( ( item, index ) => array.indexOf( item ) === index ).sort();
-    console.log( ssss( [ 1, 1, 3, 4, 5, 5, 8, 2 ] ) ); // (6) [1, 2, 3, 4, 5, 8]
+    let s = array => array.filter( ( ele, index ) => array.indexOf( ele ) === index ).sort( ( a, b ) => a - b );
+    console.log( s( [ 1, 1, 3, 4, 5, 5, 8, 2 ] ) ); // (6) [1, 2, 3, 4, 5, 8]
+
     // sort( ( a, b ) => a - b )  =>>> 1 2 3 4 ...
 
     // sort and random
@@ -1697,7 +1601,7 @@ ${ c } ${ d }` );
     console.log( nextItem( countFrom( 1 ), 33 ) );              //  34
     console.log( nextItem( countFrom( 1 ), 64 ) );              //  65
   }
-  // array.form()
+  // array.from()
   {
     // Array.from()
 
@@ -1777,7 +1681,6 @@ ${ c } ${ d }` );
 
   }
 }
-
 // replace
 {
 
@@ -7612,6 +7515,19 @@ ${ c } ${ d }` );
   console.log( s2 );
 
   /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
+  // random id serial from array
+  const myArray = [ 00, 11, 22, 33, 44, 55 ];
+
+  for ( let i = myArray.length - 1; i > 0; i-- ) {
+
+    let j = Math.floor( Math.random() * i );
+    let k = myArray[ i ];
+
+    myArray[ i ] = myArray[ j ];
+    myArray[ j ] = k;
+
+  }
+  console.log( myArray.join() );
 
 }
 
@@ -8455,3 +8371,36 @@ Define a class Person with the following properties:
   */
 }
 
+// generate Id from list numbers
+{
+  function getId ( array ) {
+    for ( let i = array.length - 1; i > 0; i-- ) {
+
+      let j = Math.floor( Math.random() * i );
+      let k = array[ i ];
+
+      array[ i ] = array[ j ];
+      array[ j ] = k;
+    }
+    return array.join( "" );
+  }
+
+  const points = [ 40, 100, 1, 5, 25, 10 ];
+
+  console.log( getId( points ) );        // 10251004051
+  console.log( getId( points ) );        // 40125510010
+  console.log( getId( points ) );        // 10025401105
+  console.log( getId( points ) );        // 51100104025
+  console.log( getId( points ) );        // 12540100510
+  console.log( getId( points ) );        // 10010152540
+  console.log( getId( points ) );        // 25510401100
+  console.log( getId( points ) );        // 11025510040
+  console.log( getId( points ) );        // 10051254010
+  console.log( getId( points ) );        // 11002510540
+  console.log( getId( points ) );        // 10054025101
+  console.log( getId( points ) );        // 40100110525
+  console.log( getId( points ) );        // 10405251001
+  console.log( getId( points ) );        // 25140510100
+  console.log( getId( points ) );        // 40510251001
+
+}
