@@ -2169,121 +2169,34 @@ ${ c } ${ d }` );
 
   }
 
-  // assign 48 => 50
-  // assign one
-  {
-    let start = 10;
-    let end = 100;
-    let exclude = 40;
-
-
-    for ( let i = start; i <= end; i += start ) {
-      if ( i === 40 ) {
-        continue;
-      }
-      console.log( i );
-    }
-  }
-  // assign five
-  {
-
-    let friends = [ "Ahmed", "Sayed", "Eman", "Mahmoud", "Ameer", "Osama", "Sameh" ];
-    let letter = "a";
-    let j = letter.length - true;
-
-    for ( let i = letter.length - true; i < friends.length; i++ ) {
-      if ( friends[ i ][ letter.length - true ] === letter.toUpperCase() ) {
-        continue;
-      }
-      for ( ; ; ) {
-        j++;
-        if ( j < friends.length ) {
-          break;
-        }
-      }
-      console.log( `"${ j } => ${ friends[ i ] }` );
-    }
-
-    /* Output
-    "1 => Sayed"
-    "2 => Eman"
-    "3 => Mahmoud"
-    "4 => Osama"
-    "5 => Sameh"
-    */
-
-  }
-  // assign six
-  {
-    let start = 0;
-    let swappedName = "elZerO";
-    let outPut = "";
-
-    for ( i = 0; i < swappedName.length; i++ ) {
-
-      swappedName[ i ] === swappedName[ i ].toLowerCase()
-        ? ( outPut += swappedName[ i ].toUpperCase() )
-        : ( outPut += swappedName[ i ].toLowerCase() );
-    }
-    console.log( outPut );
-  }
-  // Assignments For Lessons 54 To 56
-  {
-    let friends = [ "Ahmed", "Sayed", "Ali", 1, 2, "Mahmoud", "Amany" ];
-    let index = 0;
-    let counter = 0;
-
-    while ( counter < friends.length ) {
-      if ( typeof friends[ counter ] === "number" || friends[ counter ][ index ].toLowerCase() === "a" ) {
-        friends.splice( counter, +true );
-        continue;
-      }
-      console.log( `"${ counter + +true } => ${ friends[ counter ] } "` );
-      counter++;
-      if ( counter == friends.length ) {
-        break;
-      }
-    }
-  }
-  // Loop Challenge
+  /*
+    Loop Challenge
+  */
   {
     let myAdmins = [ "Ahmed", "Osama", "Sayed", "Stop", "Samera" ];
-
     let myEmployees = [ "Amgad", "Samah", "Ameer", "Omar", "Othman", "Amany", "Samia", "Anwar" ];
-    let counter = 0;
 
+    let x = myAdmins.indexOf( 'Stop' );
+    console.log( x );
 
-    mainLoop: for ( let i = 0; i < myAdmins.length; i++ ) {
-      if ( myAdmins[ i ] !== "Stop" ) {
-        counter++;
-      } else break;
+    document.write( `<div>We Have ${ x } Admins</div>` );
 
-    }
-    document.write( `<div>We Have ${ counter } Admins</div>` );
-    document.write( `<hr />` );
+    for ( let i = 0; i < x; i++ ) {
 
-    for ( let j = 0; j < counter; j++ ) {
+      document.write( '<hr>' );
+      document.write( '<div>' );
+      document.write( `The Admins For Team ${ i + 1 } Is ${ myAdmins[ i ] }` );
+      document.write( '<h3>Team Members:</h3>' );
 
-      document.write( "<div>" ); // div open tag
-      document.write( `"The Admin For Team ${ j + 1 } is ${ myAdmins[ j ] }"` );
-      document.write( "<h3>Team Members: </h3>" );
-
-
-      let teamMembers = [];
-      for ( let k = 0; k < myEmployees.length; k++ ) {
-        if ( myEmployees[ k ][ 0 ] === myAdmins[ j ][ 0 ] ) {
-          teamMembers.push( myEmployees[ k ] );
+      let countJ = 1;
+      for ( let j = 0; j < myEmployees.length; j++ ) {
+        if ( myAdmins[ i ][ 0 ].toUpperCase() === myEmployees[ j ][ 0 ].toUpperCase() ) {
+          document.write( `<p>- ${ countJ } ${ myEmployees[ j ] } </p>` );
+          countJ++;
         }
       }
 
-
-      for ( let k = 0; k < teamMembers.length; k++ ) {
-        document.write( `<p>- ${ k + 1 } ${ teamMembers[ k ] }</p>` );
-      }
-
-
-      document.write( `</div>` );
-      document.write( `<hr>` );
+      document.write( '</div>' );
     }
   }
   // advanced
