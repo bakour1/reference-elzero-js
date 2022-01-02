@@ -1,5 +1,5 @@
-{ //intro
-
+//intro ▶▶
+{
   //======> console.log------------  print in console is for web api not js
   // api => application programing interface
   {
@@ -99,7 +99,7 @@
     console.log( typeof null ); //object
   }
 }
-// ERROR
+// ERROR ▶▶
 {
   // JavaScript will actually create an Error object with two properties: name and message.
 
@@ -189,7 +189,7 @@
   }
 
 }
-//  variable
+//  variable ▶▶
 {
 
   var user = "osama",
@@ -277,7 +277,7 @@ ${ c } ${ d }` );
   document.write( markup.repeat( 4 ) );
 
 }
-// Concatenation
+// Concatenation ▶▶
 {
 
   // First Example
@@ -350,7 +350,7 @@ ${ c } ${ d }` );
   console.log( `${ numberTwo }\n${ numberOne }` );
 
 }
-// Arithmetic Operators
+// Arithmetic Operators ▶▶
 {
   console.log( 10 + 20 );                            // 30
   console.log( 10 + "Sami" );                        // '10Sami'
@@ -401,7 +401,7 @@ ${ c } ${ d }` );
 
   console.log( 200 + 15 % 3 + 190 + 10 - 400 );      // 0
 }
-// type coercion (type casting) تحويل بالاكراه and assignment operator
+// type coercion (type casting) تحويل بالاكراه and assignment operator ▶▶
 {
 
   let a = "10";
@@ -454,7 +454,7 @@ ${ c } ${ d }` );
   console.log( 79 + 20 + 9 * 20 - 21 * 9 + 8 - 1 );            //97
 
 }
-//  number
+//  number ▶▶
 {
   //  Number
   {
@@ -666,7 +666,7 @@ ${ c } ${ d }` );
     console.log( strNum.padEnd( 6, 10 ) );                              // 510101
   }
 }
-// string methods
+// string methods ▶▶
 {
   var strWord = "Sami";
 
@@ -806,65 +806,10 @@ ${ c } ${ d }` );
 
   // console.log( '45385593107843568'.replace( /\d/g, d => d < 5 ? 0 : 1 ) );                 // 01011110001100111
 
-  const findLongest = s => Math.max( ...s.split( " " ).map( x => x.length ) );      // findLongest word
-  // Javascript program to search largest word from a string
-  {
-    // method ((( 1 )))
-    function longestOne ( str ) {
 
-      // Split the string using regex
-      str = str.match( /[a-zA-Z0-9]+/gi );
-
-      // Creating a empty string to store largest word
-      let largest = "";
-
-      // Creating a for...loop to iterate over the array
-      for ( let i = 0; i < str.length; i++ ) {
-        // If the i'th item is greater than largest string
-        // then overwrite the largest string with the i'th value
-        if ( str[ i ].length > largest.length ) {
-          largest = str[ i ];
-        }
-      }
-      return largest;
-    }
-
-    console.log( longestOne( "pro in programming" ) );              // programming
-
-
-    // method ((( 2 )))
-    function longestTwo ( str ) {
-
-      // Split the string into array
-      str = str.split( " " );
-
-      // Return the first sorted item of the Array
-      return str.sort( ( a, b ) => b.length - a.length )[ 0 ];
-    }
-
-    console.log( longestTwo( "pro in programming" ) );              // programming
-
-    /* ================================================================================== */
-
-    function longestThree ( str ) {
-      // Split the string into array
-      str = str.split( " " );
-
-      // Get the index of largest item of the array
-      let index = str.reduce( ( acc, curr, i ) => {
-        if ( curr.length > str[ acc ].length ) {
-          return i;
-        }
-        return acc;
-      }, 0 );
-
-      return str[ index ];
-    }
-    console.log( longestThree( "pro in programming" ) );              // programming
-  }
 
 }
-//Conditions
+//Conditions ▶▶
 {
   // #031 – Comparison Operators
   {
@@ -1247,7 +1192,7 @@ ${ c } ${ d }` );
     console.log( `My Money is ${ money }` );
   }
 }
-// Array
+// Array ▶▶
 {
 
   {
@@ -1681,7 +1626,7 @@ ${ c } ${ d }` );
 
   }
 }
-// replace
+// replace ▶▶
 {
 
   var a = "Elzero Web School";
@@ -1762,9 +1707,9 @@ ${ c } ${ d }` );
   console.log( getRndInteger( 5, 20 ) );        // 18
 
 }
-// search regexp
-// JavaScript Regular Expressions
-{/*
+// JavaScript Regular Expressions ▶▶
+{
+  /*
   - i	=> Perform case-insensitive matching
   - g	=> Perform a global match (find all matches rather than stopping after the first match)
   - m	=> Perform multiline matching
@@ -1888,8 +1833,7 @@ ${ c } ${ d }` );
     console.log( validateUsr( "pro1in_9programingxxx" ) );      // false
   }
 
-}
-{
+
   const validateHello = greetings => /(hello|ciao|salut|hallo|hola|ahoj|czesc)/g.test( greetings.toLowerCase() );
 
   // or
@@ -1939,8 +1883,7 @@ ${ c } ${ d }` );
   /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
 
 }
-
-// LOOP
+// LOOP ▶▶
 {
   // while mean loop will work while the condition true
   // while loop will stop or break when the condition = false
@@ -2395,8 +2338,7 @@ ${ c } ${ d }` );
 
   }
 }
-
-// Functions
+// Functions ▶▶
 {
   // Function Definitions
   {
@@ -2491,6 +2433,31 @@ ${ c } ${ d }` );
       return x * y;
     }
     console.log( myFunction( 3 ) );                                           // 6
+    /*_______________________________________________________________________
+      rest parameters-------------------------------------------------------*/
+
+    function calc ( ...num ) {
+      console.log( num );                                // (3) [10, 20, 70]
+      return num.reduce( ( acc, cur ) => acc + cur );
+    }
+
+    console.log( calc( 10, 20, 70 ) );                   // 100
+    // .................................................................
+
+    function calc ( ...num ) {
+
+      let result = 0;
+
+      for ( let i = 0; i < num.length; i++ ) {
+        result += num[ i ];
+      }
+      console.log( Math.max( ...arguments ) );           // 70
+      console.log( result );                             // 100
+    }
+
+    calc( 10, 20, 70 );
+
+
 
     /*_______________________________________________________________________
       The Arguments Object---------------------------------------------------*/
@@ -2510,6 +2477,87 @@ ${ c } ${ d }` );
       return Math.max( ...arguments );
     }
     console.log( x );                                                          // 500
+  }
+  // Anonymous Function And Practice
+  {
+    function calc ( num1, num2 ) {
+      return num1 + num2;
+    }
+    console.log( calc( 10, 20 ) );                         // 30
+
+    // ⤵ ⤵ ⤵ ⤵ ⤵ can declare func before create
+    console.log( calc( 10, 20 ) );                         // 30
+    function calc ( num1, num2 ) {
+      return num1 + num2;
+    }
+
+    // ⤵ ⤵ ⤵ ⤵ ⤵ can access the func by variable but can't declare func before create
+
+    let calculator = function ( num1, num2 ) {
+      return num1 + num2;
+    };
+    console.log( calculator( 10, 20 ) );                   // 30
+
+    // error
+    /*
+    let calculator = function elzero ( num1, num2 ) {
+      return num1 + num2;
+    };
+    console.log( elzero( 10, 20 ) );         error
+    */
+  }
+  // – Return Nested Function
+  {
+    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 1 ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
+    function sayMessage ( fName, lName ) {
+      let message = `Hello`;
+
+      // we crate NESTED func for update variable to concat message with arguments in the variable
+      function concatMsg () {
+        message = `${ message } ${ fName } ${ lName }`;
+      }
+      concatMsg();
+
+      return message;                                   // return message variable updated
+    }
+    console.log( sayMessage( "Osama", "Sami" ) );       // Hello Osama Sami
+
+    //  ⤵ ⤵ ⤵ ⤵ ⤵  2
+    function sayMessage ( fName, lName ) {
+      let message = `Hello`;
+
+      // nested function will return values without update variable
+      function concatMsg () {
+        return `${ message } ${ fName } ${ lName }`;
+      }
+      // return the nested function as a value
+      return concatMsg();
+    }
+    console.log( sayMessage( "Osama", "Sami" ) );       // Hello Osama Sami
+
+
+    //  ⤵ ⤵ ⤵ ⤵ ⤵  3
+    function sayMessage ( fName, lName ) {
+      let message = `Hello`;
+
+      // nested function will return values without update variable
+      function concatMsg () {
+
+        // will return first name and second name beside each others
+        function getFullName () {
+          return `${ fName } ${ lName }`;
+        }
+
+        // will return variable message and function"getFullName" beside each others
+        return `${ message } ${ getFullName() }`;
+      }
+
+      // return the nested function as a value
+      return concatMsg();
+    }
+
+    console.log( sayMessage( "Osama", "Sami" ) );       // Hello Osama Sami
+
   }
   // Function call() Method
   {
@@ -2533,6 +2581,7 @@ ${ c } ${ d }` );
     // This will return "John Doe":
     console.log( person.fullName.call( person1 ) );                          // John Doe
     console.log( person.fullName.call( person2 ) );                          // Mary Doe
+
     /*_______________________________________________________________________
       The Arguments Object---------------------------------------------------*/
     const personB = {
@@ -2597,9 +2646,6 @@ ${ c } ${ d }` );
   }
   // Function A Counter Dilemma and Closures
   {
-
-
-
     // Initiate counter
     let counter = 0;
 
@@ -2663,837 +2709,28 @@ ${ c } ${ d }` );
 
     // the counter is now 3
   }
-
-  // #057 – Function Intro And Basic Usage
-  {
-    // console.log( typeof console.log )      function build in function // log is func
-
-    function nameFunction ( Parameter ) {
-      //  task the function
-    }
-    nameFunction( "Argument" );              // declare the func for work
-    /*
-      Parameter like as variable
-      Argument  like as value for variable
-    */
-
-    // EXAMPLE: ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-
-    function sayHello ( userName ) {
-      console.log( `Hello ${ userName }` );
-    }
-
-    sayHello( "Osama" );                    //Hello Osama
-    sayHello( "Ahmed" );                    //Hello Ahmed
-    sayHello( "Sami" );                     //Hello Sami
-  }
-  // #058 – Function Advanced Examples
-  {
-    // EXAMPLE: function with [two] parameter↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    function sayHello ( userName, age ) {
-      console.log( `Hello ${ userName } Your Age is ${ age }` );
-    }
-
-    sayHello( "Osama" );          // Hello Osama Your Age is undefined
-    sayHello( "Ahmed", 38 );      // Hello Ahmed Your Age is 38
-    sayHello( "Sami", 18 );       // Hello Sami Your Age is 18
-
-    // EXAMPLE: [condition] with function ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    function sayHello ( userName, age ) {
-      age < 20 ?
-        console.log( `App is Not For You` ) :
-        console.log( `Hello ${ userName } Your Age is ${ age }` );
-    }
-
-    sayHello( "Osama", 40 );      // Hello Osama Your Age is 40
-    sayHello( "Ahmed", 38 );      // Hello Ahmed Your Age is 38
-    sayHello( "Sami", 18 );       // App is Not For You
-
-    // EXAMPLE: [LOOP] with function ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    function generateYears ( start, end ) {
-      for ( let i = start; i <= end; i++ ) {
-        console.log( i );
-      }
-    }
-
-    generateYears( 2017, 2021 );  /*
-                                    2017
-                                    2018
-                                    2019
-                                    2020
-                                    2021
-                                  */
-
-    // EXAMPLE: [LOOP] ,[if],[3 par] function ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    // add parameter [exclude] for skip a year
-    function generateYears ( start, end, exclude ) {
-      for ( let i = start; i <= end; i++ ) {
-        if ( i === exclude ) {
-          continue;
-        }
-        console.log( i );
-      }
-    }
-
-    generateYears( 1993, 2021, 2018 );  /*
-                                          2017
-                                          2019
-                                          2020
-                                          2021
-                                        */
-  }
-  // #059 – Function Return Statement And Use Cases
-  {
-    // EXAMPLE: [with out return]↓↓↓↓↓↓↓↓↓↓
-    function sayHello ( userName ) {
-      `Hello ${ userName }`;
-    }
-
-    console.log( sayHello() );         // undefined
-    console.log( sayHello( "Osama" ) );// undefined
-
-
-    // EXAMPLE 1: with [return] ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    function sayHello ( userName ) {
-      return `Hello ${ userName }`;
-    }
-
-    console.log( sayHello() );         // Hello undefined
-    console.log( sayHello( "Osama" ) );// Hello Osama
-
-    let result = sayHello( "Sami" );
-    console.log( result );              // Hello Sami
-
-    // EXAMPLE 2: with [return] ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    function calc ( num1, num2 ) {
-      return num1 + num2;
-      let x = 1;//return will stop all the task into func after line return
-    }
-
-    let myNumber = calc( 10, 20 );
-    console.log( myNumber );            // 30
-    console.log( myNumber + 100 );      // 130
-
-    // EXAMPLE 3: return  ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    function generate ( start, end ) {
-      for ( let i = start; i <= end; i++ ) {
-        if ( i === 15 ) {
-          return `Interrupting message`;
-        }
-        console.log( i );
-      }
-    }
-
-    generate( 10, 20 );                 /*
-                                          10
-                                          11
-                                          12
-                                          13
-                                          14
-                                        */
-  }
-  // #060 – Function Default Parameters
-  {
-    function sayHello ( userName, age ) {
-      return `Hello ${ userName } Your Age is ${ age }`;
-    }
-    console.log( sayHello() );             // Hello undefined Your Age is undefined
-    console.log( sayHello( "Sami", 28 ) ); // Hello Sami Your Age is 28
-
-
-    // EXAMPLE: methods [one] will change undefine with message from me
-
-    function sayHello ( userName, age ) {
-      if ( age === undefined ) {
-        age = "Unknown";
-      }
-      return `Hello ${ userName } Your Age is ${ age }`;
-    }
-    console.log( sayHello() );             // Hello undefined Your Age is Unknown
-    console.log( sayHello( "Sami", 28 ) ); // Hello Sami Your Age is 28
-
-
-    // EXAMPLE: methods [two] will change undefine with message from me
-
-    function sayHello ( userName, age ) {
-      age = age || "Unknown";
-      userName = userName || "Unknown";
-      return `Hello ${ userName } Your Age is ${ age }`;
-    }
-    console.log( sayHello() );             // Hello Unknown Your Age is Unknown
-    console.log( sayHello( "Sami", 28 ) ); // Hello Sami Your Age is 28
-
-    // EXAMPLE: methods [three] will change undefine with message from me
-
-    function sayHello (
-      userName = "Unknown",
-      age = "Unknown" ) {
-
-      return `Hello ${ userName } Your Age is ${ age }`;
-    }
-    console.log( sayHello() );             // Hello Unknown Your Age is Unknown
-    console.log( sayHello( "Sami", 28 ) ); // Hello Sami Your Age is 28
-  }
-  // #061 – Function Rest Parameters
-  {
-    function calc ( num1, num2, num3 ) {
-      return num1 + num2 + num3;
-    }
-
-    console.log( calc( 10, 20, 30 ) );          // 60
-    console.log( calc( 10, 20, 30, 40, 50 ) );  // 60
-
-    //  ---------------
-    function calc ( ...numbers ) {
-      console.log( Array.isArray( numbers ) );  // true
-    }
-
-    // Rest Parameters will Allow for function to receive an unlimited number from argument;
-    function calc ( ...numbers ) {
-      let result = 0;
-      for ( let i = 0; i < numbers.length; i++ ) {
-        result += numbers[ i ];
-      }
-      return `final result is: ${ result }`;
-    }
-
-    console.log( calc( 10, 20, 30 ) );          // final result is: 60
-    console.log( calc( 10, 20, 30, 40, 50 ) );  // final result is: 150
-
-    // --------------------------------
-    let preFizz = n => [ ...Array( n ) ].map( ( x, i ) => x = i + 1 ); // preFizz( 4 ) ⇛ (4) [1, 2, 3, 4]
-  }
-  // #062 – Function Ultimate Practice
+  // function Example  Ultimate Practice
   {
     function showInfo ( us = "Un", ag = "Un", rt = 0, show = "Yes", ...sk ) {
       document.write( `<div>` );
       document.write( `<h2>Welcome, ${ us }</h2>` );
-      document.write( `<p>Age, ${ ag }</p>` );
-      document.write( `<p>Hour Rate, $${ rt }</p>` );
+      document.write( `<p>Age: ${ ag }</p>` );
+      document.write( `<p>Hour Rate: $${ rt }</p>` );
       if ( show === "Yes" ) {
         if ( sk.length > 0 ) {
-          document.write( `<p>Skills :${ sk.join( " | " ) }</p>` );
+          document.write( `<p>Skills: ${ sk.join( " | " ) }</p>` );
         } else {
-          document.write( `<p>Skills : NO Skills</p>` );
+          document.write( `<p>Skills: No Skills</p>` );
         }
       } else {
-        document.write( `<p>Skills is Hidden</p>` );
+        document.write( `<p>Skills Is Hidden</p>` );
       }
       document.write( `</div>` );
     }
 
-    showInfo( "Osama", 38, 20, "NO", "HTML", "CSS" );
-    /*
-      Welcome, Osama
-      Age, 38
-      Hour Rate, $20
-      Skills Is Hidden
-    */
+    showInfo( "Osama", 38, 20, "No", "Html", "CSS" );
   }
-  // #063 – Random Arguments Function Challenge
-  {
-    function checkStatus ( a, b, c ) {
-      if ( typeof a === "string" && typeof b === "number" && typeof c === "boolean" ) {
-        console.log( `"Hello ${ a }, Your Age Is ${ b }, You ${ c ? "Are" : "Are Not" } Available For Hire"` );
-      } else if ( typeof b === "string" && typeof a === "number" && typeof c === "boolean" ) {
-        console.log( `"Hello ${ b }, Your Age Is ${ a }, You ${ c ? "Are" : "Are Not" } Available For Hire"` );
-      } else if ( typeof c === "string" && typeof b === "number" && typeof a === "boolean" ) {
-        console.log( `"Hello ${ c }, Your Age Is ${ b }, You ${ a ? "Are" : "Are Not" } Available For Hire"` );
-      } else if ( typeof b === "string" && typeof c === "number" && typeof a === "boolean" ) {
-        console.log( `"Hello ${ b }, Your Age Is ${ c }, You ${ a ? "Are" : "Are Not" } Available For Hire"` );
-      }
-    }
-
-    // Needed Output
-    checkStatus( "Osama", 38, true ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-    checkStatus( 38, "Osama", true ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-    checkStatus( true, 38, "Osama" ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-    checkStatus( false, "Osama", 38 ); // "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
-
-    // or
-
-    function checkStatus ( a, b, c ) {
-      let str, num, bool;
-      typeof a === "string"
-        ? ( str = a )
-        : typeof b === "string"
-          ? ( str = b )
-          : ( str = c );
-      typeof a === "number"
-        ? ( num = a )
-        : typeof b === "number"
-          ? ( num = b )
-          : ( num = c );
-      typeof a === "boolean"
-        ? ( bool = a )
-        : typeof b === "boolean"
-          ? ( bool = b )
-          : ( bool = c );
-      return `Hello ${ str }, Your Age Is ${ num }, You ${ bool ? "Are" : "Are Not"
-        } Available For Hire`;
-    }
-
-    // Needed Output
-    console.log( checkStatus( "Osama", 38, true ) ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-    console.log( checkStatus( 38, "Osama", true ) ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-    console.log( checkStatus( true, 38, "Osama" ) ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-    console.log( checkStatus( false, "Osama", 38 ) ); // "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
-
-    // or
-    function checkStatus ( a, b, c ) {
-      let s, n, bo;
-      let i;
-      for ( i = 0; i < arguments.length; i++ ) {
-        if ( typeof arguments[ i ] === 'string' ) {
-          s = "Hello " + arguments[ i ];
-        } else if ( typeof arguments[ i ] === 'number' ) {
-          n = ", Your Age Is " + arguments[ i ];
-        } else if ( typeof arguments[ i ] === 'boolean' ) {
-          if ( arguments[ i ] === true ) {
-            bo = ", You Are Available For Hire";
-          } else {
-            bo = ", You Are Not Available For Hire";
-          }
-        }
-      }
-      console.log( s + n + bo );
-    }
-    checkStatus( "Osama", 38, true );
-    checkStatus( 38, "Osama", true );
-    checkStatus( true, 38, "Osama" );
-    checkStatus( false, "Osama", 38 );
-
-    //  or
-    function showInfo ( ...info ) {
-      let theName;
-      let theAge;
-      let theBool;
-      for ( let i = 0; i < info.length; i++ ) {
-        switch ( typeof info[ i ] ) {
-          case 'string':
-            theName = info[ i ];
-            break;
-          case 'number':
-            theAge = info[ i ];
-            break;
-          case 'boolean':
-            theBool = info[ i ];
-            break;
-        }
-      }
-      let theAvMessage = theBool === true ?
-        'available' : 'not available';
-      console.log( `Hello ${ theName }, your age is ${ theAge }, you are ${ theAvMessage } for Hire` );
-    }
-    showInfo( "Osama", 38, true );
-    showInfo( 38, "Osama", true );
-    showInfo( true, 38, "Osama" );
-    showInfo( false, "Osama", 38 );
-  }
-  // assignment
-  {
-    // one
-    {
-      function sayHello ( theName, theGender ) {
-        return console.log(
-          `Hello${ theGender === "Male"
-            ? " Mr" : theGender === "Female"
-              ? " Miss" : ""
-          } ${ theName }` );
-      }
-      // Needed Output
-      sayHello( "Osama", "Male" );  // "Hello Mr Osama"
-      sayHello( "Eman", "Female" ); // "Hello Miss Eman"
-      sayHello( "Sameh" );          // "Hello Sameh"
-
-      // or
-      function sayHello ( theName, theGender ) {
-        theGender === "Male"
-          ? console.log( `hello Mr ${ theName }` )
-          : theGender === "Female"
-            ? console.log( `hello Miss ${ theName }` )
-            : console.log( `hello ${ theName }` );
-      }
-
-      // Needed Output
-      sayHello( "Osama", "Male" ); // "Hello Mr Osama"
-      sayHello( "Eman", "Female" ); // "Hello Miss Eman"
-      sayHello( "Sameh" ); // "Hello Sameh"
-
-    }
-    // two
-    {
-      function calculate (
-        firstNum,
-        secondNum,
-        operation = "add"
-      ) {
-        switch ( operation ) {
-          case "add":
-            return console.log( secondNum === undefined
-              ? "Second Number Not Found"
-              : firstNum + secondNum );
-          case "subtract":
-            return console.log( firstNum - secondNum );
-          case "multiply":
-            return console.log( firstNum * secondNum );
-        }
-      }
-
-      // Needed Output
-      calculate( 20 );                 // Second Number Not Found
-      calculate( 20, 30 );             // 50
-      calculate( 20, 30, 'add' );      // 50
-      calculate( 20, 30, 'subtract' ); // -10
-      calculate( 20, 30, 'multiply' ); // 600
-    }
-    // three
-    {
-      function ageInTime ( theAge ) {
-        if ( theAge > 100 || theAge < 10 ) {
-          return console.log( `your age ${ theAge } years Out Of Range` );
-        } else {
-          let year = theAge,
-            months = theAge * 12,
-            weeks = months * 4,
-            days = weeks * 7,
-            hours = days * 24,
-            minutes = hours * 60,
-            seconds = minutes * 60;
-          return console.log( `${ months } Months\n${ weeks } Weeks\n${ hours } Hours\n${ minutes } Minutes\n${ seconds } Seconds` );
-        }
-      }
-
-      // Needed Output
-      ageInTime( 110 ); // Age Out Of Range
-      ageInTime( 38 ); // Months Example => 456 Months
-    }
-    // four
-    {
-      function checkStatus ( a, b, c ) {
-        if (
-          typeof a === "string" &&
-          typeof b === "number" &&
-          typeof c === "boolean"
-        ) {
-          console.log(
-            `"Hello ${ a }, Your Age Is ${ b }, You ${ c ? "Are" : "Are Not"
-            } Available For Hire"`
-          );
-        } else if (
-          typeof b === "string" &&
-          typeof a === "number" &&
-          typeof c === "boolean"
-        ) {
-          console.log(
-            `"Hello ${ b }, Your Age Is ${ a }, You ${ c ? "Are" : "Are Not"
-            } Available For Hire"`
-          );
-        } else if (
-          typeof c === "string" &&
-          typeof b === "number" &&
-          typeof a === "boolean"
-        ) {
-          console.log(
-            `"Hello ${ c }, Your Age Is ${ b }, You ${ a ? "Are" : "Are Not"
-            } Available For Hire"`
-          );
-        } else if (
-          typeof b === "string" &&
-          typeof c === "number" &&
-          typeof a === "boolean"
-        ) {
-          console.log(
-            `"Hello ${ b }, Your Age Is ${ c }, You ${ a ? "Are" : "Are Not"
-            } Available For Hire"`
-          );
-        }
-      }
-
-      // Needed Output
-      checkStatus( "Osama", 38, true ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      checkStatus( 38, "Osama", true ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      checkStatus( true, 38, "Osama" ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      checkStatus( false, "Osama", 38 ); // "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
-
-      // or
-
-      function checkStatus ( a, b, c ) {
-        let str, num, bool;
-        typeof a === "string"
-          ? ( str = a )
-          : typeof b === "string"
-            ? ( str = b )
-            : ( str = c );
-        typeof a === "number"
-          ? ( num = a )
-          : typeof b === "number"
-            ? ( num = b )
-            : ( num = c );
-        typeof a === "boolean"
-          ? ( bool = a )
-          : typeof b === "boolean"
-            ? ( bool = b )
-            : ( bool = c );
-        return `Hello ${ str }, Your Age Is ${ num }, You ${ bool ? "Are" : "Are Not"
-          } Available For Hire`;
-      }
-
-      // Needed Output
-      console.log( checkStatus( "Osama", 38, true ) ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      console.log( checkStatus( 38, "Osama", true ) ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      console.log( checkStatus( true, 38, "Osama" ) ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      console.log( checkStatus( false, "Osama", 38 ) ); // "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
-
-      // or
-      function checkStatus ( a, b, c ) {
-        let s, n, bo;
-        let i;
-        for ( i = 0; i < arguments.length; i++ ) {
-          if ( typeof arguments[ i ] === "string" ) {
-            s = "Hello " + arguments[ i ];
-          } else if ( typeof arguments[ i ] === "number" ) {
-            n = ", Your Age Is " + arguments[ i ];
-          } else if ( typeof arguments[ i ] === "boolean" ) {
-            if ( arguments[ i ] === true ) {
-              bo = ", You Are Available For Hire";
-            } else {
-              bo = ", You Are Not Available For Hire";
-            }
-          }
-        }
-        console.log( s + n + bo );
-      }
-      checkStatus( "Osama", 38, true );
-      checkStatus( 38, "Osama", true );
-      checkStatus( true, 38, "Osama" );
-      checkStatus( false, "Osama", 38 );
-      // or
-      function checkStatus ( a, b, c ) {
-        let str, num, bool;
-        let i;
-        for ( i = 0; i < arguments.length; i++ ) {
-          if ( typeof arguments[ i ] === "string" ) {
-            str = arguments[ i ];
-          } else if ( typeof arguments[ i ] === "number" ) {
-            num = arguments[ i ];
-          } else if ( typeof arguments[ i ] === "boolean" ) {
-            if ( arguments[ i ] === true ) {
-              bool = ", You Are Available For Hire";
-            } else {
-              bool = ", You Are Not Available For Hire";
-            }
-          }
-        }
-        return console.log( `Hello ${ str }, Your Age Is ${ num }, ${ bool }` );
-      }
-      // Needed Output
-      checkStatus( "Osama", 38, true ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      checkStatus( 38, "Osama", true ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      checkStatus( true, 38, "Osama" ); // "Hello Osama, Your Age Is 38, You Are Available For Hire"
-      checkStatus( false, "Osama", 38 ); // "Hello Osama, Your Age Is 38, You Are Not Available For Hire"
-
-
-      //  or
-      function showInfo ( ...info ) {
-        let theName;
-        let theAge;
-        let theBool;
-        for ( let i = 0; i < info.length; i++ ) {
-          switch ( typeof info[ i ] ) {
-            case "string":
-              theName = info[ i ];
-              break;
-            case "number":
-              theAge = info[ i ];
-              break;
-            case "boolean":
-              theBool = info[ i ];
-              break;
-          }
-        }
-        let theAvMessage = theBool === true ? "available" : "not available";
-        console.log(
-          `Hello ${ theName }, your age is ${ theAge }, you are ${ theAvMessage } for Hire`
-        );
-      }
-      showInfo( "Osama", 38, true );
-      showInfo( 38, "Osama", true );
-      showInfo( true, 38, "Osama" );
-      showInfo( false, "Osama", 38 );
-
-    }
-    // five
-    {
-      function createSelectBox ( startYear, endYear ) {
-        document.write( `<select>` );
-        for ( let i = startYear; i <= endYear; i++ ) {
-          document.write( `<option value="${ i }">${ i }</option>` );
-        }
-        document.write( `</select>` );
-      }
-      createSelectBox( 2000, 2021 );
-
-
-      /* <select>
-        <option value="2000">2000</option>
-        <option value="2001">2001</option>
-        <option value="2002">2002</option>
-        <option value="2003">2003</option>
-        <option value="2004">2004</option>
-        <option value="2005">2005</option>
-        <option value="2006">2006</option>
-        <option value="2007">2007</option>
-        <option value="2008">2008</option>
-        <option value="2009">2009</option>
-        <option value="2010">2010</option>
-        <option value="2011">2011</option>
-        <option value="2012">2012</option>
-        <option value="2013">2013</option>
-        <option value="2014">2014</option>
-        <option value="2015">2015</option>
-        <option value="2016">2016</option>
-        <option value="2017">2017</option>
-        <option value="2018">2018</option>
-        <option value="2019">2019</option>
-        <option value="2020">2020</option>
-        <option value="2021">2021</option>
-      </select> */
-    }
-    // six
-    {
-      function multiply ( ...args ) {
-        let result = 1;
-        for ( let i = 0; i < args.length; i++ ) {
-          if ( typeof args[ i ] !== "number" ) {
-            continue;
-          }
-          result *= Math.trunc( args[ i ] );
-        }
-        return console.log( `${ result }` );
-      }
-
-      multiply( 10, 20 ); // 200
-      multiply( "A", 10, 30 ); // 300
-      multiply( 100.5, 10, "B" ); // 1000
-
-      // or
-
-      function multiply ( ...args ) {
-        let answer = 1;
-        for ( let arg of args ) {
-          if ( typeof arg === "number" ) {
-            answer *= Math.trunc( arg );
-          }
-        }
-        return answer;
-      }
-
-      console.log( multiply( 10, 20 ) ); // 200
-      console.log( multiply( "A", 10, 30 ) ); // 300
-      console.log( multiply( 100.5, 10, "B" ) ); // 1000
-    }
-  }
-  /* #064 – Anonymous Function And Practice ▶▶
-    - Anonymous Function
-    - Calling Named Function vs Anonymous Function
-    - Argument To Other Function
-    - Task Without Name
-    - SetTimeout
-*/
-  {
-    function calc ( num1, num2 ) {
-      return num1 + num2;
-    }
-    console.log( calc( 10, 20 ) );                         // 30
-
-    // ⤵ ⤵ ⤵ ⤵ ⤵ can declare func before create
-    console.log( calc( 10, 20 ) );                         // 30
-    function calc ( num1, num2 ) {
-      return num1 + num2;
-    }
-
-    // ⤵ ⤵ ⤵ ⤵ ⤵ can access the func by variable but can't declare func before create
-
-    let calculator = function ( num1, num2 ) {
-      return num1 + num2;
-    };
-    console.log( calculator( 10, 20 ) );                   // 30
-
-    // error
-    /*
-    let calculator = function elzero ( num1, num2 ) {
-      return num1 + num2;
-    };
-    console.log( elzero( 10, 20 ) );         error
-    */
-
-    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳  Example [one] : with name for func but not deference the result ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
-    document.getElementById( "show" ).onclick = function elzero () {
-      console.log( "Show" );
-    };                                                    // show
-
-    // ⤵ ⤵ ⤵ ⤵ ⤵  Anonymous Function
-    document.getElementById( "show" ).onclick = function () {
-      console.log( "Show" );
-    };                                                    // show
-
-    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ Example [two] : Anonymous Function for print "hello osama" ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
-    function sayHello () {
-      console.log( "Hello Osama" );
-    }
-    document.getElementById( "show" ).onclick = sayHello;  // hello osama
-
-    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ Example [three] : Anonymous Function will print "good"after 2 sec ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
-    setTimeout( function () {
-      console.log( "good" );
-    },
-      2000 );
-
-  }
-  /* #065 – Return Nested Function ▶▶
-  - Function Inside Function
-  - Return Function
-*/
-  {
-    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 1 ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
-    function sayMessage ( fName, lName ) {
-      let message = `Hello`;
-
-      // we crate NESTED func for update variable to concat message with arguments in the variable
-      function concatMsg () {
-        message = `${ message } ${ fName } ${ lName }`;
-      }
-      concatMsg();
-
-      return message;                                   // return message variable updated
-    }
-    console.log( sayMessage( "Osama", "Sami" ) );       // Hello Osama Sami
-
-    //  ⤵ ⤵ ⤵ ⤵ ⤵  2
-    function sayMessage ( fName, lName ) {
-      let message = `Hello`;
-
-      // nested function will return values without update variable
-      function concatMsg () {
-        return `${ message } ${ fName } ${ lName }`;
-      }
-      // return the nested function as a value
-      return concatMsg();
-    }
-    console.log( sayMessage( "Osama", "Sami" ) );       // Hello Osama Sami
-
-
-    //  ⤵ ⤵ ⤵ ⤵ ⤵  3
-    function sayMessage ( fName, lName ) {
-      let message = `Hello`;
-
-      // nested function will return values without update variable
-      function concatMsg () {
-
-        // will return first name and second name beside each others
-        function getFullName () {
-          return `${ fName } ${ lName }`;
-        }
-
-        // will return variable message and function"getFullName" beside each others
-        return `${ message } ${ getFullName() }`;
-      }
-
-      // return the nested function as a value
-      return concatMsg();
-    }
-
-    console.log( sayMessage( "Osama", "Sami" ) );       // Hello Osama Sami
-
-  }
-
-  /* #066 – Arrow Function Syntax ▶▶
-  Function
-  - Arrow Function
-  -- Regular vs Arrow [Param + No Param]
-  -- Multiple Lines
-*/
-  {
-    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 1 ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
-
-    function printOne () {
-      return 10;
-    }
-    console.log( printOne() );           // 10
-
-    //  ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ with variable
-    let printOne = function () {
-      return 10;
-    };
-    console.log( printOne() );           // 10
-
-
-    /*  ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ one statement or one line
-      - remove "function"
-      - add "=>" between  () and{}
-      - remove  "return"
-      - remove{}
-    */
-
-    let printOne = () => 10;
-
-    console.log( printOne() );           // 10
-
-    // ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ if dont have param i can change () by _
-    let printOne = _ => 10;
-
-    console.log( printOne() );           // 10
-
-    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 2 ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
-    let printTwo = num => num;              // if one arg we can remove ()
-    console.log( printTwo( 100 ) );         // 100
-
-    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 3 two parameter ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
-    let printThree = function ( num1, num2 ) {
-      return num1 + num2;
-    };
-    console.log( printThree( 100, 100 ) );  // 200
-
-    // ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵  switch to arrow
-    let printThree = ( num1, num2 ) => num1 + num2;
-    console.log( printThree( 100, 100 ) );     // 200
-
-    // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 4 two parameter ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
-    /* Currying Function Technique */
-    function checker ( zName ) {
-      return function ( status ) {
-        return function ( salary ) {
-          return status === "Available" ? `${ zName }, My Salary Is ${ salary }` : `Iam Not Avaialble`;
-        };
-      };
-    }
-
-    console.log( checker( "Osama" )( "Available" )( 4000 ) ); // My Salary Is 4000
-    console.log( checker( "Ahmed" )( "Not Available" )() ); // Iam Not Avaialble
-
-    /* ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ to regular function */
-    function checker ( zName, status, salary ) {
-
-      return status === "Available" ? `${ zName }, My Salary Is ${ salary }` : `Iam Not Avaialble`;
-
-    }
-
-    console.log( checker( "Osama", "Available", 4000 ) ); // My Salary Is 4000
-    console.log( checker( "Ahmed", "Not Available", ) ); // Iam Not Avaialble
-
-    /* ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ to arrow function */
-
-    let checker = ( zName, status, salary ) => status === "Available" ? `${ zName }, My Salary Is ${ salary }` : `Iam Not Avaialble`;
-
-    console.log( checker( "Osama", "Available", 4000 ) ); // My Salary Is 4000
-    console.log( checker( "Ahmed", "Not Available", ) ); // Iam Not Avaialble
-
-
-  }
-  /* #067 – Scope – Global And Local ▶▶
-    - Global And Local Scope
-*/
+  //  Scope – Global And Local
   {
     // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 1 ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
 
@@ -3552,9 +2789,7 @@ ${ c } ${ d }` );
                 */
 
   }
-  /* #068 – Scope – Block ▶▶
-    - Block Scope [If, Switch, For]
-*/
+  //  Block Scope [If, Switch, For]
   {
     // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 1 ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
     var x = 10;
@@ -3613,13 +2848,7 @@ ${ c } ${ d }` );
 
 
   }
-  /* #069 – Scope – Lexical (Static) ▶▶
-  - Lexical Scope
-
-  Search
-  - Execution Context
-  - Lexical Environment
-*/
+  //  Scope – Lexical (Static)
   {
     // ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳ EXAMPLE 1 ⇳⇳⇳⇳⇳⇳⇳⇳⇳⇳
     function parent () {
@@ -3682,182 +2911,9 @@ ${ c } ${ d }` );
 
 
   }
-  // #070 – Arrow Function Challenge
-  {
-    // /*
-    //   Function Arrow Challenges
-    // */
 
-    // // [1] One Statement In Function
-    // // [2] Convert To Arrow Function
-    // // [3] Print The Output [Arguments May Change]
-
-    // let names = function ( ...name ) {
-    //   // Parameter ?
-    //   return `[${ name.join( "], [" ) }] => Done`;
-    // };
-
-    // console.log( names( "Osama", "Mohamed", "Ali", "Ibrahim" ) );
-
-    // /* ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ to arrow function */
-
-    let names = ( ...name ) => `[${ name.join( "], [" ) }] => Done`;
-
-    console.log( names( "Osama", "Mohamed", "Ali", "Ibrahim" ) );
-    // // String [Osama], [Mohamed], [Ali], [Ibrahim] => Done !
-
-    /* ================================= */
-
-    // [1] Replace ??? In Return Statement To Get The Output
-    // [2] Create The Same Function With Regular Syntax
-    // [3] Use Array Inside The Arguments To Get The Output
-
-    let myNumbers = [ 20, 50, 10, 60 ];
-
-    let calc = ( one, two, ...nums ) => one + two + parseInt( nums );
-
-    /* ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ to regular function */
-
-    let calc = function ( one, two, ...nums ) {
-      return one + two + parseInt( nums );
-    };
-
-    console.log( calc( 10, myNumbers[ +false ], myNumbers[ +true ] ) ); // 80
-  }
-  // Assignments
-  {
-    // one
-    {
-      function getDetails ( zName, zAge, zCountry ) {
-        function namePattern ( zName ) {
-          let x = zName.trim().split( " " );
-          return `${ x[ 0 ] } ${ x[ 1 ][ 0 ].toUpperCase() }`;
-        }
-        function ageWithMessage ( zAge ) {
-          let ageArray = zAge.trim().split( " " );
-          let numArray = [];
-          for ( let i = 0; i < ageArray.length; i++ ) {
-            if ( Number.isInteger( parseInt( ageArray[ i ] ) ) ) {
-              numArray.push( ageArray[ i ] );
-            }
-          }
-
-          return numArray.join();
-          // 38 Is My Age => Your Age Is 38
-          // 32 Is The Age => Your Age Is 32
-        }
-
-        function countryTwoLetters ( zCountry ) {
-          return zCountry.slice( 0, 2 ).toUpperCase();
-          // Write Your Code Here
-          // Egypt => You Live In EG
-          // Syria => You Live In SY
-        }
-
-        function fullDetails () {
-          return `Hello ${ namePattern( zName ) }., Your Age Is ${ ageWithMessage( zAge ) }, You Live In ${ countryTwoLetters( zCountry ) }`;
-        }
-        return fullDetails(); // Do Not Edit This
-      }
-
-      console.log( getDetails( "Osama Mohamed", "38 Is My Age", "Egypt" ) );
-      // Hello Osama M., Your Age Is 38, You Live In EG
-
-      console.log( getDetails( "Ahmed ali", "32 Is The Age", "Syria" ) );
-      // Hello Ahmed A., Your Age Is 32, You Live In SY
-
-
-    }
-    // two
-    {
-      function itsMe () {
-        return `Iam A Normal Function`;
-      }
-
-      console.log( itsMe() ); // Iam A Normal Function
-      // ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵
-
-      let itsMe = _ => `Iam A Normal Function`;
-
-      console.log( itsMe() ); // Iam A Normal Function
-
-
-      function urlCreate ( protocol, web, tld ) {
-        return `${ protocol }://www.${ web }.${ tld }`;
-      }
-
-      console.log( urlCreate( "https", "elzero", "org" ) ); // https://www.elzero.org
-
-      // ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵
-      let urlCreate = ( protocol, web, tld ) => `${ protocol }://www.${ web }.${ tld }`;
-
-
-      console.log( urlCreate( "https", "elzero", "org" ) ); // https://www.elzero.org
-    }
-    // three
-    {
-      /* Currying Function Technique */
-      function checker ( zName ) {
-        return function ( status ) {
-          return function ( salary ) {
-            return status === "Available" ? `${ zName }, My Salary Is ${ salary }` : `Iam Not Avaialble`;
-          };
-        };
-      }
-
-      console.log( checker( "Osama" )( "Available" )( 4000 ) ); // My Salary Is 4000
-      console.log( checker( "Ahmed" )( "Not Available" )() ); // Iam Not Avaialble
-
-      /* ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ to regular function */
-      function checker ( zName, status, salary ) {
-
-        return status === "Available" ? `${ zName }, My Salary Is ${ salary }` : `Iam Not Avaialble`;
-
-      }
-
-      console.log( checker( "Osama", "Available", 4000 ) ); // My Salary Is 4000
-      console.log( checker( "Ahmed", "Not Available", ) ); // Iam Not Avaialble
-
-      /* ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ to arrow function */
-
-      let checker = ( zName, status, salary ) => status === "Available" ? `${ zName }, My Salary Is ${ salary }` : `Iam Not Avaialble`;
-
-      console.log( checker( "Osama", "Available", 4000 ) ); // My Salary Is 4000
-      console.log( checker( "Ahmed", "Not Available", ) ); // Iam Not Avaialble
-
-
-    }
-    // four
-    {
-      function specialMix ( ...data ) {
-        let result = 0;
-        let num;
-        let str;
-        for ( let i = 0; i < data.length; i++ ) {
-
-          num = parseInt( data[ i ] );
-
-          if ( Number.isInteger( num ) ) {
-            result += num;
-          } else {
-            continue;
-          }
-        }
-        if ( result !== 0 ) {
-          return result;
-        } else {
-          return 'All Is Strings';
-        }
-      }
-
-      console.log( specialMix( 10, 20, 30 ) ); // 60
-      console.log( specialMix( "10Test", "Testing", "20Cool" ) ); // 30
-      console.log( specialMix( "Testing", "10Testing", "40Cool" ) ); // 50
-      console.log( specialMix( "Test", "Cool", "Test" ) ); // All Is Strings
-    }
-  }
 }
-// Higher Order Functions
+// Higher Order Functions ▶▶
 {
   /*
   #071 - Map
@@ -5402,7 +4458,6 @@ ${ c } ${ d }` );
 
 
 }
-
 // DOM 1
 {
   /* HTML
@@ -8284,36 +7339,110 @@ Define a class Person with the following properties:
   */
 }
 
-// generate Id from list numbers
+// advanced problem solving
 {
-  function getId ( array ) {
-    for ( let i = array.length - 1; i > 0; i-- ) {
+  // generate Id from list numbers
+  {
+    function getId ( array ) {
+      for ( let i = array.length - 1; i > 0; i-- ) {
 
-      let j = Math.floor( Math.random() * i );
-      let k = array[ i ];
+        let j = Math.floor( Math.random() * i );
+        let k = array[ i ];
 
-      array[ i ] = array[ j ];
-      array[ j ] = k;
+        array[ i ] = array[ j ];
+        array[ j ] = k;
+      }
+      return array.join( "" );
     }
-    return array.join( "" );
+
+    const points = [ 40, 100, 1, 5, 25, 10 ];
+
+    console.log( getId( points ) );        // 10251004051
+    console.log( getId( points ) );        // 40125510010
+    console.log( getId( points ) );        // 10025401105
+    console.log( getId( points ) );        // 51100104025
+    console.log( getId( points ) );        // 12540100510
+    console.log( getId( points ) );        // 10010152540
+    console.log( getId( points ) );        // 25510401100
+    console.log( getId( points ) );        // 11025510040
+    console.log( getId( points ) );        // 10051254010
+    console.log( getId( points ) );        // 11002510540
+    console.log( getId( points ) );        // 10054025101
+    console.log( getId( points ) );        // 40100110525
+    console.log( getId( points ) );        // 10405251001
+    console.log( getId( points ) );        // 25140510100
+    console.log( getId( points ) );        // 40510251001
+
   }
+  // largest word from a string or array
+  {
+    const findLongest = s => Math.max( ...s.split( " " ).map( x => x.length ) );      // findLongest word
+    // method ((( 1 )))
+    function longestOne ( str ) {
 
-  const points = [ 40, 100, 1, 5, 25, 10 ];
+      // Split the string using regex
+      str = str.match( /[a-zA-Z0-9]+/gi );
 
-  console.log( getId( points ) );        // 10251004051
-  console.log( getId( points ) );        // 40125510010
-  console.log( getId( points ) );        // 10025401105
-  console.log( getId( points ) );        // 51100104025
-  console.log( getId( points ) );        // 12540100510
-  console.log( getId( points ) );        // 10010152540
-  console.log( getId( points ) );        // 25510401100
-  console.log( getId( points ) );        // 11025510040
-  console.log( getId( points ) );        // 10051254010
-  console.log( getId( points ) );        // 11002510540
-  console.log( getId( points ) );        // 10054025101
-  console.log( getId( points ) );        // 40100110525
-  console.log( getId( points ) );        // 10405251001
-  console.log( getId( points ) );        // 25140510100
-  console.log( getId( points ) );        // 40510251001
+      // Creating a empty string to store largest word
+      let largest = "";
+
+      // Creating a for...loop to iterate over the array
+      for ( let i = 0; i < str.length; i++ ) {
+        // If the i'th item is greater than largest string
+        // then overwrite the largest string with the i'th value
+        if ( str[ i ].length > largest.length ) {
+          largest = str[ i ];
+        }
+      }
+      return largest;
+    }
+
+    console.log( longestOne( "pro in programming" ) );              // programming
+
+
+    // method ((( 2 )))
+    function longestTwo ( str ) {
+
+      // Split the string into array
+      str = str.split( " " );
+
+      // Return the first sorted item of the Array
+      return str.sort( ( a, b ) => b.length - a.length )[ 0 ];
+    }
+
+    console.log( longestTwo( "pro in programming" ) );              // programming
+
+    /* ================================================================================== */
+
+    function longestThree ( str ) {
+      // Split the string into array
+      str = str.split( " " );
+
+      // Get the index of largest item of the array
+      let index = str.reduce( ( acc, curr, i ) => {
+        if ( curr.length > str[ acc ].length ) {
+          return i;
+        }
+        return acc;
+      }, 0 );
+
+      return str[ index ];
+    }
+    console.log( longestThree( "pro in programming" ) );              // programming
+  }
+  // Rock Paper Scissors!
+  {
+    const rps = ( p1, p2 ) => {
+      if ( p1 === p2 ) {
+        return 'Draw!';
+      };
+      return `Player ${ /rockscissors|scissorspaper|paperrock/.test( p1 + p2 ) ? 1 : 2 } won!`;
+    };
+    /*
+      rps('scissors','paper') // Player 1 won!
+      rps('scissors','rock') // Player 2 won!
+      rps('paper','paper') // Draw!
+    */
+  }
 
 }
