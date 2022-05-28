@@ -374,6 +374,7 @@ ${ c } ${ d }` );
   console.log( 8 & 1 );                              // 0   => 'even
   console.log( 9 & 1 );                              // 1   => 'odd
   var even_or_odd = n => n & 1 ? 'Odd' : 'Even';
+  var even_or_odd = n => n % 2 ? 'Even' : 'Odd';
 
   console.log( +100 );                               // 100
   console.log( +"100" );                             // 100  (+) or (-) => convert to number
@@ -497,22 +498,56 @@ ${ c } ${ d }` );
     console.log( myNumber.toString( 8 ) );          // 40
     console.log( myNumber.toString( 2 ) );          // 100000
 
-    let num = 1;
+    // convert number to binary
+    let num = 14;
     console.log( num.toString( 2 ) ); // number to binary
-    var a = parseInt( "0101", 2 );
+
+    // convert binary to number
+    var a = parseInt( "1110", 2 );
     console.log( a );                               // 5 => binary to number
 
-    var a = parseInt( "00000000000000000000000000000101", 2 );
+    var a = parseInt( "1110", 2 );
     console.log( a );                               // 5 => binary to number
 
-    var x = 4;
-    var y = 3;
-    console.log( x & y );                           // 7
 
+    // change binary to decimal
     function bin2dec ( bin ) {
       return parseInt( bin, 2 ).toString( 10 );
     }
-    console.log( bin2dec( 101 ) );                  // 5
+    console.log( bin2dec( 1110 ) );                  // 5
+
+
+    // convert decimal to binary
+    function dec2bin ( dec ) {
+      return parseInt( dec, 10 ).toString( 2 );
+    }
+    console.log( dec2bin( 5 ) );                     // 1110 => dec to binary
+
+    // convert string to binary
+    let str = 'Hello World';
+    function strToBinary ( str ) {
+      let binary = '';
+      for ( let i = 0; i < str.length; i++ ) {
+        binary += str.charCodeAt( i ).toString( 2 ) + ' ';
+      }
+      return binary;
+    }
+    console.log( strToBinary( str ) );
+
+    // convert string to hexadecimal
+    let str = 'Hello World';
+    let hex = '';
+    for ( let i = 0; i < str.length; i++ ) {
+      hex += str.charCodeAt( i ).toString( 16 );
+    }
+    console.log( hex );                            // 48656c6c6f20576f726c64
+
+    // ------------------
+
+
+    var x = 4;
+    var y = 3;
+    console.log( x & y );                           // 0
 
 
     console.log( ( 100 ).toString() );              // 100
@@ -543,66 +578,77 @@ ${ c } ${ d }` );
     console.log( Number.isNaN( "Sami" / 100 ) );    // true
 
     // #025 – Math Object
+    {
+      // min - max
+      {
+        const numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
 
-    console.log( Math.round( 99.2 ) );              // 99
-    console.log( Math.round( 99.5 ) );              // 100
+        console.log( Math.min( ...numbers ) );                           // 1
+        console.log( Math.max( ...numbers ) );                           //10
+        console.log( Math.max.apply( null, numbers ) );  // 9
 
-    console.log( Math.ceil( 99.5 ) );               // 100
-    console.log( Math.ceil( 99.2 ) );               // 100
+        // --------------------------------------------------------------------
+        let minArr = arr => arr.sort( ( a, b ) => b - a ).pop();
+        let maxArr = arr => arr.sort( ( a, b ) => b - a ).shift();
 
-    console.log( Math.floor( 99.5 ) );              // 99
-    console.log( Math.floor( 99.2 ) );              // 99
+        console.log( minArr( numbers ) );                                //1
+        console.log( maxArr( numbers ) );                                //10
 
-    console.log( Math.min( 10, 20, 40, -100, 100 ) ); // -100
-    console.log( Math.max( 10, 20, 40, -100, 100 ) ); // 100
+        // ---------------------------------------------------------------------
+        console.log( Math.max.apply( null, numbers ) );                  // 10
+        console.log( Math.max.apply( null, numbers ) );                  // 10
+        console.log( Math.max.apply( null, numbers ) );                  // 10
 
-    let sumOfDifferences = ( arr ) => arr.length > 1 ? Math.max( ...arr ) - Math.min( ...arr ) : 0;
-    const sumOfDifferences = arr => arr.sort( ( a, b ) => b - a ).shift() - arr.pop() || 0;
-
-
-    const points = [ 40, 100, 1, 5, 25, 10 ];
-    console.log( Math.max.apply( null, points ) ); // Math.max.apply(null, [1, 2, 3]) => Math.max(1, 2, 3).
-
-    // or by while
-    function myArrayMax ( arr ) {
-      let len = arr.length;
-      let max = -Infinity;
-      while ( len-- ) {
-        if ( arr[ len ] > max ) {
-          max = arr[ len ];
+        // ---------------------------------------------------------------------
+        function myArrayMax ( arr ) {
+          let len = arr.length;
+          let max = -Infinity;
+          while ( len-- ) {
+            if ( arr[ len ] > max ) {
+              max = arr[ len ];
+            }
+          }
+          return max;
         }
+        console.log( myArrayMax( numbers ) );                             //10
+
+        // sami
       }
-      return max;
+      console.log( Math.round( 99.2 ) );              // 99
+      console.log( Math.round( 99.5 ) );              // 100
+
+      console.log( Math.ceil( 99.5 ) );               // 100
+      console.log( Math.ceil( 99.2 ) );               // 100
+
+      console.log( Math.floor( 99.5 ) );              // 99
+      console.log( Math.floor( 99.2 ) );              // 99
+
+      console.log( Math.min( 10, 20, 40, -100, 100 ) ); // -100
+      console.log( Math.max( 10, 20, 40, -100, 100 ) ); // 100
+
+      console.log( Math.pow( 2, 4 ) );              // 16 , => 2**4
+      console.log( Math.sqrt( 64 ) );               // 8
+
+      console.log( Math.random() );                // random
+      console.log( Math.floor( ( Math.random() * 5 ) + 0 ) ); // 0 || 1 || 2 || 3 || 4
+
+      console.log( Math.trunc( 99.5 ) );           //99 => cut float
+
+      console.log( Math.abs( "10.8" ) );           // 10.8
+      console.log( Math.abs( "5" ) );              // 5
+      console.log( Math.abs( "-5" ) );             // 5
+      console.log( Math.abs( 4 - 10 ) );           // 6
+      console.log( Math.abs( 4 ) );                // 4
+      console.log( Math.abs( -4 ) );               // 4
+
+
+
+      Math.imul( 2, 4 );          // 8
+      Math.imul( -1, 8 );         // -8
+      Math.imul( -2, -2 );        // 4
+      Math.imul( 0xffffffff, 5 ); // -5
+      Math.imul( 0xfffffffe, 5 ); // -10
     }
-
-
-
-    console.log( Math.pow( 2, 4 ) );              // 16 , => 2**4
-    console.log( Math.sqrt( 64 ) );               // 8
-
-    console.log( Math.random() );                // random
-    console.log( Math.floor( ( Math.random() * 5 ) + 0 ) ); // 0 || 1 || 2 || 3 || 4
-
-    console.log( Math.trunc( 99.5 ) );           //99 => cut float
-
-    console.log( Math.abs( "10.8" ) );           // 10.8
-    console.log( Math.abs( "5" ) );              // 5
-    console.log( Math.abs( "-5" ) );             // 5
-    console.log( Math.abs( 4 - 10 ) );           // 6
-    console.log( Math.abs( 4 ) );                // 4
-    console.log( Math.abs( -4 ) );               // 4
-
-    function distanceBetweenPoints ( a, b ) {
-      return Math.hypot( a.x - b.x, a.y - b.y ); //.toFixed(6)
-    }
-    console.log( distanceBetweenPoints( new Point( 1, 6 ), new Point( 4, 2 ) ) ); //5
-
-
-    Math.imul( 2, 4 );          // 8
-    Math.imul( -1, 8 );         // -8
-    Math.imul( -2, -2 );        // 4
-    Math.imul( 0xffffffff, 5 ); // -5
-    Math.imul( 0xfffffffe, 5 ); // -10
     // #026 – Number Challenge
 
     console.log( 100_000 );                                // 100000
@@ -636,21 +682,21 @@ ${ c } ${ d }` );
   // advanced
   {
     // toExponential()
-    let x = 9.656;
-    console.log( x.toExponential( 2 ) ); // returns 9.66e+0
-    console.log( x.toExponential( 4 ) ); // returns 9.6560e+0
-    console.log( x.toExponential( 6 ) ); // returns 9.656000e+0
+    let x1 = 9.656;
+    console.log( x1.toExponential( 2 ) ); // returns 9.66e+0
+    console.log( x1.toExponential( 4 ) ); // returns 9.6560e+0
+    console.log( x1.toExponential( 6 ) ); // returns 9.656000e+0
 
     //toPrecision()
-    let x = 9.656;
-    console.log( x.toPrecision() );     // returns 9.656
-    console.log( x.toPrecision( 2 ) );  // returns 9.7
-    console.log( x.toPrecision( 4 ) );  // returns 9.656
-    console.log( x.toPrecision( 6 ) );  // returns 9.65600
+    let x2 = 9.656;
+    console.log( x2.toPrecision() );     // returns 9.656
+    console.log( x2.toPrecision( 2 ) );  // returns 9.7
+    console.log( x2.toPrecision( 4 ) );  // returns 9.656
+    console.log( x2.toPrecision( 6 ) );  // returns 9.65600
 
     //valueOf()
-    let x = 123;
-    console.log( x.valueOf() );            // returns 123
+    let x3 = 123;
+    console.log( x3.valueOf() );            // returns 123
     console.log( ( 123 ).valueOf() );      // returns 123
     console.log( ( 100 + 23 ).valueOf() ); // returns 123
 
@@ -764,7 +810,7 @@ ${ c } ${ d }` );
   console.log( a.substring( 2 ) );                        //   zero Web School
   console.log( a.substring( 2, 6 ) );                     //   zero
   console.log( a.substring( 6, 2 ) );                     //   zero
-  console.log( a.substring( -10 ) );                      // Elzero                 => If we put the - value , it will be 0
+  console.log( a.substring( -10 ) );                      // Elzero      => If we put the - value , it will be 0
   console.log( a.substring( -10, 6 ) );                   // Elzero
 
   console.log( a.substring( a.length - 1 ) );             //               l
@@ -813,38 +859,38 @@ ${ c } ${ d }` );
 {
   // #031 – Comparison Operators
   {
-    console.log( 10 == "10" ); // true
-    console.log( -100 == "-100" ); // true
-    console.log( 10 == "6" ); // false
+    console.log( 10 == "10" );      // true
+    console.log( -100 == "-100" );  // true
+    console.log( 10 == "6" );       // false
 
-    console.log( 10 != "10" ); // false
-    console.log( -100 != "-100" ); // false
-    console.log( 10 != "6" ); // true
+    console.log( 10 != "10" );      // false
+    console.log( -100 != "-100" );  // false
+    console.log( 10 != "6" );       // true
 
-    console.log( 10 === "10" ); // false
+    console.log( 10 === "10" );     // false
     console.log( -100 === "-100" ); // false
-    console.log( 10 === "6" ); // false
-    console.log( "10" === "10" ); // true
-    console.log( 10 === 10 ); // true
-    console.log( 10 !== 10 ); // false
+    console.log( 10 === "6" );      // false
+    console.log( "10" === "10" );   // true
+    console.log( 10 === 10 );       // true
+    console.log( 10 !== 10 );       // false
 
-    console.log( 10 > 10 ); // false
-    console.log( 10 >= 10 ); // true
+    console.log( 10 > 10 );         // false
+    console.log( 10 >= 10 );        // true
 
     console.log( typeof "Osama" === typeof "Ahmed" ); // true
   }
   // #032 – Logical Operators{
   {
-    console.log( true ); // true
-    console.log( !true ); // false
-    console.log( 10 == "10" ); // true
-    console.log( !( 10 == "10" ) ); // false
+    console.log( true );                            // true
+    console.log( !true );                           // false
+    console.log( 10 == "10" );                      // true
+    console.log( !( 10 == "10" ) );                 // false
 
-    console.log( 10 == "10" && 10 > 8 ); // true
+    console.log( 10 == "10" && 10 > 8 );             // true
     console.log( 10 == "10" && 10 > 8 && 10 >= 10 ); // true
     console.log( 10 == "10" && 10 > 8 && 10 >= 20 ); // false
 
-    console.log( 10 == "30" || 5 > 8 ); // false
+    console.log( 10 == "30" || 5 > 8 );              // false
     console.log( 10 == "10" || 10 > 8 || 10 >= 10 ); // true
     console.log( 10 == "10" || 10 > 8 || 10 >= 20 ); // true
   }
@@ -973,16 +1019,16 @@ ${ c } ${ d }` );
     console.log( typeof 20 != false ); // true
 
 
-    let num1 = 10;
-    let num2 = 20;
-    console.log( num1 !== num2 ); // true
-    console.log( num1 != num2 ); // true
-    console.log( typeof num1 === typeof num2 ); // true
-    console.log( num2 > num1 ); // true
-    console.log( num2 >= num1 ); // true
-    console.log( num1 < num2 ); // true
-    console.log( num1 <= num2 ); // true
-    console.log( num1 != true ); // true
+    let num12 = 10;
+    let num21 = 20;
+    console.log( num12 !== num21 ); // true
+    console.log( num12 != num21 ); // true
+    console.log( typeof num12 === typeof num21 ); // true
+    console.log( num21 > num12 ); // true
+    console.log( num21 >= num12 ); // true
+    console.log( num12 < num21 ); // true
+    console.log( num12 <= num21 ); // true
+    console.log( num12 != true ); // true
 
     let a = 20;
     let b = 30;
@@ -1001,30 +1047,30 @@ ${ c } ${ d }` );
       console.log( num );
     }
 
-    let num1 = 9;
+    let num15 = 9;
     let str = "9";
     let str2 = "20";
 
-    if ( num1 == str ) {
-      console.log( "{num1} Is The Same Value As {str}" );
+    if ( num15 == str ) {
+      console.log( "{num15} Is The Same Value As {str}" );
     }
-    if ( num1 == str && typeof num1 !== typeof str ) {
-      console.log( "{num1} Is The Same Value As {str} But Not The Same Type" );
+    if ( num15 == str && typeof num15 !== typeof str ) {
+      console.log( "{num15} Is The Same Value As {str} But Not The Same Type" );
     }
-    if ( num1 !== str2 ) {
-      console.log( "{num1} Is Not The Same Value Or The Same Type As {str2}" );
+    if ( num15 !== str2 ) {
+      console.log( "{num15} Is Not The Same Value Or The Same Type As {str2}" );
     }
     if ( str != str2 && typeof str === typeof str2 ) {
       console.log( "{str} Is The Same Type As {str2} But Not The Same Value" );
     }
 
-    let num1 = 10;
-    let num2 = 30;
-    let num3 = "30";
+    let num11 = 10;
+    let num22 = 30;
+    let num33 = "30";
 
-    num3 > num1 && typeof num3 !== typeof num2 ? console.log( "30 Is Larger Than 10 And Type string Not The Same Type As number" ) : console.log( Error( "false" ) );
-    num3 > num1 && num3 == num2 && typeof num3 !== typeof num2 ? console.log( "30 Is Larger Than 10 And Value Is The Same As 30 And Type string Not The Same Type As number" ) : console.log( false );
-    num3 !== num1 && typeof num3 !== typeof num2 ? console.log( "{num3} Value And Type Is Not The Same As {num1} And Type Is Not The Same As {num2}" ) : console.log( false );
+    num33 > num11 && typeof num33 !== typeof num22 ? console.log( "30 Is Larger Than 10 And Type string Not The Same Type As number" ) : console.log( Error( "false" ) );
+    num33 > num11 && num33 == num22 && typeof num33 !== typeof num22 ? console.log( "30 Is Larger Than 10 And Value Is The Same As 30 And Type string Not The Same Type As number" ) : console.log( false );
+    num33 !== num11 && typeof num33 !== typeof num22 ? console.log( "{num33} Value And Type Is Not The Same As {num1} And Type Is Not The Same As {num2}" ) : console.log( false );
 
     // Edit What You Want Here
 
@@ -1194,9 +1240,9 @@ ${ c } ${ d }` );
 }
 // Array ▶▶
 {
-
+  // Array Big Introduction
   {
-    let myFriends = [ "Ahmed", "Mohamed", "Sayed", [ "Marwan", "Ali" ] ];
+    var myFriends = [ "Ahmed", "Mohamed", "Sayed", [ "Marwan", "Ali" ] ];
     console.log( `Hello ${ myFriends[ 0 ] }` );                   // Hello Ahmed
     console.log( `Hello ${ myFriends[ 1 ] }` );                   // Hello Mohamed
     console.log( `Hello ${ myFriends[ 2 ] }` );                   // Hello Sayed
@@ -1219,8 +1265,10 @@ ${ c } ${ d }` );
 
     console.log( typeof myFriends );                             //object
     console.log( Array.isArray( myFriends ) );                   //true
-
-    let myFriends = [ "Ahmed", "Mohamed", "Sayed", "Alaa" ];
+  }
+  //  Using Length With Array
+  {
+    var myFriends = [ "Ahmed", "Mohamed", "Sayed", "Alaa" ];
     console.log( myFriends.length );                            // 4
 
     myFriends[ 3 ] = "Sami";
@@ -1230,7 +1278,7 @@ ${ c } ${ d }` );
     console.log( myFriends );                                   // (7) ['Ahmed', 'Mohamed', 'Sayed', 'Sami', empty × 2, 'Gamal']
     console.log( myFriends.length );                            //  7
 
-    let myFriends = [ "Ahmed", "Mohamed", "Sayed", "Alaa" ];
+    var myFriends = [ "Ahmed", "Mohamed", "Sayed", "Alaa" ];
     console.log( myFriends.length );                           // 4
 
     // for add item to last item array
@@ -1248,8 +1296,9 @@ ${ c } ${ d }` );
     // for change the length array
     myFriends.length = [ 2 ];
     console.log( myFriends );                              // (2) ['Ahmed', 'Mohamed']
-
-
+  }
+  // Add And Remove From Array
+  {
     // The pop() method returns the value that was "popped out":
 
     // The push() method adds a new element to an array (at the end):
@@ -1258,9 +1307,8 @@ ${ c } ${ d }` );
     // The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements:
     // The unshift() method returns the new array length.
     // Using delete may leave undefined holes in the array. Use pop() or shift() instead
-    const sumOfDifferences = arr => arr.sort( ( a, b ) => b - a ).shift() - arr.pop() || 0; // max-min
 
-    let myFriends = [ "Ahmed", "Mohamed", "Sayed", "Alaa" ];
+    var myFriends = [ "Ahmed", "Mohamed", "Sayed", "Alaa" ];
     console.log( myFriends );                             // (4) ['Ahmed', 'Mohamed', 'Sayed', 'Alaa']
 
     // unshift("", "") add element to the First
@@ -1289,10 +1337,12 @@ ${ c } ${ d }` );
     const fruits = [ "Banana", "Orange", "Apple", "Mango" ];
     fruits[ fruits.length ] = "Kiwi";          // Appends "Kiwi" to fruits
 
-    let myFriends = [ "Ahmed", "Mohamed", "Sayed", "Alaa", "Ahmed" ];
+    var myFriends = [ "Ahmed", "Mohamed", "Sayed", "Alaa", "Ahmed" ];
 
     console.log( myFriends );
-
+  }
+  //  Searching Array
+  {
     // indexof (search element, from index[opt])
     console.log( myFriends.indexOf( "Ahmed" ) );              // 0 , will get  first value
     console.log( myFriends.indexOf( "Ahmed", 2 ) );           // 4
@@ -1309,21 +1359,21 @@ ${ c } ${ d }` );
       console.log( "not Found" );                             // not found
     }
 
-
-    // -----------------
-
-
-    let myFriends = [ "Ahmed", "Mohamed", "Ali", "Osama", "Gamal", "Ameer" ];
+  }
+  // Slicing Array
+  {
+    var myFriends = [ "Ahmed", "Mohamed", "Ali", "Osama", "Gamal", "Ameer" ];
     // slice only remove item
     console.log( myFriends );                 // (6) ['Ahmed', 'Mohamed', 'Ali', 'Osama', 'Gamal', 'Ameer']
     console.log( myFriends.slice() );         // (6) ['Ahmed', 'Mohamed', 'Ali', 'Osama', 'Gamal', 'Ameer']
-    console.log( myFriends.slice( 1 ) );      // (5) ['Mohamed', 'Ali', 'Osama', 'Gamal', 'Ameer']
-    console.log( myFriends.slice( 1, 3 ) );   // (2) ['Mohamed', 'Ali']
-    console.log( myFriends.slice( -3 ) );     // (3) ['Osama', 'Gamal', 'Ameer']
-    console.log( myFriends.slice( 1, -2 ) );  // (3) ['Mohamed', 'Ali', 'Osama']
-    console.log( myFriends.slice( -4, -2 ) ); // (2) ['Ali', 'Osama']
-
+    console.log( myFriends.slice( 1 ) );      // (5)          ['Mohamed', 'Ali', 'Osama', 'Gamal', 'Ameer']
+    console.log( myFriends.slice( 1, 3 ) );   // (2)          ['Mohamed', 'Ali']
+    console.log( myFriends.slice( -3 ) );     // (3)                            ['Osama', 'Gamal', 'Ameer']
+    console.log( myFriends.slice( 1, -2 ) );  // (3)          ['Mohamed', 'Ali', 'Osama']
+    console.log( myFriends.slice( -4, -2 ) ); // (2)                     ['Ali', 'Osama']
+    console.log( myFriends.slice( -4, 4 ) );  // (2)                     ['Ali', 'Osama']
     console.log( myFriends );                 // return array not change
+
 
     // splice return new array  delete or add
     //  splice(start[mand], delete count[opt][0 no remove], the items to add[opt])
@@ -1340,8 +1390,10 @@ ${ c } ${ d }` );
     myFriends.splice( 2, 2, "Sameer", "Samara" );
     console.log( myFriends ); //(5) ['Mohamed', 'Ali', 'Sameer', 'Samara', 'Ameer']
 
-
-    let myFriends = [ "Ahmed", "Sayed", "Ali", "Osama", "Gamal", "Ameer" ];
+  }
+  // Joining Arrays
+  {
+    var myFriends = [ "Ahmed", "Sayed", "Ali", "Osama", "Gamal", "Ameer" ];
     let myNewFriends = [ "Samar", "Samah" ];
     let schoolFriends = [ "Haytham", "Shady" ];
 
@@ -1357,41 +1409,41 @@ ${ c } ${ d }` );
 
     console.log( allFriends.toString() );         // Ahmed,Sayed,Ali,Osama,Gamal,Ameer,Samar,Samah,Haytham,Shady,Gameel,one,two
     console.log( allFriends.toString( "" ) );     // Ahmed,Sayed,Ali,Osama,Gamal,Ameer,Samar,Samah,Haytham,Shady,Gameel,one,two
-
-
     console.log( allFriends.join( " " ).toUpperCase() );  // AHMED SAYED ALI OSAMA GAMAL AMEER SAMAR SAMAH HAYTHAM SHADY GAMEEL ONE TWO
-
-    const points = [ 40, 100, 1, 5, 25, 10 ];
-    console.log( Math.max.apply( null, points ) );        // 100
-
-
-
-    console.log( [ 'a', 'b', 'c' ].fill( 4 ) );            // (3) [4, 4, 4]
-    console.log( [ 'a', 'b', 'c' ].fill( 4, 1 ) );         // (3) ['a', 4, 4]
-    console.log( [ 'a', 'b', 'c' ].fill( 4, 2 ) );         // (3) ['a', 'b', 4]
-    console.log( [ 'a', 'b', 'c' ].fill( 4, 1, 2 ) );      // (3) ['a', 4, 'c']
-    console.log( [ 'a', 'b', 'c' ].fill( 4, 1, 1 ) );      // (3) ['a', 'b', 'c']
-    console.log( [ 'a', 'b', 'c' ].fill( 4, 3, 3 ) );      // (3) ['a', 'b', 'c']
-    console.log( [ 'a', 'b', 'c' ].fill( 4, -3, -2 ) );    // (3) [4, 'b', 'c']
-    console.log( [ 'a', 'b', 'c' ].fill( 4, NaN, NaN ) );  // (3) ['a', 'b', 'c']
-    console.log( [ 'a', 'b', 'c' ].fill( 4, 3, 5 ) );      // (3) ['a', 'b', 'c']
-    console.log( Array( 3 ).fill( 4 ) );                   // (3) [4, 4, 4]
-
-    //  --------------------------------
-
-    var websites = new Array( 1000 ).fill( "codewars" );
-    // or
-    var websites = [];
-    while ( websites.length < 1000 ) websites.push( "codewars" );
-
-    // or
-    var websites = Array.from( { length: 1000 }, () => 'codewars' );
-
-    //  --------------------------------
-    arr.match( /good/gi ).length;    // search how word good
-
-
   }
+  {
+    {
+      const points = [ 40, 100, 1, 5, 25, 10 ];
+      console.log( Math.max.apply( null, points ) );        // 100
+
+
+
+      console.log( [ 'a', 'b', 'c' ].fill( 4 ) );            // (3) [4, 4, 4]
+      console.log( [ 'a', 'b', 'c' ].fill( 4, 1 ) );         // (3) ['a', 4, 4]
+      console.log( [ 'a', 'b', 'c' ].fill( 4, 2 ) );         // (3) ['a', 'b', 4]
+      console.log( [ 'a', 'b', 'c' ].fill( 4, 1, 2 ) );      // (3) ['a', 4, 'c']
+      console.log( [ 'a', 'b', 'c' ].fill( 4, 1, 1 ) );      // (3) ['a', 'b', 'c']
+      console.log( [ 'a', 'b', 'c' ].fill( 4, 3, 3 ) );      // (3) ['a', 'b', 'c']
+      console.log( [ 'a', 'b', 'c' ].fill( 4, -3, -2 ) );    // (3) [4, 'b', 'c']
+      console.log( [ 'a', 'b', 'c' ].fill( 4, NaN, NaN ) );  // (3) ['a', 'b', 'c']
+      console.log( [ 'a', 'b', 'c' ].fill( 4, 3, 5 ) );      // (3) ['a', 'b', 'c']
+      console.log( Array( 3 ).fill( 4 ) );                   // (3) [4, 4, 4]
+
+      //  --------------------------------
+
+      var websites = new Array( 1000 ).fill( "codewars" );
+      // or
+      var websites = [];
+      while ( websites.length < 1000 ) websites.push( "codewars" );
+
+      // or
+      var websites = Array.from( { length: 1000 }, () => 'codewars' );
+
+      //  --------------------------------
+      arr.match( /good/gi ).length;    // search how word good
+    }
+  }
+
   // array.find()
   {
     const numbers = [ 4, 9, 16, 25, 29 ];
@@ -1404,11 +1456,13 @@ ${ c } ${ d }` );
   // array.sort()
   {
 
-    let myFriends = [ 10, "Sayed", "Mohamed", "90", 1000, 100, 20, "10", -20, -10 ];
-    console.log( myFriends );                 // (10) [10, 'Sayed', 'Mohamed', '90', 1000, 100, 20, '10', -20, -10]
-    console.log( myFriends.sort() );          // (10) [-10, -20, 10, '10', 100, 1000, 20, '90', 'Mohamed', 'Sayed']
-    console.log( myFriends.reverse() );       // (10) ['Sayed', 'Mohamed', '90', 20, 1000, 100, '10', 10, -20, -10]
-    console.log( myFriends.sort().reverse() );// (10) ['Sayed', 'Mohamed', '90', 20, 1000, 100, 10, '10', -20, -10]
+    var myFriends = [ 10, "Sayed", "Mohamed", "90", 1000, 100, 20, "10", -20, -10 ];
+    console.log( myFriends );                           // (10) [10, 'Sayed', 'Mohamed', '90', 1000, 100, 20, '10', -20, -10]
+    console.log( myFriends.sort() );                    // (10) [-10, -20, 10, '10', 100, 1000, 20, '90', 'Mohamed', 'Sayed']
+    console.log( myFriends.sort( ( a, b ) => a - b ) ); // (10) [-20, -10, 10, '10', 20, '90', 100, 1000, 'Mohamed', 'Sayed']
+
+    console.log( myFriends.reverse() );                 // (10) ['Sayed', 'Mohamed', '90', 20, 1000, 100, '10', 10, -20, -10]
+    console.log( myFriends.sort().reverse() );          // (10) ['Sayed', 'Mohamed', '90', 20, 1000, 100, 10, '10', -20, -10]
 
     let s = array => array.filter( ( ele, index ) => array.indexOf( ele ) === index ).sort( ( a, b ) => a - b );
     console.log( s( [ 1, 1, 3, 4, 5, 5, 8, 2 ] ) ); // (6) [1, 2, 3, 4, 5, 8]
@@ -1887,10 +1941,17 @@ ${ c } ${ d }` );
 {
   // while mean loop will work while the condition true
   // while loop will stop or break when the condition = false
-
-
-
-
+  // Looping On Sequences
+  {
+    const myFriends = [ 1, 2, 3, 'osama', 'sami', 'sayed' ];
+    let onlyName = [];
+    for ( let i = 0; i < myFriends.length; i++ ) {
+      if ( typeof myFriends[ i ] === 'string' ) {
+        onlyName.push( myFriends[ i ] );
+      }
+    }
+    console.log( onlyName );       // (3) ['osama', 'sami', 'sayed']
+  }
   // #050 – Nested Loops And Training’s
   {
     let products = [ "Keyboard", "Mouse", "Pen", "Pad", "Monitor" ];
@@ -2921,14 +2982,14 @@ ${ c } ${ d }` );
   --- method creates a new array
   --- populated with the results of calling a provided function on every element
   --- in the calling array.
-   */
+  */
   {
     /*
     ⇳⇳⇳⇳ EXAMPLE: Anonymous Function ⇳⇳⇳⇳
     - will add all element to self for done new result element*2
     */
     /* ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵
-       the idea with loop
+      the idea with loop
     */
     let myNums = [ 1, 2, 3 ];
     let newArray = [];
@@ -2940,7 +3001,7 @@ ${ c } ${ d }` );
     console.log( newArray );      // (6) [2, 4, 6]
 
     /* ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵ ⤵
-       Syntax map(callBackFunction(Element, Index, Array) { }, thisArg)
+      Syntax map(callBackFunction(Element, Index, Array) { }, thisArg)
     */
 
     let addSelf = myNums.map( function ( element, index, array ) {
@@ -2974,17 +3035,17 @@ ${ c } ${ d }` );
       current Index ---> 0
       Array ---> 1,2,3
       This ---> 10
-     ***********
+    ***********
       current Element ---> 2
       current Index ---> 1
       Array ---> 1,2,3
       This ---> 10
-     ***********
+    ***********
       current Element ---> 3
       current Index ---> 2
       Array ---> 1,2,3
       This ---> 10
-     ***********
+    ***********
     */
 
     /*   ⇳⇳⇳⇳ EXAMPLE: Named Function ⇳⇳⇳⇳ */
@@ -6238,7 +6299,7 @@ ${ c } ${ d }` );
 {
   //  Destructuring
 
-  let myFriends = [ "Ahmed", "Sami", "Osama", "Ali" ];
+  var myFriends = [ "Ahmed", "Sami", "Osama", "Ali" ];
   let [ a, b, c, d, e = "ssss" ] = myFriends;
 
   console.log( a );                // Ahmed
@@ -6263,7 +6324,7 @@ ${ c } ${ d }` );
 
   /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
 
-  let myFriends = [ "Sami", "Osama", "Ali", [ "Shady", "Amr", [ "Mohamed", "Gamal" ] ] ];
+  var myFriends = [ "Sami", "Osama", "Ali", [ "Shady", "Amr", [ "Mohamed", "Gamal" ] ] ];
   let [ , , , [ a, , [ , b ] ] ] = myFriends;
   console.log( myFriends[ 3 ][ 2 ][ 1 ] );          // Gamal
 
@@ -6462,7 +6523,7 @@ ${ c } ${ d }` );
 
   let chosen = 1;
 
-  let myFriends = [
+  var myFriends = [
     { title: "Osama", age: 39, available: true, skills: [ "HTML", "CSS" ] },
     { title: "Ahmed", age: 25, available: false, skills: [ "Python", "Django" ] },
     { title: "Sayed", age: 33, available: true, skills: [ "PHP", "Laravel" ] }
@@ -6982,7 +7043,7 @@ ${ c } ${ d }` );
   // -----------------------------
 
   // push inside array
-  let myFriends = [ "osama", "Sami", "Ahmed" ];
+  var myFriends = [ "osama", "Sami", "Ahmed" ];
   let thisYearFriend = [ "Sameh", "Mahmoud" ];
 
   myFriends.push( ...thisYearFriend );
@@ -7044,7 +7105,7 @@ ${ c } ${ d }` );
 
     // --------------22222222222222222
 
-    let myFriends = [ "Osama", "Ahmed", "Sayed", "Sayed", "Mahmoud", "Osama" ];
+    var myFriends = [ "Osama", "Ahmed", "Sayed", "Sayed", "Mahmoud", "Osama" ];
 
     console.log( [ ...new Set( myFriends ) ].sort() );
     // Needed Output
