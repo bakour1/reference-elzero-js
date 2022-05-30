@@ -5409,6 +5409,58 @@ ${ c } ${ d }` );
   };
   app2();
 
+  const app3 = () => {
+    let inputAdd = document.getElementById( 'add' );
+    let inputRemove = document.getElementById( 'dlt' );
+    let result = document.querySelector( '.result' );
+
+    arrResult = [];
+
+    inputAdd.addEventListener( 'blur', function add () {
+
+      if ( inputAdd.value !== '' ) {
+        let arrOfAdd = "";
+        arrOfAdd = inputAdd.value.trim().split( ' ' );
+        for ( let i = 0; i < arrOfAdd.length; i++ ) {
+          if ( arrResult.includes( arrOfAdd[ i ] ) ) {
+            continue;
+          }
+          arrResult.push( arrOfAdd[ i ] );
+        }
+      }
+      printCls();
+      inputAdd.value = '';
+    } );
+
+    inputRemove.addEventListener( 'blur', function () {
+      if ( inputRemove.value !== '' ) {
+        let arrOfRemove = [];
+        arrOfRemove = inputRemove.value.split( ' ' );
+        for ( let i = 0; i < arrOfRemove.length; i++ ) {
+          if ( arrResult.includes( arrOfRemove[ i ] ) ) {
+            arrResult.splice( arrResult.indexOf( arrOfRemove[ i ] ), 1 );
+          }
+        }
+      }
+      printCls();
+      inputRemove.value = '';
+    } );
+
+    function printCls () {
+      result.innerHTML = '';
+      arrResult.sort();
+      for ( let j = 0; j < arrResult.length; j++ ) {
+
+        let span = document.createElement( 'span' );
+        span.className = arrResult[ j ];
+        span.textContent = arrResult[ j ];
+        result.appendChild( span );
+
+      }
+    }
+  };
+  app3();
+
 
 
   /* ************************************************************************** */
@@ -5798,6 +5850,30 @@ ${ c } ${ d }` );
     clearTimeout( counter );
   };
 
+
+  // Ex:
+  {
+    let btn = document.querySelector( 'button' );
+    let popup = document.querySelector( '.popup' );
+
+
+    setTimeout( closePop, 5000 );
+
+
+    function closePop () {
+      btn.onclick = function () {
+        popup.style.display = 'none';
+      };
+    }
+
+
+    let i = 1;
+    setInterval( () => {
+      console.log( i++ );
+    }, 1000 );
+
+  }
+
   // --------------------------------------------------------
 
 
@@ -6024,6 +6100,39 @@ ${ c } ${ d }` );
     } );
   } );
 
+  // my code
+  {
+    let lis = document.querySelectorAll( 'li' );
+    let exp = document.querySelector( '.experiment' );
+
+    if ( window.localStorage.getItem( 'color' ) ) {
+      exp.style.backgroundColor = window.localStorage.getItem( 'color' );
+      lis.forEach( li => {
+        li.classList.remove( 'active' );
+
+        if ( li.dataset.color === window.localStorage.getItem( 'color' ) ) {
+          li.classList.add( 'active' );
+        }
+      } );
+
+
+    }
+
+
+    lis.forEach( li => {
+      li.addEventListener( 'click', function ( e ) {
+        lis.forEach( li => {
+          li.classList.remove( 'active' );
+        } );
+        this.classList.add( 'active' );
+
+        window.localStorage.setItem( 'color', this.dataset.color );
+
+        exp.style.backgroundColor = this.dataset.color;
+      } );
+    } );
+
+  }
   /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
   /*
     BOM [Browser Object Model]
@@ -6293,6 +6402,59 @@ ${ c } ${ d }` );
     }
 
   }
+  let myApp = () => {
+
+    let fonts = document.getElementById( 'fonts' );
+    let size = document.getElementById( 'size' );
+    let colors = document.getElementById( 'colors' );
+    let txt = document.getElementById( 'txt' );
+    let lisFonts = document.querySelectorAll( '#fonts> option' );
+    let lisColors = document.querySelectorAll( '#fonts> option' );
+    let lisSize = document.querySelectorAll( '#size> option' );
+
+    if ( localStorage.getItem( 'font' ) ) {
+      txt.style.fontFamily = `${ localStorage.font }, sans-serif`;
+      document.querySelector( `[value='${ localStorage.font }']` ).setAttribute( 'selected', '' );
+
+
+    } else {
+      lisFonts[ 0 ].setAttribute( 'selected' );
+    }
+
+    if ( localStorage.getItem( 'color' ) ) {
+      txt.style.color = `${ localStorage.color }`;
+      document.querySelector( `[value='${ localStorage.color }']` ).setAttribute( 'selected', '' );
+
+    } else {
+      lisColors[ 0 ].setAttribute( 'selected' );
+    }
+
+    if ( localStorage.getItem( 'size' ) ) {
+      txt.style.fontSize = `${ localStorage.getItem( 'size' ) }px`;
+      document.querySelector( `[value='${ localStorage.size }']` ).setAttribute( 'selected', '' );
+
+    } else {
+      lisSize[ 0 ].setAttribute( 'selected' );
+    }
+
+    fonts.addEventListener( 'change', function () {
+      txt.style.fontFamily = `${ this.value }, sans-serif`;
+      localStorage.setItem( "font", this.value );
+
+    } );
+
+    colors.addEventListener( 'change', function () {
+      txt.style.color = this.value;
+      localStorage.setItem( 'color', this.value );
+    } );
+
+    size.addEventListener( 'change', function () {
+      txt.style.fontSize = this.value + 'px';
+      localStorage.setItem( 'size', this.value );
+    } );
+
+  };
+
 }
 
 // Destructuring
