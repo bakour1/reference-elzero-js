@@ -6636,7 +6636,6 @@ ${ c } ${ d }` );
   };
 
 }
-
 // Destructuring
 {
   //  Destructuring
@@ -6901,7 +6900,6 @@ ${ c } ${ d }` );
   console.log( myArray.join() );
 
 }
-
 // Set Data Type
 {
   //  Set Data Type And Methods
@@ -6930,6 +6928,11 @@ ${ c } ${ d }` );
     console.log( iterator.next() );                                                // {value: 3, done: false}
     console.log( iterator.next() );                                                // {value: 6, done: false}
     console.log( iterator.next() );                                                // {value: undefined, done: true}
+
+    let setOfNumbers = new Set( [ 10 ] );
+    setOfNumbers.add( 20 ).add( setOfNumbers.size );
+    console.log( setOfNumbers );                             // Set(3) {10, 20, 2}
+    console.log( Math.min( ...setOfNumbers ) );              // 2
 
 
   }
@@ -7026,6 +7029,8 @@ ${ c } ${ d }` );
       [ function () { }, 'function' ]
     ] );
 
+
+
     myNewMap.set( 10, 'number' );
     myNewMap.set( '10', 'string' );
     myNewMap.set( true, 'Boolean' );
@@ -7051,6 +7056,19 @@ ${ c } ${ d }` );
                                                                                 main.js:44 ƒ () { } 'function'
                                                                                 main.js:44 undefined
                                                                               */
+
+    // convert object to map
+    let myInfo = {
+      username: "Osama",
+      role: "Admin",
+      country: "Egypt",
+    };
+    console.log( Object.entries( myInfo ) );
+    let myInfoMap = new Map( Object.entries( myInfo ) );  // convert object to map
+    console.log( myInfoMap );                             // Map(3) {'username' => 'Osama', 'role' => 'Admin', 'country' => 'Egypt'}
+    console.log( myInfoMap.size );                        // 3
+    console.log( myInfoMap.has( 'role' ) );               // true
+
 
     /*  WeakMap Allows Garbage Collector To Do Its Task But Not Map.
       --
@@ -7078,301 +7096,286 @@ ${ c } ${ d }` );
 
     console.log( myWeakMap );
   }
-
-
-
-
-
-
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
   // Array Methods
-  /*
-    - Array.from(Iterable, MapFunc, This)
-    --- Variable
-    --- String Numbers
-    --- Set
-    --- Using The Map Function
-    --- Arrow Function
-    --- Shorten The Method + Use arguments
-  */
+  {
+    // - Array.from(Iterable, MapFunc, This)
+    {
+      /*
+        --- Variable
+        --- String Numbers
+        --- Set
+        --- Using The Map Function
+        --- Arrow Function
+        --- Shorten The Method + Use arguments
+      */
 
-  console.log( Array.from( "Sami" ) );                  // (4) ['S', 'a', 'm', 'i']
-  console.log( Array.from( 12345 ) );                   // []
-  console.log( Array.from( "12345" ) );                 // (5) ['1', '2', '3', '4', '5']
-  console.log( Array.from( "12345", n => n + n ) );     // (5) ['11', '22', '33', '44', '55']
-  console.log( Array.from( "12345", n => +n + +n ) );   // (5) [2, 4, 6, 8, 10]
+      console.log( Array.from( "Sami" ) );                  // (4) ['S', 'a', 'm', 'i']
+      console.log( Array.from( 12345 ) );                   // [] is not iterable
+      console.log( Array.from( "12345" ) );                 // (5) ['1', '2', '3', '4', '5']
+      console.log( Array.from( "12345", n => n + n ) );     // (5) ['11', '22', '33', '44', '55']
+      console.log( Array.from( "12345", n => +n + +n ) );   // (5) [2, 4, 6, 8, 10]
 
-  let myArray = [ 1, 1, 1, 2, 3, 4 ];
-  let mySet = new Set( myArray );
+      let myArray = [ 1, 1, 1, 2, 3, 4 ];
+      let mySet = new Set( myArray );
 
-  console.log( mySet );                                 // Set(4) {1, 2, 3, 4}
-  console.log( Array.from( mySet ) );                   // (4) [1, 2, 3, 4]
-  console.log( [ ...mySet ] );                          // (4) [1, 2, 3, 4]
-  console.log( [ ...new Set( myArray ) ] );             // (4) [1, 2, 3, 4]
+      console.log( mySet );                                 // Set(4) {1, 2, 3, 4}
+      console.log( Array.from( mySet ) );                   // (4) [1, 2, 3, 4]
+      console.log( [ ...mySet ] );                          // (4) [1, 2, 3, 4]
+      console.log( [ ...new Set( myArray ) ] );             // (4) [1, 2, 3, 4]
 
-  function testArgs1 () {
-    return [ ...arguments ];
+      function testArgs1 () {
+        return [ ...arguments ];
+      }
+      function testArgs2 () {
+        return Array.from( arguments );
+      }
+
+      console.log( testArgs1( "Sami", "Ahmed", "Sayed", 1, 2, 3 ) );  // (6) ['Sami', 'Ahmed', 'Sayed', 1, 2, 3]
+      console.log( testArgs2( "Sami", "Ahmed", "Sayed", 1, 2, 3 ) );  // (6) ['Sami', 'Ahmed', 'Sayed', 1, 2, 3]
+    }
+    // - Array.copyWithin
+    {
+      // Array.copyWithin(Target, Start => Optional, End => Optional)
+      //  "Copy Part Of An Array To Another Location in The Same Array"
+
+      let myArray = [ 10, 20, 30, 40, 50, 'A', 'B' ];
+
+      console.log( myArray );                                          // (7) [10, 20, 30, 40, 50, 'A', 'B']
+
+      myArray.copyWithin( 2 );
+      console.log( myArray );                                          // (7) [10, 20, 10, 20, 30, 40, 50]
+
+      myArray = [ 10, 20, 30, 40, 50, 'A', 'B' ];
+      myArray.copyWithin( 2, 5 );
+      console.log( myArray );                                          // (7) [10, 20, 'A', 'B', 50, 'A', 'B']
+
+      myArray = [ 10, 20, 30, 40, 50, 'A', 'B' ];
+      myArray.copyWithin( 2, 5, 6 );
+      console.log( myArray );                                          // (7) [10, 20, 'A', 40, 50, 'A', 'B']
+
+      myArray = [ 10, 20, 30, 40, 50, 'A', 'B' ];
+      myArray.copyWithin( -6, -2 );
+      console.log( myArray );                                          // (7) [10, 'A', 'B', 40, 50, 'A', 'B']
+
+      myArray = [ 10, 20, 30, 40, 50, 'A', 'B' ];
+      myArray.copyWithin( -6, -2, -1 );
+      console.log( myArray );                                          // (7) [10, 'A', 30, 40, 50, 'A', 'B']
+
+    }
+    // - Array.some
+    {
+      /*
+        - Array.some(CallbackFunc(Element, Index, Array), This Argument)
+        --- CallbackFunc => Function To Run On Every Element On The Given Array
+        ------ Element => The Current Element To Process
+        ------ Index => Index Of Current Element
+        ------ Array => The Current Array Working With
+        --- This Argument => Value To Use As This When Executing CallbackFunc
+        --
+        Using
+        - Check if Element Exists In Array
+        - Check If Number In Range
+      */
+
+      let nums = [ 1, 2, 3, 4, 5, 6, 7 ];
+      let myNumber = 5;
+
+      let check1 = nums.some( e => e > 5 );
+      console.log( check1 );                                        // true
+
+      // -------------------------------------------------------------
+      let check2 = nums.some( function ( e ) {
+        console.log( this );                                       //Number {5}
+        return e > this;
+      } );
+      console.log( check2 );                                        // false
+
+      // -------------------------------------------------------------
+      let check3 = nums.some( function ( e ) {
+        console.log( this );                                       //Number {5}
+        return e > this;
+      }, myNumber );
+
+      console.log( check3 );                                        // true
+
+      // -------------------------------------------------------------
+      const array1 = [ 1, 2, 3, 4, { name: "sami" } ];
+
+      let include1 = ( arr, item ) => arr.indexOf( item ) !== -1;
+      let include2 = ( arr, item ) => Boolean( ~arr.indexOf( item ) );
+      let include3 = ( arr, item ) => item == arr.find( el => el === item );
+
+      console.log( '#'.repeat( 20 ) );
+      console.log( include1( [ 1, 2, 3, 4 ], 3 ) );                   // true
+      console.log( include2( [ 1, 2, 3, 4 ], 3 ) );                   // true
+      console.log( include3( [ 1, 2, 3, 4 ], 3 ) );                   // true
+      console.log( '#'.repeat( 20 ) );
+
+      console.log( array1.some( e => e === 1 ) );                    // true
+      console.log( array1.some( e => e > 4 ) );                      // false
+      console.log( array1.some( e => e < 0 ) );                      // false
+
+      console.log( array1.some( e => e.name ) );                     // true
+      console.log( array1.some( e => e.name === "sami" ) );          // true
+      console.log( array1.some( e => e.country ) );                  // false
+
+
+      /* - Inline callback function
+      some( function ( element ) { ... } );
+      some( function ( element, index ) { ... } );
+      some( function ( element, index, array ) { ... } );
+      some( function ( element, index, array ) { ... }, thisArg );
+      */
+      const array2 = [ 2, 5, 8, 1, 4 ];
+
+
+      const isBiggerThan10 = ele => ele > 10;
+
+      console.log( array2.some( isBiggerThan10 ) );                 // false
+      console.log( !array2.some( isBiggerThan10 ) );                // true
+
+      console.log( array2.some( x => x > 10 ) );                    // false
+      console.log( !array2.some( x => x > 10 ) );                   // true
+
+
+      const even = element => element % 2 === 0;
+
+      console.log( array2.some( even ) );                           // true
+      console.log( !array2.some( even ) );                          // false
+
+      console.log( array2.some( element => element % 2 === 0 ) );   // true
+      console.log( !array2.some( element => element % 2 === 0 ) );  // false
+
+
+      /* - Callback function
+      some( callbackFn );
+      some( callbackFn, thisArg );
+      */
+
+      const names = [ 'Ahmed', 'Osama', 'Smai', 'Omar' ];
+
+      function checkAvailability ( arr, val ) {
+        return arr.some( ( ele => val === ele ) );
+      }
+
+      console.log( checkAvailability( names, 'Smai' ) );            // true
+      console.log( checkAvailability( names, 'Osama' ) );           // true
+      console.log( checkAvailability( names, 'Ameer' ) );           // false
+
+      /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
+
+      let range = {
+        min: 5,
+        max: 20,
+      };
+
+      let checkNumbInRange = nums.some( function ( ele ) {
+        return ele >= this.min && ele <= this.max;
+      }, range );
+
+      console.log( checkNumbInRange );                               // true
+    }
+    // Array.every Method
+    {
+      //  - Array.every(CallbackFunc(Element, Index, Array), This Argument)
+      const locations = {
+        20: "Place 1",
+        30: "Place 2",
+        50: "Place 3",
+        40: "Place 4",
+      };
+
+      let minLocation = 15;
+      let locationArray = Object.keys( locations ).map( e => +e );
+
+      console.log( locationArray );                 // (4) [20, 30, 40, 50]
+
+      let check = locationArray.every( function ( ele ) {
+        return ele > this;
+      }, minLocation );
+
+      console.log( check );                        // true
+    }
+    // Spread Operator
+    {
+      /*
+        Spread Operator => ...Iterable
+        "Allow Iterable To Expand In Place"
+      */
+
+      // Spread With String => Expand String
+
+      console.log( "sami" );                      // sami
+      console.log( ..."sami" );                   // s a m i
+      console.log( [ ..."sami" ] );               // (4) ['s', 'a', 'm', 'i']
+      // -----------------------------
+
+      // concatenate
+      let myArr1 = [ 1, 2, 3 ];
+      let myArr2 = [ 4, 5, 6 ];
+
+      let allArr = [ ...myArr1, ...myArr2 ];
+
+      console.log( allArr );                      // (6) [1, 2, 3, 4, 5, 6]
+      // -----------------------------
+
+      // Copy array
+      let copyArr = [ ...myArr1, ...myArr1 ];
+
+      console.log( copyArr );                     // (6) [1, 2, 3, 1, 2, 3]
+      // -----------------------------
+
+      // push inside array
+      var myFriends = [ "osama", "Sami", "Ahmed" ];
+      let thisYearFriend = [ "Sameh", "Mahmoud" ];
+
+      myFriends.push( ...thisYearFriend );
+
+      console.log( myFriends );                   // (5) ['osama', 'Sami', 'Ahmed', 'Sameh', 'Mahmoud']
+      // -----------------------------
+
+      let myNums = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+      console.log( Math.max( ...myNums ) );       // 9
+      // -----------------------------
+
+      // Spread With Objects => Merge Objects
+
+      let objOne = {
+        a: 1,
+        b: 2,
+      };
+      let objTwo = {
+        c: 3,
+        d: 4,
+      };
+
+      console.log( { ...objOne, ...objTwo, e: 5 } ); // {a: 1, b: 2, c: 3, d: 4, e: 5}
+    }
   }
-  function testArgs2 () {
-    return Array.from( arguments );
-  }
-
-  console.log( testArgs1( "Sami", "Ahmed", "Sayed", 1, 2, 3 ) );  // (6) ['Sami', 'Ahmed', 'Sayed', 1, 2, 3]
-  console.log( testArgs2( "Sami", "Ahmed", "Sayed", 1, 2, 3 ) );  // (6) ['Sami', 'Ahmed', 'Sayed', 1, 2, 3]
-
-
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  /*
-    Array Methods
-    - Array.copyWithin(Target, Start => Optional, End => Optional)
-    "Copy Part Of An Array To Another Location in The Same Array"
-  */
-
-  let myArray = [ 10, 20, 30, 40, 50, "A", "B" ];
-
-  console.log( myArray );                                          // (7) [10, 20, 30, 40, 50, 'A', 'B']
-
-  // console.log( myArray.copyWithin( 3 ) );                          // (7) [10, 20, 30, 10, 20, 30, 40]
-  // console.log( myArray.copyWithin( 4 ) );                          // (7) [10, 20, 30, 40, 10, 20, 30]
-  // console.log( myArray.copyWithin( 4, 6 ) );                       // (7) [10, 20, 30, 40, 'B', 'A', 'B']
-  // console.log( myArray.copyWithin( 4, -1 ) );                      // (7) [10, 20, 30, 40, 'B', 'A', 'B']
-  // console.log( myArray.copyWithin( 1, -2 ) );                      // (7) [10, 'A', 'B', 40, 50, 'A', 'B']
-  // console.log( myArray.copyWithin( 1, -2 ) );                      // (7) [10, 'A', 30, 40, 50, 'A', 'B']
-  // console.log( myArray.copyWithin( 1, -2, -1 ) );                  // (7) [10, 'A', 30, 40, 50, 'A', 'B']
-  console.log( myArray.copyWithin( 1, 5, 6 ) );                       // (7) [10, 'A', 30, 40, 50, 'A', 'B']
-
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  /*
-    Array Methods
-    - Array.some(CallbackFunc(Element, Index, Array), This Argument)
-    --- CallbackFunc => Function To Run On Every Element On The Given Array
-    ------ Element => The Current Element To Process
-    ------ Index => Index Of Current Element
-    ------ Array => The Current Array Working With
-    --- This Argument => Value To Use As This When Executing CallbackFunc
-    --
-    Using
-    - Check if Element Exists In Array
-    - Check If Number In Range
-  */
-
-  let nums = [ 1, 2, 3, 4, 5, 6, 7 ];
-  let myNumber = 5;
-
-  let check1 = nums.some( function ( e ) {
-    console.log( "test" );                                     // 6 test
-    return e > 5;
-  } );
-  console.log( check1 );                                        // true
-
-  // -------------------------------------------------------------
-
-  let check2 = nums.some( function ( e ) {
-    // console.log( this );                                       // window X6
-    return e > 5;
-  } );
-  console.log( check2 );                                        // true
-
-  // -------------------------------------------------------------
-
-  let check3 = nums.some( function ( e ) {
-    console.log( this );                                       // window X6
-    return e > this;
-  }, myNumber );
-  console.log( check3 );                                        // true
-
-  // --------------------------------------------
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-
-  const array1 = [ 1, 2, 3, 4, { name: "sami" } ];
-
-  let include1 = ( arr, item ) => arr.indexOf( item ) !== -1;
-  let include2 = ( arr, item ) => Boolean( ~arr.indexOf( item ) );
-  let include3 = ( arr, item ) => item == arr.find( el => el === item );
-
-  console.log( include1( [ 1, 2, 3, 4 ], 3 ) );                   // true
-
-  console.log( array1.some( e => e === 1 ) );                    // true
-  console.log( array1.some( e => e > 4 ) );                      // true
-  console.log( array1.some( e => e < 0 ) );                      // false
-
-  console.log( array1.some( e => e.name ) );                     // true
-  console.log( array1.some( e => e.name === "sami" ) );          // true
-  console.log( array1.some( e => e.country ) );                  // false
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  /* - Inline callback function
-  some( function ( element ) { ... } );
-  some( function ( element, index ) { ... } );
-  some( function ( element, index, array ) { ... } );
-  some( function ( element, index, array ) { ... }, thisArg );
-  */
-  const array2 = [ 2, 5, 8, 1, 4 ];
-
-
-  const isBiggerThan10 = ele => ele > 10;
-
-  console.log( array2.some( isBiggerThan10 ) );                 // false
-  console.log( !array2.some( isBiggerThan10 ) );                // true
-
-  console.log( array2.some( x => x > 10 ) );                    // false
-  console.log( !array2.some( x => x > 10 ) );                   // true
-
-
-  const even = element => element % 2 === 0;
-
-  console.log( array2.some( even ) );                           // true
-  console.log( !array2.some( even ) );                          // false
-
-  console.log( array2.some( element => element % 2 === 0 ) );   // true
-  console.log( !array2.some( element => element % 2 === 0 ) );  // false
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  /* - Callback function
-  some( callbackFn );
-  some( callbackFn, thisArg );
-  */
-
-  const names = [ 'Ahmed', 'Osama', 'Smai', 'Omar' ];
-
-  function checkAvailability ( arr, val ) {
-    return arr.some( ( ele => val === ele ) );
-  }
-
-  console.log( checkAvailability( names, 'Smai' ) );            // true
-  console.log( checkAvailability( names, 'Osama' ) );           // true
-  console.log( checkAvailability( names, 'Ameer' ) );           // false
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  let range = {
-    min: 5,
-    max: 20,
-  };
-
-  let checkNumbInRange = nums.some( function ( ele ) {
-    return ele >= this.min && ele <= this.max;
-  }, range );
-
-  console.log( checkNumbInRange );                               // true
-
-
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  /*
-    Array Methods
-    - Array.every(CallbackFunc(Element, Index, Array), This Argument)
-  */
-
-  const locations = {
-    20: "Place 1",
-    30: "Place 2",
-    50: "Place 3",
-    40: "Place 4",
-  };
-  let minLocation = 15;
-
-  let locationArray = Object.keys( locations ).map( e => +e );
-
-  console.log( locationArray );                 // (4) [20, 30, 40, 50]
-
-  let check = locationArray.every( function ( ele ) {
-    return ele > this;
-  }, minLocation );
-
-  console.log( check );                        // true
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  /*
-    Spread Operator => ...Iterable
-    "Allow Iterable To Expand In Place"
-  */
-
-  // Spread With String => Expand String
-
-  console.log( "sami" );                      // sami
-  console.log( ..."sami" );                   // s a m i
-  console.log( [ ..."sami" ] );               // (4) ['s', 'a', 'm', 'i']
-  // -----------------------------
-
-  // concatenate
-  let myArr1 = [ 1, 2, 3 ];
-  let myArr2 = [ 4, 5, 6 ];
-
-  let allArr = [ ...myArr1, ...myArr2 ];
-
-  console.log( allArr );                      // (6) [1, 2, 3, 4, 5, 6]
-  // -----------------------------
-
-  // Copy array
-  let copyArr = [ ...myArr1, ...myArr1 ];
-
-  console.log( copyArr );                     // (6) [1, 2, 3, 1, 2, 3]
-  // -----------------------------
-
-  // push inside array
-  var myFriends = [ "osama", "Sami", "Ahmed" ];
-  let thisYearFriend = [ "Sameh", "Mahmoud" ];
-
-  myFriends.push( ...thisYearFriend );
-
-  console.log( myFriends );                   // (5) ['osama', 'Sami', 'Ahmed', 'Sameh', 'Mahmoud']
-  // -----------------------------
-
-  let myNums = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
-  console.log( Math.max( ...myNums ) );       // 9
-  // -----------------------------
-
-  // Spread With Objects => Merge Objects
-
-  let objOne = {
-    a: 1,
-    b: 2,
-  };
-  let objTwo = {
-    c: 3,
-    d: 4,
-  };
-
-  console.log( { ...objOne, ...objTwo, e: 5 } ); // {a: 1, b: 2, c: 3, d: 4, e: 5}
-
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  /*
-    Map And Set + What You Learn => Challenge
-    Requirements
-    - You Cant Use Numbers Or True Or False
-    - Don't Use Array Indexes
-    - You Cant Use Loop
-    - You Cant Use Any Higher Order Function
-    - Only One Line Solution Inside Console
-    - If You Use Length => Then Only Time Only
-    Hints
-    - You Can Use * Operator Only In Calculation
-    - Set
-    - Spread Operator
-    - Math Object Methods
-  */
-
-  let n1 = [ 10, 30, 10, 20 ];
-  let n2 = [ 30, 20, 10 ];
-
-  console.log( new Set( [ ...n1 ] ).size * new Array( ...n1, ...n2 ).length * Math.min( ...n1 ) ); // 210
 
   { // assignment
+    /*
+      Map And Set + What You Learn => Challenge
+      Requirements
+      - You Cant Use Numbers Or True Or False
+      - Don't Use Array Indexes
+      - You Cant Use Loop
+      - You Cant Use Any Higher Order Function
+      - Only One Line Solution Inside Console
+      - If You Use Length => Then Only Time Only
+      Hints
+      - You Can Use * Operator Only In Calculation
+      - Set
+      - Spread Operator
+      - Math Object Methods
+    */
+
+    {
+      let n1 = [ 10, 30, 10, 20 ];
+      let n2 = [ 30, 20, 10 ];
+
+      console.log( new Set( [ ...n1 ] ).size * new Array( ...n1, ...n2 ).length * Math.min( ...n1 ) ); // 210
+    }
     // -------------1111111111111
 
     const setOfNumbers = new Set( [ 10 ] );
@@ -7472,6 +7475,10 @@ ${ c } ${ d }` );
     console.log( new Set( [ ...n1 ] ).size * new Array( ...n1, ...n2 ).length * Math.min( ...n1 ) ); // 210
 
   }
+
+}
+// Regular Expression
+{
 
 }
 // Classes
@@ -7784,6 +7791,52 @@ Define a class Person with the following properties:
       rps('scissors','rock') // Player 2 won!
       rps('paper','paper') // Draw!
     */
+  }
+  // convert string to array by 6 methods
+  {
+    let str = "ProInPrograming";
+
+    console.log( [ ...str ] );                  // 1
+    console.log( Array.from( str ) );           // 2
+    console.log( Array.of( ...str ) );          // 3
+    console.log( str.split( '' ) );             // 4
+    console.log( Object.values( str ) );        // 5
+    console.log( Object.assign( [], str ) );    // 6
+
+    // Output
+    // (15) ['P', 'r', 'o', 'I', 'n', 'P', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 'n', 'g']
+
+    // console.log( [ ...new Set( str ) ] );    // 7
+  }
+  // convert  object to map
+  {
+    let myInfo = {
+      username: "Osama",
+      role: "Admin",
+      country: "Egypt",
+    };
+    console.log( Object.entries( myInfo ) );
+    let myInfoMap = new Map( Object.entries( myInfo ) );  // convert object to map
+    console.log( myInfoMap );                             // Map(3) {'username' => 'Osama', 'role' => 'Admin', 'country' => 'Egypt'}
+    console.log( myInfoMap.size );                        // 3
+    console.log( myInfoMap.has( 'role' ) );               // true
+  }
+  // concat array
+  {
+    let n1 = [ 1, 2, 3 ];
+    let n2 = [ 4, 5, 6 ];
+
+    console.log( [ ...n1, ...n2 ] );                                                        // 1
+    console.log( n1.concat( n2 ) );                                                         // 2
+    console.log( [].concat( n1, n2 ) );                                                     // 3
+    console.log( ( n1.join( "" ) + "" + n2.join( "" ) ).split( "" ).map( ( e ) => +e ) );   // 4
+    console.log( Array.from( [ n1, n2 ] ).flat() );                                         // 5
+
+    n1.push( ...n2 );
+    console.log( n1 );                                                                      // 6
+
+    // Needed Output
+    // [1, 2, 3, 4, 5, 6]
   }
 
 }
