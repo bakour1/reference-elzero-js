@@ -6904,113 +6904,85 @@ ${ c } ${ d }` );
 
 // Set Data Type
 {
-  /*
-    - Syntax : new Sat(Iterable)
-    -- Object To Store Unique Values
-    -- Cannot Access Elements By Index
+  //  Set Data Type And Methods
+  {
 
-    Properties :
-    - size
-
-    Methods :
-    - add
-    - delete
-    - clear
-    - has
-  */
-
-  let myData = [ 1, 1, 1, 2, 3, "A" ];
-  let myUniqueData = new Set( [ 1, 1, 1, 2, 3, "A" ] );
-  // or
-  let myUniqueData = new Set( myData );
-  // or
-  let myUniqueData = new Set().add( 1 ).add( 1 ).add( 1 ).add( 2 ).add( 3 );
-  // or
-  let myUniqueData = new Set();
-  myUniqueData.add( 1 ).add( 1 ).add( 1 ).add( 2 );
-  myUniqueData.add( 3 ).add( "A" );
-
-  console.log( myData );                                  // (6) [1, 1, 1, 2, 3, 'A']
-  console.log( myUniqueData );                            // Set(4) {1, 2, 3, 'A'}
-  console.log( [ ...myUniqueData ] );                     // (4) [1, 2, 3, 'A']
-  console.log( myUniqueData.size );                       // 4
-
-  myUniqueData.delete( 1 );
-  console.log( myUniqueData );                            // Set(3) {2, 3, 'A'}
-  console.log( myUniqueData.size );                       // 3
-
-  console.log( myUniqueData.delete( 22 ) );               // false
+    let myData = [ 1, 1, 1, 2, 3 ];
+    let myUniqueData = new Set( myData );                                          // Set is a collection of unique values;
+    console.log( myUniqueData.size );                                              // 3
+    console.log( myUniqueData.add( 4 ).add( 6 ) );                                 // Set(5) {1, 2, 3, 4, 6}
+    console.log( myUniqueData.delete( 4 ) );                                       // true
+    // console.log( myUniqueData.clear() );                                        // Set {}
+    console.log( myUniqueData.has( 1 ) );                                          // true
+    console.log( myUniqueData.values() );                                          // SetIterator {1, 2, 3, 6}
+    console.log( myUniqueData.keys() );                                            // SetIterator {1, 2, 3, 6}
+    console.log( myUniqueData.entries() );                                         // SetIterator {1 => 1, 2 => 2, 3 => 3, 6 => 6}
+    myUniqueData.forEach( ( value, key, set ) => console.log( value, key, set ) ); /* 1 1 Set(3) {1, 2, 3}
+                                                                                      2 2 Set(3) {1, 2, 3}
+                                                                                      3 3 Set(3) {1, 2, 3}
+                                                                                      6 6 Set(4) {1, 2, 3, 6}*/
+    console.log( myUniqueData.entries() );                                         // SetIterator {1 => 1, 2 => 2, 3 => 3, 6 => 6}
+    console.log( myUniqueData.keys() );                                            // SetIterator {1, 2, 3, 6}
+    let iterator = myUniqueData.values();
+    console.log( iterator );
+    console.log( iterator.next() );                                                // {value: 1, done: false}
+    console.log( iterator.next() );                                                // {value: 2, done: false}
+    console.log( iterator.next() );                                                // {value: 3, done: false}
+    console.log( iterator.next() );                                                // {value: 6, done: false}
+    console.log( iterator.next() );                                                // {value: undefined, done: true}
 
 
-  console.log( myUniqueData.has( "A" ) );                 // true
-  console.log( myUniqueData.has( "A".toUpperCase() ) );   // true
+  }
+  // - Set Vs WeakSet
+  {
+    /*
+      "
+        the weakSet is Weak,
+        meaning references to object in a weakSet are held weakly
+        if no other references to an object stored in the weakSet exist,
+        those object can be garbage collected
+      "
+      --
+      Set      => can store any data values
+      weakSet  => collection of object only
+      --
+      Set      => have size property
+      weakSet  => does not have size property
+      --
+      Set      => have keys , values , Entries
+      weakSet  => does not have clear , keys , values And Entries
+      --
+      Set      => can use forEach
+      weakSet  => cant use forEach
+      --
+      // weakSet to use cases
 
-  myUniqueData.clear();
-  console.log( myUniqueData );                            // Set(0) {size: 0}
-  console.log( myUniqueData.size );                       // 0
-  console.log( myUniqueData.has( "A" ) );                 // false
+      */
+    let myWeakSetE = [ 1, 1, 1, 2, 3 ];
+    // let myUniqueDataE = new WeakSet( myWeakSet );                                   // error - myWeakSet not obj
 
-
-
-  console.log( myData.filter( ( item, index ) => myData.indexOf( item ) === index ) );
-
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-  /*
-    - Set Vs WeakSet
-    "
-      the weakSet is Weak,
-      meaning references to object in a weakSet are held weakly
-      if no other references to an object stored in the weakSet exist,
-      those object can be garbage collected
-    "
-    --
-    Set      => can store any data values
-    weakSet  => collection of object only
-    --
-    Set      => have size property
-    weakSet  => does not have size property
-    --
-    Set      => have keys , values , Entries
-    weakSet  => does not have clear , keys , values And Entries
-    --
-    Set      => can use forEach
-    weakSet  => cant use forEach
-    --
-    // weakSet to use cases
-
-    */
-
-  let mySet = new Set( [ 1, 1, 1, 2, 3, "A", "A" ] );
-
-  console.log( mySet );                               // Set(4) {1, 2, 3, 'A'}
-  console.log( mySet.size );                          // 4
-  console.log( mySet.values() );                      // 4
-  console.log( mySet.keys() );                        // 4
-
-  let iterator = mySet.keys();
-  console.log( ( iterator ).next() );                 // {value: 1, done: false}
-  console.log( ( iterator ).next().value );           // 2
-  console.log( ( iterator ).next().value );           // 3
-  console.log( ( iterator ).next().done );            // false
-  console.log( ( iterator ).next().value );           // undefined
-  console.log( ( iterator ).next() );                 // {value: undefined, done: true}
-  console.log( ( iterator ).next().done );            // true
-
-  mySet.forEach( ( el ) => {
-    console.log( el );                                // 1.. 2.. 3.. A
-  } );
-
-  // ---------------------------------------------------------------------------------------
-  let myWeakSet = new WeakSet( [ { A: 1, B: 2, C: 3 } ] );
-
-  // console.log( myWeakSet );                        // Error , because not object
-  console.log( myWeakSet );                           // WeakSet {{…}}
-
-
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-
-  /*
+    let myWeakSet = [ { A: 1 }, { B: 2 } ];
+    let myUniqueData = new WeakSet( myWeakSet );                                   // error - myWeakSet not obj
+    let obj = { C: 3 };
+    console.log( myUniqueData );                                                   // WeakSet {{…}, {…}}
+    console.log( myUniqueData.size );                                              // undefined
+    // console.log( myUniqueData.add( 4 ) );                                       // error
+    console.log( myUniqueData.add( obj ) );                                        // WeakSet {{…}, {…}, {…}}
+    console.log( myUniqueData.has( obj ) );                                        // true
+    console.log( myUniqueData.delete( obj ) );                                     // true
+    // console.log( myUniqueData.clear() );                                        // Set {}
+    // console.log( myUniqueData.values() );                                       // Error
+    // console.log( myUniqueData.keys() );                                         // Error
+    // console.log( myUniqueData.entries() );                                      // Error
+    // myUniqueData.forEach( ( value ) => console.log( value ) );                  // Error
+    // console.log( myUniqueData.entries() );                                      // Error
+    // console.log( myUniqueData.keys() );                                         // Error
+    // let iterator = myUniqueData.values();                                       // Error
+    // console.log( iterator );                                                    // Error
+  }
+  // - Map vs WeakMap
+  {
+    /*
     - Map Data Type
     Syntax: new Map(Iterable With Key/Value)
     -- Map vs Object
@@ -7033,124 +7005,90 @@ ${ c } ${ d }` );
     ------ Map => Better Performance When Add Or Remove Data
     ------ Object => Low Performance When Comparing To Map
   */
-  let myObj = {};
-  let emptyObj = Object.create( null );
-  const myMap = new Map();
+    let myObj = {};
+    let myObjEmpty = Object.create( null );                                        // null prototype => no property
+    let myMap = new Map();                                                         // null prototype => no property
 
-  console.log( myObj );
-  console.log( emptyObj );
-  console.log( myMap );
-
-  let myNewObj = {
-    10: "number",
-    "10": "String",
-  };
-
-  console.log( myNewObj[ 10 ] );         // String
-
-  let myNewMap = new Map();
-  myNewMap.set( 10, "number" );
-  myNewMap.set( "10", "String" );
-  myNewMap.set( true, "bool" );
-  myNewMap.set( { a: 1, b: 2 }, "obj" );
-  myNewMap.set( function () { }, "func" );
-
-  console.log( myNewMap.get( 10 ) );     // number
-  console.log( myNewMap.get( "10" ) );   // String
-
-  console.log( myNewObj );               // {10: 'String'}
-  console.log( myNewMap );               // Map(5) {10 => 'number', '10' => 'String', true => 'bool', {…} => 'obj', ƒ => 'func'}
+    let myNewObj = {
+      10: 'number',
+      '10': 'string',
+    };
+    console.log( myNewObj[ 10 ] );                                                 // number
+    console.log( myNewObj[ '10' ] );                                               // number
 
 
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
+    let myNewMap = new Map();
+    let secWayToCreateMap = new Map( [
+      [ 10, 'number' ],
+      [ '10', 'string' ],
+      [ true, 'Boolean' ],
+      [ { a: 1 }, 'object' ],
+      [ function () { }, 'function' ]
+    ] );
 
-  /*
-    - Map Data Type
-    Methods
-    --- set
-    --- get
-    --- delete
-    --- clear
-    --- has
+    myNewMap.set( 10, 'number' );
+    myNewMap.set( '10', 'string' );
+    myNewMap.set( true, 'Boolean' );
+    myNewMap.set( { a: 1 }, 'object' );
+    myNewMap.set( function () { }, 'function' );
 
-    Properties
-    --- size
-  */
+    console.log( myNewMap.get( 10 ) );                                             // number
+    console.log( myNewMap.get( '10' ) );                                           // string
+
+    console.log( myNewObj );                                                       // {10: 'string'}
+    console.log( myNewMap );                                                       // Map(5) {10 => 'number', '10' => 'string', true => 'Boolean', {…} => 'object', ƒ => 'function'}
+    console.log( myNewMap.size );                                                  // 5
+
+    console.log( myNewMap.delete( 10 ) );                                          // true
+    console.log( myNewMap );                                                       // Map(4) {'10' => 'string', true => 'Boolean', {…} => 'object', ƒ => 'function'}
+    // myNewMap.clear();
+    console.log( myNewMap.has( '10' ) );                                           // true
+    console.log( myNewMap.keys() );                                                // MapIterator {'10', true, {…}, ƒ}
+    console.log( myNewMap.values() );                                              // MapIterator {'string', 'Boolean', 'object', 'function'}
+    console.log( myNewMap.entries() );                                             // MapIterator {'10' => 'string', true => 'Boolean', {…} => 'object', ƒ => 'function'}
+    console.log( myNewMap.forEach( ( value, key ) => console.log( key, value ) ) );/*main.js:44 true 'Boolean'
+                                                                                main.js:44 {a: 1} 'object'
+                                                                                main.js:44 ƒ () { } 'function'
+                                                                                main.js:44 undefined
+                                                                              */
+
+    /*  WeakMap Allows Garbage Collector To Do Its Task But Not Map.
+      --
+        Map     => Key Can Be Anything
+        WeakMap => Key Can Be Object Only
+      --
+    */
+
+    let mapUser = { theName: "elzero" };
+    let myMap = new Map();
+    myMap.set( mapUser, "object value" );
+
+    console.log( myMap );                     // Map(1) {{…} => 'object value'}
+
+    mapUser = null;
+
+    console.log( myMap );                     // Map(1) {{…} => 'object value'}
+
+    let weakMapUser = { theName: "elzero" };
+    let myWeakMap = new WeakMap();
+
+    myWeakMap.set( weakMapUser, "Value" );
+
+    mapWeakUser = null;
+
+    console.log( myWeakMap );
+  }
 
 
-  const myMap1 = new Map();
-  myMap1.set( 10, "Number" );
-  myMap1.set( "10", "String" );
-
-  console.log( myMap1 );                             // Map(2) {10 => 'Number', '10' => 'String'}
-
-  console.log( myMap1.get( 10 ) );                   // Number
-  console.log( myMap1.get( "10" ) );                 // String
-
-  // ----------------------------------------------------------------------
-  const myMap2 = new Map( [
-    [ 10, "Number" ],
-    [ "10", "String" ],
-    [ false, "bool" ]
-  ] );
-
-  console.log( myMap2 );                             // Map(3) {10 => 'Number', '10' => 'String', false => 'bool'}
-
-  console.log( myMap2.get( 10 ) );                   // Number
-  console.log( myMap2.get( "10" ) );                 // String
-  console.log( myMap2.get( false ) );                // bool
-  console.log( myMap2.size );                        // 3
-
-  console.log( myMap2.has( 10 ) );                   // true
-  console.log( myMap2.has( "10" ) );                 // true
-  console.log( myMap2.has( false ) );                // true
-
-  console.log( myMap2.delete() );                    // false
-  console.log( myMap2.delete( 55 ) );                // false
-  console.log( myMap2.delete( 10 ) );                // true
-  console.log( myMap2.size );                        // 2
-
-  myMap2.clear();
-  console.log( myMap2.size );                        // 0
 
 
-  /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
-  /*
-    - Map vs WeakMap
-    "
-      WeakMap Allows Garbage Collector To Do Its Task But Not Map.
-    "
-    --
-    Map     => Key Can Be Anything
-    WeakMap => Key Can Be Object Only
-    --
-  */
-
-  let mapUser = { theName: "elzero" };
-  let myMap = new Map();
-  myMap.set( mapUser, "object value" );
-
-  console.log( myMap );                     // Map(1) {{…} => 'object value'}
-
-  mapUser = null;
-
-  console.log( myMap );                     // Map(1) {{…} => 'object value'}
-
-  let weakMapUser = { theName: "elzero" };
-  let myWeakMap = new WeakMap();
-
-  myWeakMap.set( weakMapUser, "Value" );
-
-  mapWeakUser = null;
-
-  console.log( myWeakMap );
 
 
 
   /* ✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂✂ */
 
+  // Array Methods
   /*
-    Array Methods
     - Array.from(Iterable, MapFunc, This)
     --- Variable
     --- String Numbers
