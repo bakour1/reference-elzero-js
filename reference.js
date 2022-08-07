@@ -7684,126 +7684,258 @@ ${ c } ${ d }` );
 }
 // Classes
 {
-  class Car {
-    constructor ( name, year ) {
-      // properties
+  // – Constructor Function Introduction
+  {
+
+    // const userOne = {
+    //   id: 100,
+    //   userName: "elzero",
+    //   salary: 5000,
+    // };
+    // const userTwo = {
+    //   id: 101,
+    //   userName: "sami",
+    //   salary: 6000,
+    // };
+    // const userThree = {
+    //   id: 102,
+    //   userName: "osama",
+    //   salary: 7000,
+    // };
+
+    function User ( id, userName, salary ) {
+      this.i = id;
+      this.u = userName;
+      this.s = salary;
+    }
+
+    let userOne = new User( 100, 'elzero', 5000 );
+    let userTwo = new User( 101, 'sami', 6000 );
+    let userThree = new User( 102, 'osama', 7000 );
+
+    console.log( userOne );                             // User {i: 100, u: 'elzero', s: 5000}
+    console.log( userOne.i );                           // 100
+    console.log( userOne.u );                           // elzero
+    console.log( userOne.s );                           // 5000
+  }
+  // – Constructor Function New Syntax
+  {
+    class User {
+      constructor ( id, userName, salary ) {
+        this.i = id;
+        this.u = userName;
+        this.s = salary;
+      }
+    }
+
+    let userOne = new User( 100, 'elzero', 5000 );
+    let userTwo = new User( 101, 'sami', 6000 );
+    let userThree = new User( 102, 'osama', 7000 );
+
+    console.log( userOne );                             // User {i: 100, u: 'elzero', s: 5000}
+    console.log( userOne.i );                           // 100
+    console.log( userOne.u );                           // elzero
+    console.log( userOne.s );                           // 5000
+
+    console.log( userOne instanceof User );             // true
+    console.log( userOne.constructor === User );        // true
+
+  }
+  //  – Deal With Properties And Methods
+  {
+    class User {
+      constructor ( id, userName, salary ) {
+        // properties
+        this.i = id;
+        this.u = userName || "UnKnown";
+        this.s = salary < 6000 ? salary + 500 : salary;
+        this.msg = function () {
+          return `hello ${ this.u } your salary is ${ this.s }`;
+        };
+      }
+      // methods
+      writeMsg () {
+        return `hello ${ this.u } your salary is ${ this.s }`;
+      }
+    }
+
+    let userOne = new User( 100, 'elzero', 5000 );
+    let userTwo = new User( 101, '', 6000 );
+    let userThree = new User( 102, 'osama', 7000 );
+
+    console.log( userOne );                             // User {i: 100, u: 'elzero', s: 5000}
+    console.log( userOne.i );                           // 100
+    console.log( userOne.u );                           // elzero
+    console.log( userOne.s );                           // 5000
+    console.log( userOne.msg() );                       // hello elzero your salary is 5500
+
+    console.log( userOne instanceof User );             // true
+    console.log( userOne.constructor === User );        // true
+
+    console.log( userTwo.u );                           // UnKnown
+    console.log( userTwo.writeMsg() );                  // hello UnKnown your salary is 6000
+
+  }
+  //  – Update Properties And Built In Constructors
+  {
+    class User {
+      constructor ( id, userName, salary ) {
+        this.i = id;
+        this.u = userName;
+        this.s = salary;
+      }
+      updateName ( newName ) {
+        this.u = newName;
+      }
+    }
+
+    let userOne = new User( 100, 'elzero', 5000 );
+
+
+    console.log( userOne );                             // User {i: 100, u: 'elzero', s: 5000}
+    console.log( userOne.u );                           // elzero
+
+    userOne.updateName( "sami" );
+    console.log( userOne.u );                           // sami
+
+    let strOne = "elzero";
+    let strTwo = new String( "elzero" );
+
+    console.log( strOne );                              // elzero
+    console.log( strTwo );                              // String {'elzero'}
+
+    console.log( typeof strOne );                       // string
+    console.log( typeof strTwo );                       // object
+
+    console.log( strOne instanceof String );            // false
+    console.log( strTwo instanceof String );            // true
+
+    console.log( strOne.constructor === String );       // true
+    console.log( strTwo.constructor === String );       // true
+  }
+
+
+  {
+    class Car {
+      constructor ( name, year ) {
+        // properties
+        this.name = name;
+        this.year = year;
+      }
+
+      // Class Methods
+      age () {
+        let date = new Date();
+        return date.getFullYear() - this.year;
+      }
+
+      // send parameters to Class methods:
+      country ( x ) {
+        return `made in ${ x }`;
+      }
+    }
+    let myCar1 = new Car( "Ford", 2014 );
+    console.log( myCar1 );                      // Car {name: 'Ford', year: 2014}
+
+    let myCar2 = new Car( "Audi", 2019 );
+    console.log( myCar2 );                      // Car {name: 'Audi', year: 2019}
+
+    console.log( myCar2.age() );                // 2
+    console.log( myCar2.country( "Syria" ) );   // made in Syria
+
+
+    // Class Inheritance
+
+    class MyCar {
+      constructor ( brand ) {
+        this.carname = brand;
+      }
+      msg () {
+        return `i have a ${ this.carname }`;
+      }
+    }
+
+    class Model extends MyCar {
+      constructor ( brand, mod ) {
+        super( brand );
+        this.model = mod;
+      }
+      show () {
+        return `${ this.msg() } ,it is a ${ this.model }}`;
+      }
+    }
+
+    let myCarr = new Model( "Ford", "Mustang" );
+
+    console.log( myCarr );
+    console.log( myCarr.show() );
+
+
+
+
+
+
+
+    function Person ( name, age ) {
       this.name = name;
-      this.year = year;
+      this.age = age;
     }
 
-    // Class Methods
-    age () {
-      let date = new Date();
-      return date.getFullYear() - this.year;
+    const sami = new Person( "sami", 28 );
+    console.log( sami );                      // Person {name: 'sami', age: 28}
+
+    // Getters and Setters
+
+    class CarB {
+      constructor ( brand ) {
+        this._name = brand;
+      }
+      get cnam () {
+        return this._name;
+      }
+      set cnam ( x ) {
+        this._name = x;
+      }
+    }
+    let CarB1 = new CarB( "volvo" );
+    console.log( CarB1 );             // CarB {name: 'volvo'}
+    console.log( CarB1.cnam );        // volvo
+
+    CarB1.cnam = "sami";
+    console.log( CarB1 );             // CarB {name: 'sami'}
+
+    // Static Methods
+    class Car {
+      constructor ( name ) {
+        this.name = name;
+      }
+      static hello () {
+        return "Hello!!";
+      }
     }
 
-    // send parameters to Class methods:
-    country ( x ) {
-      return `made in ${ x }`;
+    let myCar = new Car( "Ford" );
+
+    // You can call 'hello()' on the Car Class:
+    console.log( Car.hello() );
+
+    // But NOT on a Car Object:
+    console.log( Car.hello() );
+    // this will raise an error.
+
+    // If you want to use the myCar object inside the static method, you can send it as a parameter:
+    class Car {
+      constructor ( name ) {
+        this.name = name;
+      }
+      static hello ( x ) {
+        return "Hello " + x.name;
+      }
     }
-  }
-  let myCar1 = new Car( "Ford", 2014 );
-  console.log( myCar1 );                      // Car {name: 'Ford', year: 2014}
+    let myCar = new Car( "Ford" );
+    console.log( Car.hello( myCar ) );
 
-  let myCar2 = new Car( "Audi", 2019 );
-  console.log( myCar2 );                      // Car {name: 'Audi', year: 2019}
-
-  console.log( myCar2.age() );                // 2
-  console.log( myCar2.country( "Syria" ) );   // made in Syria
-
-
-  // Class Inheritance
-
-  class MyCar {
-    constructor ( brand ) {
-      this.carname = brand;
-    }
-    msg () {
-      return `i have a ${ this.carname }`;
-    }
-  }
-
-  class Model extends MyCar {
-    constructor ( brand, mod ) {
-      super( brand );
-      this.model = mod;
-    }
-    show () {
-      return `${ this.msg() } ,it is a ${ this.model }}`;
-    }
-  }
-
-  let myCarr = new Model( "Ford", "Mustang" );
-
-  console.log( myCarr );
-  console.log( myCarr.show() );
-
-
-
-
-
-
-
-  function Person ( name, age ) {
-    this.name = name;
-    this.age = age;
-  }
-
-  const sami = new Person( "sami", 28 );
-  console.log( sami );                      // Person {name: 'sami', age: 28}
-
-  // Getters and Setters
-
-  class CarB {
-    constructor ( brand ) {
-      this._name = brand;
-    }
-    get cnam () {
-      return this._name;
-    }
-    set cnam ( x ) {
-      this._name = x;
-    }
-  }
-  let CarB1 = new CarB( "volvo" );
-  console.log( CarB1 );             // CarB {name: 'volvo'}
-  console.log( CarB1.cnam );        // volvo
-
-  CarB1.cnam = "sami";
-  console.log( CarB1 );             // CarB {name: 'sami'}
-
-  // Static Methods
-  class Car {
-    constructor ( name ) {
-      this.name = name;
-    }
-    static hello () {
-      return "Hello!!";
-    }
-  }
-
-  let myCar = new Car( "Ford" );
-
-  // You can call 'hello()' on the Car Class:
-  console.log( Car.hello() );
-
-  // But NOT on a Car Object:
-  console.log( Car.hello() );
-  // this will raise an error.
-
-  // If you want to use the myCar object inside the static method, you can send it as a parameter:
-  class Car {
-    constructor ( name ) {
-      this.name = name;
-    }
-    static hello ( x ) {
-      return "Hello " + x.name;
-    }
-  }
-  let myCar = new Car( "Ford" );
-  console.log( Car.hello( myCar ) );
-
-  {/* Problem Solving
+    {/* Problem Solving
 Time for some OOP fun!
 Define a class Person with the following properties:
 
@@ -7818,31 +7950,31 @@ Define a class Person with the following properties:
     - For example, if the race name is "Martians", it should say "Welcome to Planet Earth Martians"
 */
 
-    // Solution
+      // Solution
 
-    class Person {
-      constructor ( firstName = 'John', lastName = 'Doe', age = 0, gender = 'Male' ) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.gender = gender;
+      class Person {
+        constructor ( firstName = 'John', lastName = 'Doe', age = 0, gender = 'Male' ) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+          this.age = age;
+          this.gender = gender;
+        }
+        sayFullName () { return this.firstName + " " + this.lastName; };
+        static greetExtraTerrestrials ( raceName ) { return `Welcome to Planet Earth ${ raceName }`; }
       }
-      sayFullName () { return this.firstName + " " + this.lastName; };
-      static greetExtraTerrestrials ( raceName ) { return `Welcome to Planet Earth ${ raceName }`; }
+
+      const x = new Person();
+
+      console.log( x.firstName );                                          // John
+      console.log( x.lastName );                                           // Doe
+      console.log( x.age );                                                // 0
+      console.log( x.gender );                                             // Male
+      console.log( x.sayFullName() );                                      // John Doe
+      console.log( x.greetExtraTerrestrials( 'pro' ) );                    // Error because the method is static for Person not for x
+
+      console.log( Person.greetExtraTerrestrials( 'Pro in programing' ) ); // Welcome to Planet Earth Pro in programing
     }
-
-    const x = new Person();
-
-    console.log( x.firstName );                                          // John
-    console.log( x.lastName );                                           // Doe
-    console.log( x.age );                                                // 0
-    console.log( x.gender );                                             // Male
-    console.log( x.sayFullName() );                                      // John Doe
-    console.log( x.greetExtraTerrestrials( 'pro' ) );                    // Error because the method is static for Person not for x
-
-    console.log( Person.greetExtraTerrestrials( 'Pro in programing' ) ); // Welcome to Planet Earth Pro in programing
   }
-
 }
 
 //  Promise
