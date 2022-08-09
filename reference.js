@@ -7741,7 +7741,7 @@ ${ c } ${ d }` );
     console.log( userOne.constructor === User );        // true
 
   }
-  //  – Deal With Properties And Methods
+  // – Deal With Properties And Methods
   {
     class User {
       constructor ( id, userName, salary ) {
@@ -7776,7 +7776,7 @@ ${ c } ${ d }` );
     console.log( userTwo.writeMsg() );                  // hello UnKnown your salary is 6000
 
   }
-  //  – Update Properties And Built In Constructors
+  // – Update Properties And Built In Constructors
   {
     class User {
       constructor ( id, userName, salary ) {
@@ -7812,6 +7812,232 @@ ${ c } ${ d }` );
 
     console.log( strOne.constructor === String );       // true
     console.log( strTwo.constructor === String );       // true
+  }
+  // –  Class Static Properties And Methods
+  {
+    class User {
+
+      count = 0;
+      // // Static Properties
+      static countStatic = 1;
+
+      constructor ( id, userName, salary ) {
+        this.i = id;
+        this.u = userName;
+        this.s = salary;
+        User.countStatic++;
+      }
+      sayHello () {
+        return 'Hello';
+      }
+      // Static Methods
+      static sayHelloStatic () {
+        return 'hello from static';
+      }
+      static countMembers () {
+        return `${ this.countStatic } Members Created`;
+      }
+    }
+
+    let userOne = new User( 100, 'elzero', 5000 );
+    let userTwo = new User( 101, 'Sami', 6000 );
+
+    console.log( userOne.u );                        // elzero
+    console.log( userTwo.u );                        // Sami
+
+    console.log( userOne.count );                    // 0
+    console.log( User.count );                       // undefined
+
+    console.log( userOne.sayHello() );               // Hello
+    // console.log( User.sayHello() );               // error
+
+    console.log( userOne.countStatic );              // undefined
+    console.log( User.countStatic );                 // 3
+
+    // console.log( userOne.sayHelloStatic() );      // error
+    console.log( User.sayHelloStatic() );            // hello from static
+
+    console.log( User.countMembers() );              // 3 Members Created
+  }
+  // – Class Inheritance
+  {
+    // parent Class
+    class User {
+      constructor ( id, userName, email ) {
+        this.i = id;
+        this.u = userName;
+        this.e = email;
+      }
+
+      sayHello () {
+        return 'Hello';
+      }
+    }
+
+    // Derived Class Derived=> مستمد
+    class Admin extends User {
+      constructor ( id, userName, email, permissions ) {
+        super( id, userName, email );
+        this.p = permissions;
+      }
+      // methods also well be extended auto
+    }
+
+    class Sami extends Admin {
+      constructor ( id, userName, email, permissions, country ) {
+        super( id, userName, email, permissions, );
+        this.c = country;
+      }
+    }
+
+
+    let userOne = new User( 100, 'elzero', 'email@e.com' );
+    console.log( userOne.i );                                  // 100
+    console.log( userOne.u );                                  // elzero
+    console.log( userOne.e );                                  // email@e.com
+
+    let adminOne = new Admin( 200, 'Sami', 'Sami@e.com', 1 );
+    console.log( adminOne.i );                                 // 200
+    console.log( adminOne.u );                                 // Sami
+    console.log( adminOne.e );                                 // Sami@e.com
+    console.log( adminOne.p );                                 // 1
+    console.log( adminOne.sayHello() );                        // Hello
+
+    let samiOne = new Sami( 1, 'Sami', 'sami@sami', 11 );
+    console.log( samiOne.i );                                 // 1
+    console.log( samiOne.u );                                 // Sami
+    console.log( samiOne.e );                                 // sami@sami.com
+    console.log( samiOne.p );                                 // 11
+    console.log( samiOne.sayHello() );                        // Hello
+  }
+  // – Class Encapsulation
+  {
+    class User {
+      // private property
+      #e;
+      constructor ( id, userName, eSalary ) {
+        this.i = id;
+        this.u = userName;
+        this.#e = eSalary;
+      }
+      getSalary () {
+        return parseInt( this.#e ) * 0.3;
+      }
+    }
+
+    let userOne = new User( 100, 'elzero', '5000 dollar' );
+    console.log( userOne );                                    // User {i: 100, u: 'elzero', #e: '5000 dollar'}
+    console.log( userOne.i );                                  // 100
+    console.log( userOne.u );                                  // elzero
+    console.log( userOne.getSalary() );                        // 1500
+
+    class Admin extends User {
+      constructor ( id, userName, eSalary ) {
+        super( id, userName, eSalary );
+      }
+    }
+
+    let sami = new Admin( '1', 'Sami', '1000 dollar' );
+    console.log( sami );                                        // Admin {i: '1', u: 'Sami', #e: '1000 dollar'}
+    console.log( sami.i );                                      // 1
+    console.log( sami.u );                                      // Sami
+    console.log( sami.getSalary() );                            // 300
+
+
+  }
+  // – Class Encapsulation, Prototype Introduction , Add To Prototype Chain
+  {
+    class User {
+      constructor ( id, userName ) {
+        this.i = id;
+        this.u = userName;
+
+      }
+      sayHello () {
+        return 'hello';
+      }
+    }
+
+    let userOne = new User( 100, 'elzero', '5000 dollar' );
+    console.log( userOne.i );                                     // 100
+    console.log( userOne.u );                                     // elzero
+    console.log( userOne.sayHello() );                            // hello
+
+    console.log( userOne );                                       // User {i: 100, u: 'elzero'}
+    console.log( User.prototype );                                // {constructor: ƒ, sayHello: ƒ}
+
+    // add method to user prototype
+    User.prototype.sayWelcome = function () {
+      return 'welcome';
+    };
+
+    console.log( User.prototype );                                // {sayWelcome: ƒ, constructor: ƒ, sayHello: ƒ}
+    console.log( User.prototype.sayWelcome() );                   // welcome
+
+    console.log( userOne.sayWelcome() );                          // {sayWelcome: ƒ, constructor: ƒ, sayHello: ƒ}
+
+    Object.prototype.love = function () {
+      return 'i love Elzero';
+    };
+
+    console.log( userOne.love() );                                // i love Elzero
+    console.log( String.prototype.love() );                       // i love Elzero
+
+    Object.prototype.addDoteBefAndAft = function ( val ) {
+      return `=${ val }=`;
+    };
+    console.log( userOne.addDoteBefAndAft( 'userOne' ) );         // =userOne=
+    console.log( String.prototype.addDoteBefAndAft( 'String' ) ); // =String=
+  }
+  // – Object Meta Data And Descriptor Part 1
+  {
+
+    const myObject = {
+      a: 1,
+      b: 2,
+    };
+
+    // add or edit prop to obj
+    Object.defineProperty( myObject, "c", {
+      writable: true,                                         // if true i can to edit value
+      enumerable: true,                                       // if true it will looped with loop
+      configurable: false,                                    // if false i cant to delete this prop or redefinePrp
+      value: 3,
+    } );
+
+    console.log( myObject );                                  // {a: 1, b: 2, c: 3}
+
+    // writable = true ? => will edit: not edit
+    myObject[ "c" ] = 5;
+    console.log( myObject );                                  // {a: 1, b: 2, c: 5}
+    console.log( delete myObject.c );                         // false
+  }
+  // – Object Meta Data And Descriptor Part 2
+  {
+    const myObject = {
+      a: 1,
+      b: 2,
+    };
+
+    Object.defineProperties( myObject, {
+      c: {
+        configurable: true,
+        value: 3,
+      },
+      d: {
+        configurable: true,
+        value: 4,
+      },
+      e: {
+        configurable: true,
+        value: 5,
+      },
+    } );
+
+    console.log( myObject );                                         // {a: 1, b: 2, c: 3, d: 4, e: 5}
+
+    console.log( Object.getOwnPropertyDescriptor( myObject, "c" ) ); // {value: 3, writable: false, enumerable: false, configurable: true}
+    console.log( Object.getOwnPropertyDescriptors( myObject, "c" ) ); // {a: {…}, b: {…}, c: {…}, d: {…}, e: {…}}
   }
 
 
@@ -8220,6 +8446,11 @@ Define a class Person with the following properties:
       }
     } );
   }
-
+  // add dash after 4th number
+  {
+    let numberCard = '12345=6781234-5678';
+    let setNumber1 = cleanNumber.replace( /(\d{4})(\d{4})(\d{4})(\d{4})/, "$1-$2-$3-$4" );
+    console.log( setNumber1 );               // 1234-5678-1234-5678
+  }
 
 }
