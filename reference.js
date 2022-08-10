@@ -8202,6 +8202,396 @@ Define a class Person with the following properties:
     }
   }
 }
+//  Date, Generators, Modules
+{
+  // – Date And Time Introduction
+  {
+    let dateNow = new Date();
+    console.log( dateNow );                       // Tue Aug 09 2022 22:27:04 GMT+0100 (British Summer Time)
+    console.log( Date.now() );                    // 1660080492092       ==> 1000 Mill = 1 second
+
+    let seconds = Date.now() / 1000;
+    console.log( seconds );
+
+    let minutes = seconds / 60;
+    console.log( minutes );
+
+    let hours = minutes / 60;
+    console.log( hours );
+
+    let days = hours / 24;
+    console.log( days );
+
+    let weeks = days / 7;
+    console.log( weeks );
+
+    let months = weeks / 4;
+    console.log( months );
+
+    let years = days / 365;
+    console.log( years );
+  }
+  // – Get Date And Time
+  {
+    let dateNow = new Date();
+    let birthday = new Date( "Aug 20, 93" );
+
+    console.log( dateNow );                                             // Tue Aug 09 2022 22:45:53 GMT+0100 (British Summer Time)
+    console.log( birthday );                                            // Fri Aug 20 1993 00:00:00 GMT+0100 (British Summer Time)
+
+    let age = dateNow - birthday;
+    console.log( ( age / 1000 / 60 / 60 / 24 / 365 ).toFixed() );       // 29
+
+    console.log( dateNow );
+    console.log( dateNow.getTime() );                                   // 1660081902817
+    console.log( dateNow.getDate() );                                   // 9
+    console.log( dateNow.getFullYear() );                               // 2022
+    console.log( dateNow.getMonth() );                                  // 7  => index of month
+    console.log( dateNow.getDay() );                                    // 2  => index of day
+    console.log( dateNow.getHours() );                                  // 22
+    console.log( dateNow.getMilliseconds() );                           // 817
+    console.log( dateNow.getMinutes() );                                // 51
+    console.log( dateNow.getSeconds() );                                // 42
+  }
+  // – Set Date And Time
+  {
+    /*
+    Date And Time
+    - setTime(Milliseconds)
+    - setDate() => Day Of The Month [Negative And Positive]
+    - setFullYear(year, month => Optional [0-11], day => Optional [1-31])
+    - setMonth(Month [0-11], Day => Optional [1-31]) [Negative And Positive]
+    - setHours(Hours [0-23], Minutes => Optional [0-59], Seconds => Optional [0-59], MS => Optional [0-999])
+    - setMinutes(Minutes [0-59], Seconds => Optional [0-59], MS => Optional [0-999])
+    - setSeconds(Seconds => [0-59], MS => Optional [0-999])
+    */
+    let dateNow = new Date();
+    console.log( dateNow );                                             // Tue Aug 09 2022 22:57:37 GMT+0100 (British Summer Time)
+
+    dateNow.setTime( 0 );
+    console.log( dateNow );                                             // Thu Jan 01 1970 01:00:00 GMT+0100 (Greenwich Mean Time)
+
+    // after 10 seconds
+    dateNow.setTime( 10000 );
+    console.log( dateNow );                                             // Thu Jan 01 1970 01:00:10 GMT+0100 (Greenwich Mean Time)
+
+    dateNow.setDate( 1 );
+    console.log( dateNow );                                             // Mon Aug 01 2022 23:04:00 GMT+0100 (British Summer Time)
+
+
+    dateNow.setFullYear( 2020, 1 );
+    console.log( dateNow );                                             // Sun Feb 09 2020 23:07:32 GMT+0000 (Greenwich Mean Time)
+
+
+    dateNow.setMonth( 1, 10 );
+    console.log( dateNow );                                             // Thu Feb 10 2022 23:09:10 GMT+0000 (Greenwich Mean Time)
+
+    dateNow.setHours( 10, 30, 40 );
+    console.log( dateNow );                                             // Tue Aug 09 2022 10:30:40 GMT+0100 (British Summer Time)
+
+  }
+  // – Formatting Date And Time
+  {
+    /*
+      Date And Time
+
+      new Date(timestamp)
+      new Date(Date String)
+      new Date(Numeric Values)
+
+      Format
+      - "Oct 25 1982"
+      - "10/25/1982"
+      - "1982-10-25" => ISO International Standard
+      - "1982 10"
+      - "1982"
+      - "82"
+      - 1982, 9, 25, 2, 10, 0
+      - 1982, 9, 25
+      - "1982-10-25T06:10:00Z"
+
+      Date.parse("String") // Read Date From A String
+    */
+    console.log( Date.parse( "Aug 20 1993" ) );
+
+    let date1 = new Date( 0 );
+    console.log( date1 );                                                       // Thu Jan 01 1970 01:00:00 GMT+0100 (Greenwich Mean Time)
+
+    let date2 = new Date( 745801200000 );
+    console.log( date2 );                                                       // Fri Aug 20 1993 00:00:00 GMT+0100 (British Summer Time)
+
+    let date3 = new Date( "8-20-1993" );
+    console.log( date3 );                                                       // Fri Aug 20 1993 00:00:00 GMT+0100 (British Summer Time)
+
+    let date4 = new Date( "1993-8-20" );
+    console.log( date4 );                                                       // Fri Aug 20 1993 00:00:00 GMT+0100 (British Summer Time)
+
+    let date5 = new Date( "1993-8" );
+    console.log( date5 );                                                       // Sun Aug 01 1993 00:00:00 GMT+0100 (British Summer Time)
+
+    let date6 = new Date( "93" );
+    console.log( date6 );                                                       // Fri Jan 01 1993 00:00:00 GMT+0000 (Greenwich Mean Time)
+
+    let date7 = new Date( 1993, 7, 20, 2, 8, 0 );
+    console.log( date7 );                                                       // Fri Aug 20 1993 02:08:00 GMT+0100 (British Summer Time)
+
+    let date8 = new Date( 1993, 7, 20 );
+    console.log( date8 );                                                       // Fri Aug 20 1993 00:00:00 GMT+0100 (British Summer Time)
+
+    let date9 = new Date( "1993-08-25T06:10:00Z" );
+    console.log( date9 );                                                       // Wed Aug 25 1993 07:10:00 GMT+0100 (British Summer Time)
+
+    let date10 = new Date( "1993-08-25T06:10:00" );
+    console.log( date10 );                                                      // Wed Aug 25 1993 06:10:00 GMT+0100 (British Summer Time)
+  }
+  // – Tracking Operations Time
+  {
+    /*
+      Date And Time
+      - Track Operations Time
+
+      Search
+      - performance.now()
+      - performance.mark()
+    */
+
+    // Start Time
+    let start = new Date();
+
+    let a = performance.now();
+    console.log( a );
+    // operation
+
+    for ( let i = 0; i < 10000; i++ ) {
+      document.write( `<div>${ i }</div>` );
+    }
+
+    // End Time
+    let end = new Date();
+
+    // operation Duration
+    let duration = end - start;
+    console.log( duration );
+
+  }
+}
+// – Generator Function
+{
+  // – Generator Function Introduction
+  {
+    /*
+    Generators
+    - Generator Function Run Its Code When Required.
+    - Generator Function Return Special Object [Generator Object]
+    - Generators Are Iterable
+  */
+
+    function* generateNumbers () {
+      yield 1;
+      console.log( "Hello After Yield 1" );
+      yield 2;
+      yield 3;
+      yield 4;
+    }
+
+    let generator = generateNumbers();
+
+    console.log( typeof generator );                          // object
+    console.log( generator );                                 // generateNumbers {<suspended>}
+
+    console.log( generator.next() );
+    console.log( generator.next() );
+    console.log( generator.next() );
+    console.log( generator.next() );
+    console.log( generator.next() );
+
+    /* Output
+      {value: 1, done: false}
+      main.js:12 Hello After Yield 1
+      main.js:24 {value: 2, done: false}
+      main.js:25 {value: 3, done: false}
+      main.js:26 {value: 4, done: false}
+      main.js:27 {value: undefined, done: true}
+    */
+
+    for ( const value of generateNumbers() ) {
+      console.log( value );
+    }
+    /* Output
+        main.js:39 1
+        main.js:12 Hello After Yield 1
+        main.js:39 2
+        main.js:39 3
+        main.js:39 4
+     */
+
+
+    for ( const value of generator ) {
+      console.log( value );
+    }
+    /* output
+       none because th done is true when i use generator.next() 5 times
+    */
+
+    let generatorTest = [ 0, ...generateNumbers() ];
+    console.log( generatorTest );
+
+    /* output
+       main.js:12 Hello After Yield 1
+       main.js:58 (5) [0, 1, 2, 3, 4]
+    */
+  }
+  // – Delegate Generator Function
+  {
+
+    function* generateNums () {
+      yield 1;
+      yield 2;
+      yield 3;
+    }
+
+    function* generateLetters () {
+      yield "A";
+      yield "B";
+      yield "C";
+    }
+
+    function* generateAll () {
+      yield* generateNums();
+      yield* generateLetters();
+      yield* [ 4, 5, 6 ];  // * IF NOT USE * WILL RETURN ARR INTO ITERATOR
+    }
+
+    let generator = generateAll();
+    console.log( generator );                               // generateAll {<suspended>}
+    console.log( generator.next() );                        // {value: 1, done: false}
+    console.log( generator.next() );                        // {value: 2, done: false}
+    console.log( generator.next() );                        // {value: 3, done: false}
+    console.log( generator.next() );                        // {value: 'A', done: false}
+    // console.log( generator.return("HHH") );                   // RETURN WELL MAKE DONE IS TRUE AND STOP ITERATOR
+    console.log( generator.next() );                        // {value: 'B', done: false}
+    console.log( generator.next() );                        // {value: 'C', done: false}
+    console.log( generator.next() );                        // {value: 4, done: false}
+    console.log( generator.next() );                        // {value: 5, done: false}
+    console.log( generator.next() );                        // {value: 6, done: false}
+    console.log( generator.next() );                        // {value: undefined, done: true}
+
+
+
+
+
+
+  }
+  // – Generate Infinite Numbers
+  {
+    /*
+      Generators
+      - Generate Infinite Numbers
+      - Use Return Inside Generators
+    */
+
+    function* generateNumbers () {
+      // yield 1;
+      // yield 2;
+      // return "A";
+      // yield 3;
+      // yield 4;
+      let index = 0;
+
+      while ( true ) {
+        yield index++;
+      }
+    }
+
+    let generator = generateNumbers();
+
+    console.log( generator.next() );
+    console.log( generator.next() );
+    console.log( generator.next() );
+    console.log( generator.next() );
+
+    /* oUTPUT
+    main.js:24 {value: 0, done: false}
+    main.js:25 {value: 1, done: false}
+    main.js:26 {value: 2, done: false}
+    main.js:27 {value: 3, done: false}
+     */
+
+  }
+}
+// javascript Module
+{
+  // – Module Import And Export
+  {
+    // add type = "module" to attr link script into html
+    { // main.js
+      export let a = 10;
+      export let arr = [ 1, 2, 3, 4 ];
+
+      export function saySomeThing () {
+        return 'SomeThing';
+      }
+
+      // method 2 export
+      /*
+        let a = 10;
+        let arr = [ 1, 2, 3, 4 ];
+
+        function saySomeThing () {
+          return 'SomeThing';
+        }
+
+        export {
+          a, arr, saySomeThing
+        };
+      */
+    }
+    { // app.js
+      import { a, arr, saySomeThing as s } from "./main.js";
+
+      console.log( a );                                     // 10
+      console.log( arr );                                   // (4) [1, 2, 3, 4]
+      console.log( s() );                        // SomeThing
+
+    }
+  }
+  // – Named vs Default Export And Import All
+  {
+    /*
+    Modules
+    - Export Alias
+    - Named Export
+    - Default Export
+    - Import All
+  */
+
+    { // main.js
+      let a = 10;
+      let arr = [ 1, 2, 3, 4 ];
+
+      function saySomeThing () {
+        return 'SomeThing';
+      }
+
+      export { a as myNumber, arr, saySomeThing };
+      export default function sayHello () {              // WE CAN USE ANONYMOUS FUNC
+        return 'hello';
+      }
+    }
+    { //app.js
+      // import sayHello, { myNumber, arr, saySomeThing as s } from "./main.js";
+      import * as all from "./main.js";
+      console.log( all );
+      console.log( all.myNumber );                              // 10
+      console.log( all.arr );                                   // (4) [1, 2, 3, 4]
+      console.log( all.saySomeThing() );                        // SomeThing
+      console.log( all.default() );                             // hello
+
+
+
+    }
+  }
+}
 
 //  Promise
 {

@@ -1,28 +1,22 @@
+let dateNow = new Date();
+let dateBirthday = new Date( "1993-08-20" );
+let ageDate = dateNow - dateBirthday;
 
-class Car {
-  constructor ( name, model, price ) {
-    this.n = name;
-    this.m = model;
-    this.p = price;
-  }
-  run () {
-    return `Car Is Running Now`;
-  }
-
-  stop () {
-    return `Car Is Stopped`;
-  }
-}
-
-let carOne = new Car( 'MG', '2022', '420000' );
-let carTwo = new Car( 'Audi', '2010', '8000' );
-let carThree = new Car( 'BMW', '2020', '9000' );
-
-console.log( `Car One Name Is ${ carOne.n } And Model Is ${ carOne.m } And Price Is ${ carOne.p }` );
-console.log( carOne.run() );
+console.log( `
+  ${ ( ageDate / 1000 ).toFixed() } Seconds
+  ${ ( ageDate / 1000 / 60 ).toFixed() } Minutes
+  ${ ( ageDate / 1000 / 60 / 60 ).toFixed() } Hours
+  ${ ( ageDate / 1000 / 60 / 60 / 24 ).toFixed() } Days
+  ${ ( ageDate / 1000 / 60 / 60 / 24 / 31 ).toFixed() } Months
+  ${ ( ageDate / 1000 / 60 / 60 / 24 / 365 ).toFixed() } Years
+`);
 
 
-// Needed Output
-
-// "Car One Name Is MG And Model Is 2022 And Price Is 420000"
-// "Car Is Running Now"
+/* Needed Output
+  "1247939400 Seconds"
+  "20798990 Minutes"
+  "346650 Hours"
+  "14444 Days"
+  "481 Months"
+  "40 Years"
+ */
