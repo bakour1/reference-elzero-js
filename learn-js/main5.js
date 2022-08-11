@@ -1,30 +1,11 @@
-const myObj = {
-  username: "Elzero",
-  id: 100,
-  score: 1000,
-  country: "Egypt",
-};
+let start = performance.now();
 
-// Write Your Code Here
-Object.defineProperties( myObj, {
-  score: {
-    writable: false,
-  },
-  id: {
-    enumerable: false,
-  },
-} );
-delete myObj.country;
-myObj.score = 500;
+for ( let i = 0; i < 99999; i++ ) { console.log( i ); }
 
-for ( let prop in myObj ) {
-  console.log( `${ prop } => ${ myObj[ prop ] }` );
-}
+let end = performance.now();
+let pref = end - start;
 
-console.log( myObj );
+console.log( `Loop Took ${ parseInt( pref ) } Milliseconds.` );
 
 // Needed Output
-
-// "username => Elzero";
-// "score => 1000";
-// { username: 'Elzero', score: 1000, id: 100; }
+// "Loop Took 1921 Milliseconds."

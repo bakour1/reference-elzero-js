@@ -8202,7 +8202,7 @@ Define a class Person with the following properties:
     }
   }
 }
-//  Date, Generators, Modules
+//  Date
 {
   // – Date And Time Introduction
   {
@@ -8372,6 +8372,35 @@ Define a class Person with the following properties:
     // operation Duration
     let duration = end - start;
     console.log( duration );
+
+  }
+  // How to get the name of the day
+  {
+    const weekday = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
+
+    let d = new Date( dataTime ).getDay();          // 2
+    let day = weekday[ d ];
+
+    console.log( day );                             // Tuesday
+
+    /* ----------------------------------------------------------- */
+  }
+  // format Time as 00:00 AM
+  {
+
+    function formatAMPM ( date ) {
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'pm' : 'am';
+
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
+    }
+
+    console.log( formatAMPM( new Date() ) );        // 6:10 pm
 
   }
 }
@@ -8592,7 +8621,56 @@ Define a class Person with the following properties:
     }
   }
 }
+// AJAX + JSON
+{
+  // What Is JSON ?
+  {
+    // يمكنك الفصل بين كل JSON Object والآخر عن طريق علامة ال Comma “,” ووضعهم كلهم داخل Square Brackets []
+    /*
+      - JavaScript Object Notation
+      - Format For Sharing Data Between Server And Client
+      - JSON Derived From JavaScript
+      - Alternative To XML
+      - File Extension Is .json
 
+      Why JSON ?
+      - Easy To Use And Read
+      - Used By Most Programming Languages And Its Frameworks
+      - You Can Convert JSON Object To JS Object And Vice Versa
+
+      JSON vs XML
+      ===================================================
+      = Text Based Format      = Markup Language        =
+      = Lightweight            = Heavier                =
+      = Does Not Use Tags      = Using Tags             =
+      = Shorter                = Not Short              =
+      = Can Use Arrays         = Cannot Use Arrays      =
+      = Not Support Comments   = Support Comments       =
+      ===================================================
+    */
+  }
+  // – JSON Syntax And Compare With JS Object
+  {
+    /*
+      JSON Syntax
+      - Data Added Inside Curly Braces {  }
+      - Data Added With Key : Value
+      - Key Should Be String Wrapped In Double Quotes
+      - Data Separated By Comma
+      - Square Brackets [] For Arrays
+      - Curly Braces {} For Objects
+
+      Available Data Types
+      - String
+      - Number
+      - Object
+      - Array
+      - Boolean Values
+      - null
+    */
+  }
+
+}
 //  Promise
 {
   // const myPromise = new Promise( function ( myResolve, myReject ) {
