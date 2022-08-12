@@ -8897,47 +8897,368 @@ Define a class Person with the following properties:
 }
 //  Promise
 {
-  // const myPromise = new Promise( function ( myResolve, myReject ) {
-  //   // "Producing Code" (May take some time)
+  // – Promise Intro And Syntax
+  {
+    /*
+      To Understand Ajax, Fetch, Promises
 
-  //   myResolve(); // when successful
-  //   myReject();  // when error
-  // } );
+      Pyramid Of Doom || Callback Hell
 
-  // // "Consuming Code" (Must wait for a fulfilled Promise).
-  // myPromise.then(
-  //   function ( value ) { /* code if successful */ },
-  //   function ( error ) { /* code if some error */ }
-  // );
-  // console.log( myPromise );
+      - What Is Callback
+      - Callback Hell Example
 
-  /* -------------------------------------------------------------------------------------- */
+      What Is Callback
+      - A Function That Is Passed Into Another One As An Argument To Be Executed Later
+      - Function To Handle Photos
+      --- [1] Download Photo From URL
+      --- [2] Resize Photo
+      --- [3] Add Logo To The Photo
+      --- [4] Show The Photo In Website
+    */
 
-  const myPromise = new Promise( function ( myResolve, myReject ) {
-    setTimeout( function () { myResolve( "I love You !!" ); }, 3000 );
-  } );
+    function makeItRed ( e ) {
+      e.target.style.color = "red";
+    }
 
-  myPromise.then( function ( value ) {
-    console.log( value );
-  } );
+    let p = document.querySelector( ".test" );
+    p.addEventListener( "click", makeItRed );
 
-  const myProm = new Promise( function ( myRes, myRej ) {
-    setTimeout( function () {
-      myRes( "HELLLLLO" );
-    }, 5000 );
-  } );
-  myProm.then( x => console.log( x ) );
+    function iamACallback () {
+      console.log( "Iam A Callback Function" );
+    }
 
-  // -------------------------
-  /*
-  let myPromise = new Promise();
+    setTimeout( iamACallback, 2000 );
 
-    myPromise.then();
-    myPromise.catch();
-    myPromise.finally();
+    setTimeout( () => {
+      console.log( "Download Photo From URL" );
+      setTimeout( () => {
+        console.log( "Resize Photo" );
+        setTimeout( () => {
+          console.log( "Add Logo To The Photo" );
+          setTimeout( () => {
+            console.log( "Show The Photo In Website" );
+          }, 1000 );
+        }, 1000 );
+      }, 1000 );
+    }, 1000 );
+  }
+  // – Promise Intro And Syntax
+  {
+    /*
+      Promise Intro And Syntax
+      - Promise In JavaScript Is Like Promise In Real Life
+      - Promise Is Something That Will Happen In The Future
+      - Promise Avoid Callback Hell
+      - Promise Is The Object That Represent The Status Of An Asynchronous Operation And Its Resulting Value
+
+      - Promise Status
+      --- Pending: Initial State
+      --- Fulfilled: Completed Successfully
+      --- Rejected: Failed
+
+      Story
+      - Once A Promise Has Been Called, It Will Start In A Pending State
+      - The Created Promise Will Eventually End In A Resolved State Or In A Rejected State
+      - Calling The Callback Functions (Passed To Then And Catch) Upon Finishing.
+
+      - Then
+      --- Takes 2 Optional Arguments [Callback For Success Or Failure]
+    */
+
+    // const myPromise = new Promise((resolveFunction, rejectFunction) => {
+    //   let connect = false;
+    //   if (connect) {
+    //     resolveFunction("Connection Established");
+    //   } else {
+    //     rejectFunction(Error("Connection Failed"));
+    //   }
+    // }).then(
+    //   (resolveValue) => console.log(`Good ${resolveValue}`),
+    //   (rejectValue) => console.log(`Bad ${rejectValue}`)
+    // );
+
+    const myPromise = new Promise( ( resolveFunction, rejectFunction ) => {
+      let connect = true;
+      if ( connect ) {
+        resolveFunction( "Connection Established" );
+      } else {
+        rejectFunction( Error( "Connection Failed" ) );
+      }
+    } );
+
+    console.log( myPromise );
+
+    let resolver = ( resolveValue ) => console.log( `Good ${ resolveValue }` );
+    let rejecter = ( rejectValue ) => console.log( `Bad ${ rejectValue }` );
+
+    myPromise.then( resolver, rejecter );
+
+    myPromise.then(
+      ( resolveValue ) => console.log( `Good ${ resolveValue }` ),
+      ( rejectValue ) => console.log( `Bad ${ rejectValue }` )
+    );
+
+    myPromise.then(
+      ( resolveValue ) => console.log( `Good ${ resolveValue }` ),
+      ( rejectValue ) => console.log( `Bad ${ rejectValue }` )
+    );
+  }
+  // – Promise – Then, Catch And Finally
+  {
+    /*
+    /*
+      Promise Training
+
+      We Will Go To The Meeting, Promise Me That We Will Find The 4 Employees
+      .then(We Will Choose Two People)
+      .then(We Will Test Them Then Get One Of Them)
+      .catch(No One Came)
+
+      Then    => Promise Is Successfull Use The Resolved Data
+      Catch   => Promise Is Failed, Catch The Error
+      Finally => Promise Successfull Or Failed Finally Do Something
+    */
+
+    const myPromise = new Promise( ( resolveFunction, rejectFunction ) => {
+      let employees = [];
+      if ( employees.length === 4 ) {
+        resolveFunction( employees );
+      } else {
+        rejectFunction( Error( "Number Of Employees Is Not 4" ) );
+      }
+    } );
+
+    myPromise
+      .then( ( resolveValue ) => {
+        resolveValue.length = 2;
+        return resolveValue;
+      } )
+      .then( ( resolveValue ) => {
+        resolveValue.length = 1;
+        return resolveValue;
+      } )
+      .then( ( resolveValue ) => {
+        console.log( `The Choosen Emplyee Is ${ resolveValue }` );
+      } )
+      .catch( ( rejectedReason ) => console.log( rejectedReason ) )
+      .finally( console.log( "The Operation Is Done" ) );
+  }
+  // – Promise And XHR
+  {
+    let getData = ( apiLink ) => {
+      return new Promise( ( resolve, reject ) => {
+
+        let myRequest = new XMLHttpRequest();
+
+        myRequest.onload = function () {
+          if ( this.readyState === 4 && this.status === 200 ) {
+            resolve( JSON.parse( this.responseText ) );
+          } else {
+            reject( Error( "no data Found" ) );
+          }
+        };
+
+        myRequest.open( "GET", apiLink );
+        myRequest.send();
+
+
+
+      } );
+    };
+    getData( "https://api.github.com/users/bakour1/repos" ).then(
+      ( result ) => {
+        result.length = 10;
+        return result;
+      } ).then(
+        ( result ) => {
+          console.log( result[ 0 ].name );                                      // Advanced-Card-With-Shapes1
+        } ).catch( ( rej ) => console.log( Error( "not found" ) ) );
+
+  }
+  // – Fetch API
+  {
+    /*
+      Fetch API
+      - Return A Representation Of the Entire HTTP Response
+    */
+
+    fetch( "https://api.github.com/users/bakour1/repos" ).then(
+      ( result ) => {
+        console.log( result );
+        let myData = result.json();
+        return myData;
+      } ).then(
+        ( myData ) => {
+          myData.length = 10;
+          return myData;
+        } ).then(
+          ( myData ) => console.log( myData[ 0 ].name )
+        );
+  }
+  // – Promise – All, All Settled And Race
+  {
+    /*
+      Promise
+      - All
+      - All Settled
+      - Race
+    */
+
+    let myFirstPromise = new Promise( ( res, rej ) => {
+      setTimeout( () => {
+        res( "i am the first promise" );
+      }, 5000 );
+    } );
+
+    let mySecondPromise = new Promise( ( res, rej ) => {
+      setTimeout( () => {
+        rej( "i am the Second promise" );
+      }, 1000 );
+    } );
+
+    let myThirdPromise = new Promise( ( res, rej ) => {
+      setTimeout( () => {
+        res( "i am the Third promise" );
+      }, 2000 );
+    } );
+
+    // Promise.all( [ myFirstPromise, mySecondPromise, myThirdPromise ] ).then(
+    //   ( resolvedValues ) => console.log( resolvedValues ),
+    //   ( rejectedValues ) => console.log( `Rejected =>> ${ rejectedValues }` )
+    // );
+
+
+    // Promise.allSettled( [ myFirstPromise, mySecondPromise, myThirdPromise ] ).then(
+    //   ( resolvedValues ) => console.log( resolvedValues ),
+    //   ( rejectedValues ) => console.log( `Rejected =>> ${ rejectedValues }` )
+    // );
+
+    Promise.race( [ myFirstPromise, mySecondPromise, myThirdPromise ] ).then(
+      ( resolvedValues ) => console.log( resolvedValues ),
+      ( rejectedValues ) => console.log( `Rejected =>> ${ rejectedValues }` )
+    );
+  }
+  // – Async And Trainings
+  {
+    /*
+    Async
+    - Async Before Function Mean This Function Return A Promise
+    - Async And Await Help In Creating Asynchronous Promise Behavior With Cleaner Style
   */
-}
+    // const getData = () => {
+    //   return new Promise( ( res, rej ) => {
+    //     let users = [ "osama" ];
+    //     if ( users.length > 0 ) {
+    //       res( "users found" );
+    //     } else {
+    //       rej( "users NOT found" );
+    //     }
+    //   } );
+    // };
+    // getData().then(
+    //   ( resolvedValue ) => console.log( resolvedValue ),
+    //   ( rejectedValue ) => console.log( `rejectedValue =>> ${ rejectedValue }` )
+    // );
 
+    //  function getData () {
+    //   let users = [ "sami" ];
+    //   if ( users.length > 0 ) {
+    //     return Promise.resolve( ( "users found" ) );
+    //   } else {
+    //     return Promise.reject( ( "users Not found" ) );
+    //   }
+    // };
+    // getData().then(
+    //   ( resolvedValue ) => console.log( resolvedValue ),
+    //   ( rejectedValue ) => console.log( `rejectedValue =>> ${ rejectedValue }` )
+    // );
+
+
+    async function getData () {
+      let users = [ "sami" ];
+      if ( users.length > 0 ) {
+        return "users found";
+      } else {
+        throw new Error( "users Not found" );
+      }
+    };
+
+    console.log( getData() );
+
+    getData().then(
+      ( resolvedValue ) => console.log( resolvedValue ),
+      ( rejectedValue ) => console.log( `rejectedValue =>> ${ rejectedValue }` )
+    );
+  }
+  // – Await And Trainings
+  {
+    /*
+      Await
+      - Await Works Only Inside async Functions
+      - Await Make JavaScript Wait For The Promise Result
+      - Await Is More Elegant Syntax Of Getting Promise Result
+    */
+    const myPromise = new Promise( ( res, rej ) => {
+      setTimeout( () => {
+        res( "i am good promise" );
+        // rej( Error( "i am bad promise" ) );
+      }, 3000 );
+    } );
+
+    async function readData () {
+      console.log( "before promise" );
+      // myPromise.then( ( resolveVal ) => console.log( resolveVal ) );
+      //  await myPromise.then( ( resolveVal ) => console.log( resolveVal ) );
+      console.log( await myPromise.catch( ( err ) => err ) );
+      console.log( "after promise" );
+    }
+
+
+    readData();
+  }
+
+  {
+    // const myPromise = new Promise( function ( myResolve, myReject ) {
+    //   // "Producing Code" (May take some time)
+
+    //   myResolve(); // when successful
+    //   myReject();  // when error
+    // } );
+
+    // // "Consuming Code" (Must wait for a fulfilled Promise).
+    // myPromise.then(
+    //   function ( value ) { /* code if successful */ },
+    //   function ( error ) { /* code if some error */ }
+    // );
+    // console.log( myPromise );
+
+    /* -------------------------------------------------------------------------------------- */
+
+    const myPromise = new Promise( function ( myResolve, myReject ) {
+      setTimeout( function () { myResolve( "I love You !!" ); }, 3000 );
+    } );
+
+    myPromise.then( function ( value ) {
+      console.log( value );
+    } );
+
+    const myProm = new Promise( function ( myRes, myRej ) {
+      setTimeout( function () {
+        myRes( "HELLLLLO" );
+      }, 5000 );
+    } );
+    myProm.then( x => console.log( x ) );
+
+    // -------------------------
+    /*
+    let myPromise = new Promise();
+
+      myPromise.then();
+      myPromise.catch();
+      myPromise.finally();
+    */
+  }
+}
 // advanced problem solving
 {
   // generate Id from list numbers
