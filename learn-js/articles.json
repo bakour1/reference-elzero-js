@@ -1,37 +1,37 @@
 [
   {
-    "id": "123456",
+    "id":"123456",
     "author": "osama",
-    "type": "programme",
-    "title": "JSON",
+    "category": "programme",
+    "title":"JSON",
     "content": "Lorem ipsum dolor sit Amer."
   },
   {
-    "id": "3254532",
+    "id":"3254532",
     "author": "sami",
-    "type": "sport",
-    "title": "barca",
+    "category": "sport",
+    "title":"barca",
     "content": "Lorem ipsum dolor sit amer."
   },
   {
-    "id": "4363655",
+    "id":"4363655",
     "author": "mohamed",
-    "type": "game",
-    "title": "football",
+    "category": "game",
+    "title":"football",
     "content": "Lorem ipsum dolor sit amer."
   },
   {
-    "id": "4567356",
+    "id":"4567356",
     "author": "ahmad",
-    "type": "safari",
-    "title": "geographic",
+    "category": "safari",
+    "title":"geographic",
     "content": "Lorem ipsum dolor sit amer."
   },
   {
-    "id": "6545436",
+    "id":"6545436",
     "author": "abdul",
-    "type": "film",
-    "title": "action",
+    "category": "film",
+    "title":"action",
     "content": "Lorem ipsum dolor sit amer."
   }
-];
+]

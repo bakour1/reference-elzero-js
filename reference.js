@@ -8669,6 +8669,230 @@ Define a class Person with the following properties:
       - null
     */
   }
+  // – Parse And Stringify
+  {
+    /*
+    JSON
+    - JSON.parse => Convert Text Data To JS Object
+    - JSON.stringify => Convert JS Object To JSON
+    */
+
+    const myObjFromServer = '{"username": "osama", "age": "39"}';
+    console.log( typeof myObjFromServer );                                // String
+    console.log( myObjFromServer );                                       // {"username": "osama", "age": "39"}
+
+    const myJsObj = JSON.parse( myObjFromServer );
+    console.log( typeof myJsObj );                                        // object
+    console.log( myJsObj );                                               // {username: 'osama', age: '39'}
+
+    myJsObj[ "username" ] = "Elzero";
+    myJsObj[ "age" ] = 29;
+
+    console.log( typeof myJsObj );                                        // object
+    console.log( myJsObj );                                               // {username: 'osama', age: '39'}
+
+    const myObjToServer = JSON.stringify( myJsObj );
+
+    console.log( typeof myObjToServer );                                  // string
+    console.log( myObjToServer );                                         // {"username":"Elzero","age":29}
+  }
+  // – Asynchronous vs Synchronous Programming
+  {
+    /*
+      To Understand Ajax, Fetch, Promises
+
+      Asynchronous vs Synchronous Programming
+      - Meaning
+
+      Synchronous
+      - Operations Runs in Sequence
+      - Each Operation Must Wait For The Previous One To Complete
+
+      Asynchronous
+      - Operations Runs In Parallel
+      - This Means That An Operation Can Occur while Another One Is Still Being Processed
+
+      - Facebook As Example
+      - Simulation
+
+      Search
+      - JavaScript Is A Single-Threaded
+      - Multi Threaded Languages
+    */
+
+    // Synchronous;
+
+    // console.log( "1" );
+    // console.log( "2" );
+    // window.alert( "Operation" );
+    // console.log( "3" );
+
+    // Asynchronous
+    // console.log( "1" );
+    // console.log( "2" );
+    // setTimeout( () => console.log( "Operation" ), 3000 );
+    // console.log( "3" );
+  }
+  // – Call Stack And Web API
+  {
+    /*
+      To Understand Ajax, Fetch, Promises
+
+      Call Stack || Stack Trace
+      -- JavaScript Engine Uses A Call Stack To Manage Execution Contexts
+      -- Mechanism To Make The Interpreter Track Your Calls
+      -- Work Using LIFO Principle => Last In First Out
+      -- Code Execution Is Synchronous.
+      -- Call Stack Detect Web API Methods And Leave It To The Browser To Handle It
+
+      Web API
+      -- Methods Available From The Environment => Browser
+    */
+
+    setTimeout( () => {
+      console.log( "Web API" );
+    }, 0 );
+
+    function one () {
+      console.log( "One" );
+    }
+    function two () {
+      one();
+      console.log( "Two" );
+    }
+    function three () {
+      two();
+      console.log( "Three" );
+    }
+
+    three();
+
+    /*
+    =================================
+    console.log("One");
+    =================================
+    function one() {
+      console.log("One");
+    }
+    =================================
+    function two() {
+      one();
+      console.log("Two");
+    }
+    =================================
+    function three() {
+      two();
+      console.log("Three");
+    }
+    =================================
+    */
+
+    console.log( "#####" );
+    console.log( "One" );
+    console.log( "Two" );
+    console.log( "Three" );
+  }
+  // – Event Loop And Callback Queue
+  {
+    /*
+      To Understand Ajax, Fetch, Promises
+
+      Event Loop + Callback Queue
+
+      Story
+      - JavaScript Is A Single Threaded Language "All Operations Executed in Single Thread"
+      - Call Stack Track All Calls
+      - Every Function Is Done Its Poped Out
+      - When You Call Asynchronous Function It Sent To Browser API
+      - Asynchronous Function Like Settimeout Start Its Own Thread
+      - Browser API Act As A Second Thread
+      - API Finish Waiting And Send Back The Function For Processing
+      - Browser API Add The Callback To Callback Queue
+      - Event Loop Wait For Call Stack To Be Empty
+      - Event Loop Get Callback From Callback Queue And Add It To Call Stack
+      - Callback Queue Follow FIFO "First In First Out" Rule
+    */
+
+    console.log( "One" );
+    setTimeout( () => {
+      console.log( "Three" );
+    }, 0 );
+    setTimeout( () => {
+      console.log( "Four" );
+    }, 0 );
+    console.log( "Two" );
+
+    setTimeout( () => {
+      console.log( myVar );
+    }, 0 );
+
+    let myVar = 100;
+    myVar += 100;
+
+  }
+  // – What Is AJAX And Network Informations
+  {
+    /*
+      AJAX
+      - Asynchronous JavaScript And XML
+      - Approach To Use Many Technologies Together [HTML, CSS, Js, DOM]
+      - It Use "XMLHttpRequest" Object To Interact With The Server
+      - You Can Fetch Data Or Send Data Without Page Refresh
+      - Examples
+      --- Youtube Studio
+      --- Google Drive
+      --- Upload Article Photo
+      --- Form Check Name
+
+      Test new XMLHttpRequest();
+      Request And Response
+      Status Code
+    */
+    let req = new XMLHttpRequest();
+    console.log( req );
+
+  }
+  // – Request and Response From Real API
+  {
+    /*
+      Ajax
+      - Ready State => Status Of The Request
+      [0] Request Not Initialized
+      [1] Server Connection Established
+      [2] Request Received
+      [3] Processing Request
+      [4] Request Is Finished And Response Is Ready
+      - Status
+      [200] Response Is Successful
+      [404] Not Found
+    */
+
+    let myRequest = new XMLHttpRequest();
+
+    myRequest.open( "GET", "https://api.github.com/users/bakour1/repos", true );
+    myRequest.send();
+
+    console.log( myRequest );
+
+    myRequest.onreadystatechange = function () {
+      console.log( myRequest.readyState );
+      console.log( myRequest.status );
+      /* OUTPUT
+        main.js:24 2
+        main.js:25 200
+        main.js:24 3
+        main.js:25 200
+        main.js:24 4
+        main.js:25 200
+      */
+
+      if ( this.readyState === 4 && this.status === 200 ) {
+        console.log( this.responseText );
+      }
+      // OUTPUT JSON FILE
+    };
+
+  }
 
 }
 //  Promise
