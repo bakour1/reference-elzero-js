@@ -1,44 +1,27 @@
-// – Try, Catch, Finally With Fetch
 
-
-// const myPromise = new Promise( ( res, rej ) => {
-//   setTimeout( () => {
-//     rej( "i am bad promise" );
-//   }, 2000 );
-// } );
-
-// async function readData () {
-//   console.log( "before promise" );
-
-//   try {
-//     console.log( await myPromise );
-//   } catch ( reason ) {
-//     console.log( `Reason =>> ${ reason }` );
-//   } finally {
-//     console.log( "after promise" );
-//   }
-// }
-
-// readData();
-
-
-async function fetchData () {
-  console.log( "before fetch" );
+( async function getData () {
+  let myData;
 
   try {
-    let myData = await fetch( "https://api.github.com/users/bakour1/repos" );
-    console.log( await myData.json() );
-  } catch ( reason ) {
-    console.log( `Reason =>> ${ reason }` );
-  } finally {
-    console.log( "after fetch" );
+    let dataFetched = await fetch( "./articles.json" );
+    myData = await dataFetched.json();
+    myData.length = 5;
   }
-}
+  finally {
+    myData.forEach( item => {
+      let div = document.createElement( "div" );
 
-fetchData();
+      let h3 = document.createElement( "h3" );
+      h3.appendChild( document.createTextNode( item.title ) );
+
+      let p = document.createElement( "p" );
+      p.appendChild( document.createTextNode( item.description ) );
+
+      div.appendChild( h3 );
+      div.appendChild( p );
+      document.body.appendChild( div );
+    } );
+  };
+} )();
 
 
-
-
-
-// "https://api.github.com/users/bakour1/repos"

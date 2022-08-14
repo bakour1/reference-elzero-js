@@ -1,37 +1,52 @@
 [
   {
-    "id":"123456",
-    "author": "osama",
-    "category": "programme",
-    "title":"JSON",
-    "content": "Lorem ipsum dolor sit Amer."
+    "userId": 10,
+    "title": "Article Title Number 1",
+    "description": "Article Description Number 1"
   },
   {
-    "id":"3254532",
-    "author": "sami",
-    "category": "sport",
-    "title":"barca",
-    "content": "Lorem ipsum dolor sit amer."
+    "userId": 5,
+    "title": "Article Title Number 2",
+    "description": "Article Description Number 2"
   },
   {
-    "id":"4363655",
-    "author": "mohamed",
-    "category": "game",
-    "title":"football",
-    "content": "Lorem ipsum dolor sit amer."
+    "userId": 5,
+    "title": "Article Title Number 3",
+    "description": "Article Description Number 3"
   },
   {
-    "id":"4567356",
-    "author": "ahmad",
-    "category": "safari",
-    "title":"geographic",
-    "content": "Lorem ipsum dolor sit amer."
+    "userId": 5,
+    "title": "Article Title Number 4",
+    "description": "Article Description Number 4"
   },
   {
-    "id":"6545436",
-    "author": "abdul",
-    "category": "film",
-    "title":"action",
-    "content": "Lorem ipsum dolor sit amer."
+    "userId": 5,
+    "title": "Article Title Number 5",
+    "description": "Article Description Number 5"
+  },
+  {
+    "userId": 5,
+    "title": "Article Title Number 6",
+    "description": "Article Description Number 6"
+  },
+  {
+    "userId": 25,
+    "title": "Article Title Number 7",
+    "description": "Article Description Number 7"
+  },
+  {
+    "userId": 25,
+    "title": "Article Title Number 8",
+    "description": "Article Description Number 8"
+  },
+  {
+    "userId": 15,
+    "title": "Article Title Number 9",
+    "description": "Article Description Number 9"
+  },
+  {
+    "userId": 15,
+    "title": "Article Title Number 10",
+    "description": "Article Description Number 10"
   }
 ]

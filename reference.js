@@ -9216,7 +9216,64 @@ Define a class Person with the following properties:
 
     readData();
   }
+  // – Try, Catch, Finally With Fetch
+  {
 
+    // const myPromise = new Promise( ( res, rej ) => {
+    //   setTimeout( () => {
+    //     rej( "i am bad promise" );
+    //   }, 2000 );
+    // } );
+
+    // async function readData () {
+    //   console.log( "before promise" );
+
+    //   try {
+    //     console.log( await myPromise );
+    //   } catch ( reason ) {
+    //     console.log( `Reason =>> ${ reason }` );
+    //   } finally {
+    //     console.log( "after promise" );
+    //   }
+    // }
+
+    // readData();
+
+    // const myPromise = new Promise( ( res, rej ) => {
+    //   setTimeout( () => {
+    //     res( "i am good promise" );
+    //   }, 3000 );
+    // } );
+
+    // async function readData () {
+    //   console.log( "before promise" );
+    //   try {
+    //     console.log( await myPromise );
+    //   } catch ( errorRes ) {
+    //     console.error( errorRes );
+    //   } finally {
+    //     console.log( "after promise" );
+    //   }
+    // }
+    // readData();
+
+    async function fetchData () {
+      console.log( "before fetch" );
+
+      try {
+        let myData = await fetch( "https://api.github.com/users/bakour1/repos" );
+        console.log( await myData.json() );
+      } catch ( reason ) {
+        console.log( `Reason =>> ${ reason }` );
+      } finally {
+        console.log( "after fetch" );
+      }
+    }
+
+    fetchData();
+
+
+  }
   {
     // const myPromise = new Promise( function ( myResolve, myReject ) {
     //   // "Producing Code" (May take some time)
