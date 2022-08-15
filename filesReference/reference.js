@@ -74,4 +74,12 @@
     }
     console.log(addAll(10, 20, 30, 100, 10.5, +true));
 }
+{
+    const add = function (num1, num2) {
+        return num1 + num2;
+    };
+    console.log(add(10, 20));
+    const addWithArrow = (num1, num2) => num1 + num2;
+    console.log(addWithArrow(10, 20));
+}
 //# sourceMappingURL=reference.js.map

@@ -12,6 +12,7 @@
   // tsc -h                                         - list help
   // tsc -w index.ts                                - watch live file.ts
   // tsc --init                                     - initialize json file
+  // tsc
 
   // we are edit in tsconfig.json ----------------------
   // "rootDir": "./src"
