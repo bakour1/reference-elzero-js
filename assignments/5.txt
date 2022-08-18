@@ -1,0 +1,13 @@
+type custom = Error | string;
+
+function isHeOld ( age: number ): custom {
+  if ( typeof age !== "number" ) {
+    return new Error( "input not number" );
+  }
+  return age > 40 ? "Yes" : "No";
+}
+
+// Do Not Edit Here
+console.log( isHeOld( "100" ) ); // Error
+console.log( isHeOld( 45 ) ); // "Yes"
+console.log( isHeOld( 30 ) ); // "No"

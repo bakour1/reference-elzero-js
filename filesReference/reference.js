@@ -193,4 +193,165 @@
     }
     getActions({ one: "sami", two: 29, three: true, five: true });
 }
+{
+    let user = {
+        userName: "sami",
+        country: "Syria"
+    };
+    function getData(data) {
+        console.log(`id is ${data.id}`);
+        console.log(`userName is ${data.userName}`);
+        console.log(`country is ${data.country}`);
+    }
+    getData({ id: 200, userName: "ahmed", country: "KSA" });
+}
+{
+    let user = {
+        id: 100,
+        userName: "sami",
+        country: "Syria",
+        sayHello() { return `Hello ${this.userName}`; },
+        getDouble(n) { return n * 2; },
+        sayHi: () => { return `Hi ${user.userName}`; },
+        getDouble2: (n) => { return n * 2; },
+    };
+    console.log(user.id);
+    console.log(user.userName);
+    console.log(user.country);
+    console.log(user.sayHello());
+    console.log(user.getDouble(3));
+    console.log(user.sayHi());
+    console.log(user.getDouble2(10));
+}
+{
+    let userSettings = {
+        theme: true,
+        font: "open sans",
+        sidebar: false,
+        external: true
+    };
+}
+{
+    let user = {
+        id: 100,
+        userName: "sami",
+        country: "Syria",
+        role: "mod",
+        protect: true
+    };
+    console.log(user.id);
+}
+{
+    let el = document.getElementById("id");
+    let userSettings = {
+        theme: true,
+        font: "Open Sans",
+        sidebar: false,
+        external: true
+    };
+}
+{
+    class User {
+        constructor(userName, salary) {
+            this.u = userName;
+            this.s = salary;
+            this.msg = function () {
+                return `hello ${this.u}, your salary is ${this.s}`;
+            };
+        }
+        sayMsg() {
+            return `hello ${this.u}, your salary is ${this.s}`;
+        }
+    }
+    let userOne = new User("sami", 5000);
+    console.log(userOne.u);
+    console.log(userOne.s);
+    console.log(userOne.msg());
+    console.log(userOne.sayMsg());
+}
+{
+    class User {
+        constructor(userName, salary, address) {
+            this.userName = userName;
+            this.salary = salary;
+            this.address = address;
+            this.msg = function () {
+                return `hello ${this.userName}, your salary is ${this.salary}`;
+            };
+        }
+        sayMsg() {
+            return `hello ${this.userName}, your salary is ${this.salary}`;
+        }
+    }
+    let userOne = new User("sami", 5000, "KSA");
+    console.log(userOne.msg());
+    console.log(userOne.sayMsg());
+}
+{
+    class User {
+        constructor(_username, salary, address) {
+            this._username = _username;
+            this.salary = salary;
+            this.address = address;
+            this.msg = function () {
+                return `Hello ${this._username} Your Salary Is ${this.salary}`;
+            };
+        }
+        get username() {
+            return this._username;
+        }
+        set username(value) {
+            this._username = value;
+        }
+        sayMsg() {
+            return `Hello ${this._username} Your Salary Is ${this.salary}`;
+        }
+    }
+    let userOne = new User("Elzero", 6000, "Cairo");
+    console.log(userOne.username);
+    userOne.username = "Ahmed";
+    console.log(userOne.username);
+    console.log(userOne.salary);
+    console.log(userOne.msg());
+    console.log(userOne.sayMsg());
+}
+{
+    class User {
+        constructor(username) {
+            this.username = username;
+            User.created++;
+        }
+        static get created() {
+            return User._created;
+        }
+        static set created(value) {
+            User._created = value;
+        }
+        static getCount() {
+            console.log(`${this.created} objects created`);
+        }
+    }
+    User._created = 0;
+    let one = new User("sami");
+    let one2 = new User("sami");
+    let one3 = new User("sami");
+    console.log(one.username);
+    User.getCount();
+}
+{
+    class User {
+        constructor(username, theme, font) {
+            this.username = username;
+            this.theme = theme;
+            this.font = font;
+        }
+        save() {
+            console.log("saved");
+        }
+        update() {
+            console.log("updated");
+        }
+    }
+    let sami = new User("sami", true, "open sans");
+}
 //# sourceMappingURL=reference.js.map

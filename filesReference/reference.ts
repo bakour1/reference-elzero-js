@@ -449,3 +449,309 @@
 
   getActions( { one: "sami", two: 29, three: true, five: true } );
 }
+
+// – Interface Declaration
+{
+  /*
+    - Interface Declaration
+    --- Serve Like Types
+    --- The Interface Describes The Shape Of An Object
+    --- It Defines The Syntax To Follow
+
+    --- Use With Object
+    --- Use With Function
+    --- Use Read Only And Optional Operator
+  */
+
+  interface User {
+    id?: number,
+    userName: string,
+    readonly country: string;
+  }
+
+  let user: User = {
+    userName: "sami",
+    country: "Syria"
+  };
+
+  // user.country = "Syria";
+
+  function getData ( data: User ) {
+    console.log( `id is ${ data.id }` );
+    console.log( `userName is ${ data.userName }` );
+    console.log( `country is ${ data.country }` );
+  }
+
+  getData( { id: 200, userName: "ahmed", country: "KSA" } );
+  /* OUTPUT
+      id is 200
+      userName is ahmed
+      country is KSA
+  */
+}
+
+// - Interface Method And Parameters;
+{
+  interface User {
+    id: number,
+    userName: string,
+    country: string;
+    sayHello (): string;
+    getDouble: ( para: number ) => number,
+    sayHi: () => string;
+    getDouble2: ( para: number ) => number;
+
+  }
+
+  let user: User = {
+    id: 100,
+    userName: "sami",
+    country: "Syria",
+    sayHello () { return `Hello ${ this.userName }`; },
+    getDouble ( n ) { return n * 2; },
+    sayHi: () => { return `Hi ${ user.userName }`; },
+    getDouble2: ( n ) => { return n * 2; },
+  };
+
+  console.log( user.id );                   // 100
+  console.log( user.userName );             // sami
+  console.log( user.country );              // syria
+  console.log( user.sayHello() );           // Hello sami
+  console.log( user.getDouble( 3 ) );       // 6
+  console.log( user.sayHi() );              // Hi sami
+  console.log( user.getDouble2( 10 ) );     // 20
+}
+
+// – Interface ReOpen And Use Cases
+{
+  // HomePage
+  interface Settings {
+    readonly theme: boolean,
+    font?: string;
+  }
+
+  // Articles Page
+  interface Settings {
+    sidebar: boolean,
+  }
+
+  // Contact Page
+  interface Settings {
+    external: boolean,
+  }
+
+  let userSettings: Settings = {
+    theme: true,
+    font: "open sans",
+    sidebar: false,
+    external: true
+  };
+}
+
+// – Interface Extends
+{
+  interface User {
+    id: number,
+    userName: string,
+    country: string;
+  }
+
+  interface Moderator extends User {
+    role: string | number;
+  }
+
+  interface Admin extends User, Moderator {
+    protect: boolean;
+  }
+
+  let user: Admin = {
+    id: 100,
+    userName: "sami",
+    country: "Syria",
+    role: "mod",
+    protect: true
+  };
+
+  console.log( user.id );                   // 100
+}
+
+// – Interface Final Discussion
+{
+  /*
+    - Interface vs Type Aliases
+    - Take A Look On HTMLElement Interface
+  */
+
+  let el = document.getElementById( "id" ) as HTMLElement;
+
+  // Homepage
+  type Settings {
+    readonly theme: boolean;
+    font: string;
+    sidebar: boolean;
+    external: boolean;
+  };
+
+  let userSettings: Settings = {
+    theme: true,
+    font: "Open Sans",
+    sidebar: false,
+    external: true
+  };
+}
+
+// – Class Type Annotations
+{
+  class User {
+    u: string;
+    s: number;
+    msg: () => string;
+
+    constructor( userName: string, salary: number ) {
+      this.u = userName;
+      this.s = salary;
+      this.msg = function () {
+        return `hello ${ this.u }, your salary is ${ this.s }`;
+      };
+    }
+    sayMsg () {
+      return `hello ${ this.u }, your salary is ${ this.s }`;
+    }
+  }
+
+  let userOne = new User( "sami", 5000 );
+  console.log( userOne.u );                   // sami
+  console.log( userOne.s );                   // 5000
+  console.log( userOne.msg() );               // hello sami, your salary is 5000
+  console.log( userOne.sayMsg() );            // hello sami, your salary is 5000
+}
+
+// – Class Access Modifiers
+{
+  /*
+    - Data Access Modifiers & Parameters Properties
+    --- Public
+    ------ All Members Of A Class In TypeScript Are Public
+    ------ All Public Members Can Be Accessed Anywhere Without Any Restrictions
+    --- Private
+    ------ Members Are Visible Only To That Class And Are Not Accessible Outside The Class
+    --- Protected
+    ------ Same Like Private But Can Be Accessed Using The Deriving Class
+
+    - TypeScript Is A Layer On Top Of JavaScript
+    - It Should Remove All Annotations And Although Access Modifiers "Private For Example"
+  */
+
+  class User {
+    msg: () => string;
+    constructor( private userName: string, protected salary: number, public readonly address: string ) {
+
+      this.msg = function () {
+        return `hello ${ this.userName }, your salary is ${ this.salary }`;
+      };
+    }
+    sayMsg () {
+      return `hello ${ this.userName }, your salary is ${ this.salary }`;
+    }
+  }
+
+  let userOne = new User( "sami", 5000, "KSA" );
+
+  console.log( userOne.msg() );               // hello sami, your salary is 5000
+  console.log( userOne.sayMsg() );            // hello sami, your salary is 5000
+}
+
+// – Class Access Modifiers
+{
+  /*
+    - Get And Set Accessors
+  */
+
+  class User {
+    public get username (): string {
+      return this._username;
+    }
+    public set username ( value: string ) {
+      this._username = value;
+    }
+    msg: () => string;
+    constructor( private _username: string, public salary: number, public readonly address: string ) {
+      this.msg = function () {
+        return `Hello ${ this._username } Your Salary Is ${ this.salary }`;
+      };
+    }
+    sayMsg () {
+      return `Hello ${ this._username } Your Salary Is ${ this.salary }`;
+    }
+    // get username() : string {
+    //   return this._username;
+    // }
+    // set username(value: string) {
+    //   this._username = value;
+    // }
+  }
+
+  let userOne = new User( "Elzero", 6000, "Cairo" );
+
+  console.log( userOne.username );
+  userOne.username = "Ahmed";
+  console.log( userOne.username );
+  console.log( userOne.salary );
+  console.log( userOne.msg() );
+  console.log( userOne.sayMsg() );
+}
+
+// – Class Static Members
+{
+  /*
+    --- Don't Use "name, length, call"
+  */
+  class User {
+    private static _created: number = 0;
+
+    public static get created (): number {
+      return User._created;
+    }
+    public static set created ( value: number ) {
+      User._created = value;
+    }
+    static getCount (): void {
+      console.log( `${ this.created } objects created` );
+    }
+    constructor( public username: string ) {
+      User.created++;
+    }
+  }
+
+  let one = new User( "sami" );
+  let one2 = new User( "sami" );
+  let one3 = new User( "sami" );
+  console.log( one.username );
+
+  User.getCount();
+}
+
+//  – Class Implements Interface
+{
+  interface Settings {
+    theme: boolean,
+    font: string,
+    save (): void;
+  }
+
+  class User implements Settings {
+    constructor( public username: string, public theme: boolean, public font: string ) {
+
+    }
+    save (): void {
+      console.log( "saved" );
+
+    }
+    update (): void {
+      console.log( "updated" );
+
+    }
+  }
+
+  let sami = new User( "sami", true, "open sans" );
+}
