@@ -1,13 +1,9 @@
-type custom = Error | string;
-
-function isHeOld ( age: number ): custom {
-  if ( typeof age !== "number" ) {
-    return new Error( "input not number" );
+class Shorten {
+  constructor( public id: number, public username: string, protected title: string ) {
   }
-  return age > 40 ? "Yes" : "No";
 }
 
-// Do Not Edit Here
-console.log( isHeOld( "100" ) ); // Error
-console.log( isHeOld( 45 ) ); // "Yes"
-console.log( isHeOld( 30 ) ); // "No"
+let tester = new Shorten( 100, "Elzero", "Developer" );
+
+console.log( tester.id );
+console.log( tester.username );

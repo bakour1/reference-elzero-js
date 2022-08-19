@@ -354,4 +354,130 @@
     }
     let sami = new User("sami", true, "open sans");
 }
+{
+    class Food {
+        constructor(title) {
+            this.title = title;
+        }
+    }
+    class Pizza extends Food {
+        constructor(title, price) {
+            super(title);
+            this.price = price;
+        }
+        getCookingTime() {
+            console.log(`Cooking Time For Pizza Is 1 Hour`);
+        }
+    }
+    class Burger extends Food {
+        constructor(title, price) {
+            super(title);
+            this.price = price;
+        }
+        getCookingTime() {
+            console.log(`Cooking Time For Burger Is Half Hour`);
+        }
+    }
+    let pizzaOne = new Pizza("Awesome Pizza", 100);
+    console.log(pizzaOne.title);
+    console.log(pizzaOne.price);
+    pizzaOne.getCookingTime();
+}
+{
+}
+{
+    class Player {
+        constructor(name) {
+            this.name = name;
+        }
+        attack() {
+            console.log("attacking now");
+        }
+    }
+    class Amazon extends Player {
+        constructor(name, spears) {
+            super(name);
+            this.spears = spears;
+        }
+        attack() {
+            super.attack();
+            console.log('attacking with spear');
+            this.spears -= 1;
+        }
+    }
+    class barbarian extends Player {
+        constructor(name, axe) {
+            super(name);
+            this.axe = axe;
+        }
+        attack() {
+            super.attack();
+            console.log('attacking with axe');
+            this.axe -= 1;
+        }
+    }
+    let barOne = new barbarian("sami", 100);
+    let barTwo = new Amazon("sami", 100);
+    console.log(barOne.name);
+    console.log(barOne.axe);
+    barOne.attack();
+    console.log(barOne.axe);
+}
+{
+    function returnNumber(val) {
+        return val;
+    }
+    function returnString(val) {
+        return val;
+    }
+    function returnBoolean(val) {
+        return val;
+    }
+    console.log(returnNumber(100));
+    console.log(returnString("Elzero"));
+    console.log(returnBoolean(true));
+    function returnType(val) {
+        return val;
+    }
+    console.log(returnType(100));
+    console.log(returnType("Elzero"));
+    console.log(returnType(true));
+    console.log(returnType([1, 2, 3, 4]));
+}
+{
+    function returnType(val) {
+        return val;
+    }
+    console.log(returnType(100));
+    console.log(returnType("Elzero"));
+    const returnTypeArrowSyntax = (val) => val;
+    console.log(returnTypeArrowSyntax(100));
+    console.log(returnTypeArrowSyntax("Elzero"));
+    function testType(val) {
+        return `The Value Is ${val} And Type Is ${typeof val}`;
+    }
+    console.log(testType(100));
+    console.log(testType("Elzero"));
+    function multipleTypes(valueOne, valueTwo) {
+        return `The First Value Is ${valueOne} And Second Value ${valueTwo}`;
+    }
+    console.log(multipleTypes("Osama", 100));
+    console.log(multipleTypes("Elzero", true));
+}
+{
+    class User {
+        constructor(value) {
+            this.value = value;
+        }
+        show(msg) {
+            console.log(`${msg} - ${this.value}`);
+        }
+    }
+    let userOne = new User("Elzero");
+    console.log(userOne.value);
+    userOne.show("message");
+    let userTwo = new User(100);
+    console.log(userTwo.value);
+    userTwo.show(100);
+}
 //# sourceMappingURL=reference.js.map

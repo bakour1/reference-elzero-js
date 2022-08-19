@@ -755,3 +755,212 @@
 
   let sami = new User( "sami", true, "open sans" );
 }
+
+// – Abstract Classes And Members
+{
+  /*
+  Class
+  - Abstract Classes And Members
+  --- We Cannot Create An Instance Of An Abstract Class
+*/
+
+  abstract class Food {
+    constructor( public title: string ) { }
+    abstract getCookingTime (): void;
+  }
+
+  class Pizza extends Food {
+    constructor( title: string, public price: number ) {
+      super( title );
+    }
+    getCookingTime (): void {
+      console.log( `Cooking Time For Pizza Is 1 Hour` );
+    }
+  }
+
+  class Burger extends Food {
+    constructor( title: string, public price: number ) {
+      super( title );
+    }
+    getCookingTime (): void {
+      console.log( `Cooking Time For Burger Is Half Hour` );
+    }
+  }
+
+  let pizzaOne = new Pizza( "Awesome Pizza", 100 );
+
+  console.log( pizzaOne.title );
+  console.log( pizzaOne.price );
+  pizzaOne.getCookingTime();
+}
+
+// – Polymorphism And Method Override
+{
+
+  // class Player {
+  //   constructor( public name: string ) { }
+  //   attack (): void {
+  //     console.log( "attacking now" );
+  //   }
+  // }
+
+  // class Amazon extends Player {
+  //   constructor( name: string, public spears: number ) {
+  //     super( name );
+  //   }
+  //   attack (): void {
+  //     super.attack();
+  //     console.log( 'attacking with spear' );
+  //     this.spears -= 1;
+  //   }
+  // }
+
+  // class barbarian extends Player {
+  //   constructor( name: string, public axe: number ) {
+  //     super( name );
+  //   }
+  //   attack (): void {
+  //     super.attack();
+  //     console.log( 'attacking with axe' );
+  //     this.axe -= 1;
+  //   }
+  // }
+
+  // let barOne = new barbarian( "sami", 100 );
+
+  // console.log( barOne.name );
+  // console.log( barOne.axe );
+  // barOne.attack();
+  // console.log( barOne.axe );
+}
+{
+  class Player {
+    constructor( public name: string ) { }
+    attack (): void {
+      console.log( "attacking now" );
+    }
+  }
+
+  class Amazon extends Player {
+    constructor( name: string, public spears: number ) {
+      super( name );
+    }
+    override attack (): void {
+      super.attack();
+      console.log( 'attacking with spear' );
+      this.spears -= 1;
+    }
+  }
+
+  class barbarian extends Player {
+    constructor( name: string, public axe: number ) {
+      super( name );
+    }
+    override  attack (): void {
+      super.attack();
+      console.log( 'attacking with axe' );
+      this.axe -= 1;
+    }
+  }
+
+  let barOne = new barbarian( "sami", 100 );
+  let barTwo = new Amazon( "sami", 100 );
+
+  console.log( barOne.name );
+  console.log( barOne.axe );
+  barOne.attack();
+  console.log( barOne.axe );
+}
+
+// – Generics Introduction
+{
+  /*
+  Generics
+  - Help Write A Reusable Code
+  - Allow To Pass Type As A Parameter To Another Type
+  - You Will Be Able To Deal With Multiple Types Without Using ": Any Type"
+  - We Can Create:
+  --- Generic Classes
+  --- Generic Functions
+  --- Generic Methods
+  --- Generic Interfaces
+*/
+
+  function returnNumber ( val: number ): number {
+    return val;
+  }
+  function returnString ( val: string ): string {
+    return val;
+  }
+  function returnBoolean ( val: boolean ): boolean {
+    return val;
+  }
+
+  console.log( returnNumber( 100 ) );
+  console.log( returnString( "Elzero" ) );
+  console.log( returnBoolean( true ) );
+
+  function returnType<T> ( val: T ): T {
+    return val;
+  }
+
+  console.log( returnType<number>( 100 ) );
+  console.log( returnType<string>( "Elzero" ) );
+  console.log( returnType<boolean>( true ) );
+  console.log( returnType<number[]>( [ 1, 2, 3, 4 ] ) );
+}
+
+// – Generics Multiple Types
+{
+  /*
+  Generics
+  - Arrow Function
+  - Multiple Types
+  - Discussion
+*/
+
+  function returnType<T> ( val: T ): T {
+    return val;
+  }
+
+  console.log( returnType<number>( 100 ) );
+  console.log( returnType<string>( "Elzero" ) );
+
+  const returnTypeArrowSyntax = <T> ( val: T ): T => val;
+
+  console.log( returnTypeArrowSyntax<number>( 100 ) );
+  console.log( returnTypeArrowSyntax<string>( "Elzero" ) );
+
+  function testType<T> ( val: T ): string {
+    return `The Value Is ${ val } And Type Is ${ typeof val }`;
+  }
+
+  console.log( testType<number>( 100 ) );
+  console.log( testType<string>( "Elzero" ) );
+
+  function multipleTypes<T, S> ( valueOne: T, valueTwo: S ): string {
+    return `The First Value Is ${ valueOne } And Second Value ${ valueTwo }`;
+  }
+
+  console.log( multipleTypes<string, number>( "Osama", 100 ) );
+  console.log( multipleTypes<string, boolean>( "Elzero", true ) );
+}
+
+// – Generics Classes
+{
+
+  class User<T = string> {
+    constructor( public value: T ) { }
+    show ( msg: T ): void {
+      console.log( `${ msg } - ${ this.value }` );
+    }
+  }
+
+  let userOne = new User( "Elzero" );
+  console.log( userOne.value );
+  userOne.show( "message" );
+
+  let userTwo = new User<number | string>( 100 );
+  console.log( userTwo.value );
+  userTwo.show( 100 );
+}

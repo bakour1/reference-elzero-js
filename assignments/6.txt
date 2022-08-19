@@ -1,15 +1,15 @@
-let post: readonly [ number, string, boolean ];
+class Show {
+  public get title (): string {
+    return this._title;
+  }
+  public set title ( value: string ) {
+    this._title = value;
+  }
+  constructor( private _title: string ) { }
+}
 
-post = [ 100, 200, "Title" ]; // Error
-post = [ "Title", 100, true ]; // Error
-post = [ 100, "Title", true ]; // Good
+let tester = new Show( "Elzero" );
 
-post.push( "Elzero" ); // Error => Cant Add
-
-// Create Destructuring Here
-let [ id, title, state ] = post;
-
-// Do Not Edit Here
-console.log( id ); // 100
-console.log( title ); // "Title"
-console.log( state ); // true
+console.log( tester.title ); // Property 'title' does not exist on type 'Show'
+tester.title = "Osama"; // Property 'title' does not exist on type 'Show'
+console.log( tester.title ); // Property 'title' does not exist on type 'Show'
