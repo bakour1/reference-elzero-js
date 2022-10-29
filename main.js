@@ -1,19 +1,5 @@
-function evalObject ( value ) {
-
-  switch ( value.operation ) {
-    case '+': return value.a + value.b;
-    case '-': return value.a - value.b;
-    case '/': return value.a / value.b;
-    case '*': return value.a * value.b;
-    case '%': return value.a % value.b;
-    case '^': return Math.pow( value.a, value.b );
-  }
+function validateCode ( code ) {
+  return /[1-3]/g.test( code );
 }
 
-console.log( evalObject( { a: 1, b: 1, operation: '+' } ) );
-console.log( evalObject( { a: 1, b: 1, operation: '-' } ) );
-console.log( evalObject( { a: 1, b: 1, operation: '/' } ) );
-console.log( evalObject( { a: 1, b: 1, operation: '*' } ) );
-console.log( evalObject( { a: 1, b: 1, operation: '%' } ) );
-console.log( evalObject( { a: 1, b: 1, operation: '^' } ) );
-
+console.log( validateCode( 321 ) );
