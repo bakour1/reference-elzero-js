@@ -1,5 +1,5 @@
-function validateCode ( code ) {
-  return /[1-3]/g.test( code );
+function periodIsLate ( last, today, cycleLength ) {
+  return new Date( 2022, 8, 20 ) - new Date( 2022, 8, 4 );
 }
 
-console.log( validateCode( 321 ) );
+console.log( periodIsLate() );
